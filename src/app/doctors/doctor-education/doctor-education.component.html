@@ -1,0 +1,135 @@
+<!-- <a href="#" class="btn btn-grlight pull-right mb-4">Add New Consultation</a> -->
+<form [formGroup]="form">
+    <div class="row">
+
+        <ng-container>
+            <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                <label class="form-label">Education Type <sup>*</sup></label>
+                <ng-select [items]="educationTypes" bindLabel="name" bindValue="id" [multiple]="false"
+                    formControlName="education_type_id" placeholder="--Select--">
+                </ng-select>
+            </div>
+            <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                <label class="form-label">Title<sup>*</sup></label>
+                <input type="text" class="form-control" placeholder="Title" formControlName="title">
+            </div>
+            <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                <label [for]="startDate">Start Date<sup>*</sup></label>
+                <div class="mat-date-picker-custom">
+                    <input [id]="startDate" [matDatepicker]="startDate" max="2099-01-01" formControlName="start_date"
+                        [appMaskDate]="startDate">
+                    <mat-datepicker-toggle [for]="startDate">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #startDate></mat-datepicker>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                <label [for]="endDate">End Date<sup>*</sup></label>
+                <div class="mat-date-picker-custom">
+                    <input [id]="endDate" [matDatepicker]="endDate" max="2099-01-01" formControlName="end_date"
+                        [appMaskDate]="endDate">
+                    <mat-datepicker-toggle [for]="endDate">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #endDate></mat-datepicker>
+                </div>
+            </div>
+            <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <label class="form-label text-dark">Details</label>
+                <textarea class="form-control  required" name="example-textarea-input" formControlName="control"
+                    formControlName="details" style="height: auto !important;" rows="3"
+                    placeholder="text here.."></textarea>
+            </div>
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="form-label">Institute<sup>*</sup></label>
+                <input type="text" class="form-control" placeholder="Institute" formControlName="institute">
+            </div>
+
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <label for="prpicture">File</label>
+                <div class="inputicon">
+                    <div class="custom-file">
+
+                        <input type="file" class="custom-file-input" id="customFile" name="filename" accept="image/*"
+                            (change)="fileChangeEvent($event)">
+
+                        <label class="custom-file-label" for="customFile">Upload
+                            Picture</label>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4 upldbox">
+                <div class="form-group mb-0">
+                    <label class="form-label">Upload Image</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" (change)="fileChangeEvent($event)"
+                            name="example-file-input-custom">
+                        <label class="custom-file-label">Choose file</label>
+                    </div>
+                </div>
+
+            </div> -->
+            <div class="image_upload border mb-2" [class.border]="form.value?.media">
+                <div *ngIf="form.value && form.value?.media && form.value?.media?.base_path"
+                    class="upload-images d-flex">
+                    <div>
+                        <img src="{{form.value?.media.base_path+'/'+ form.value?.media?.system_name}}" alt="img"
+                            class="w73 h73 border p-0" id="education_image">
+                    </div>
+                    <div class="ml-3 mt-2">
+                        <h6 class="mb-0 mt-3 font-weight-bold">
+                            {{form.value?.media?.real_name}}</h6>
+                        <!-- <small>4.5kb</small> -->
+                    </div>
+                    <div class="float-right ml-auto">
+                        <!-- <a href="#" class="float-right btn btn-icon btn-danger btn-sm mt-5"><i
+                                                                                                                                class="fa fa-trash-o"></i></a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <a href="javascript:void(0);" (click)="editId ? editEducations(form): saveEducations(form)"
+                    class="btn btn-danger frmbtn flr">SAVE
+                    CHANGES</a>
+            </div>
+        </ng-container>
+    </div>
+</form>
+
+<div class="doctable table-responsive">
+    <table class="table mb-0 text-nowrap">
+        <thead>
+            <tr>
+                <th>Education Type</th>
+                <th>Education Title</th>
+                <th>Institute</th>
+                <th>Start date</th>
+                <th>End date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <ng-container *ngFor="let item of rows;let i=index">
+                <tr>
+                    <td class="text-muted">{{item.type?.name}}</td>
+                    <td class="text-muted">{{item.title}}</td>
+                    <td class="text-muted">{{item?.institute }}</td>
+                    <td class="text-muted">{{item?.start_date  | date:" MMMM d, y" }}</td>
+                    <td class="text-muted">{{item?.end_date  | date:" MMMM d, y" }}</td>
+
+                    <td>
+                        <a class="btn btn-sm" data-toggle="tooltip" data-original-title="Edit"
+                            (click)="onEditClick(item)"><i class="fa fa-pencil"></i></a>
+                        <a class="text-danger btn btn-sm" (click)="deleteEducations(item,i)" data-toggle="tooltip"
+                            data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+
+
+                    </td>
+                </tr>
+            </ng-container>
+
+
+
+
+        </tbody>
+    </table>
+</div>

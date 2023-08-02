@@ -1,0 +1,125 @@
+<section class="sptb signupfrm pb-0 regfrm">
+    <div class="container customerpage px-0">
+        <div class="row mx-0">
+            <div class="single-page">
+                <div class="row mx-0">
+                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 px-0 bg-white">
+                        <div class="wrapper wrapper2">
+                            <ng-container *ngIf="type != LoginType.admin">
+                                <div class="card-body px-0 pt-0">
+                                    <div class="log-btns">
+                                        <a href="javascript:void(0);" (click)="signInWithFB()"
+                                            class="btn btn-icon btn-facebook">
+                                            <span class="fa fa-facebook-square "></span>
+                                            <span>Sign up with Facebook </span>
+                                        </a>
+
+                                        <a href="javascript:void(0);" (click)="signInWithGoogle()"
+                                            class="btn btn-icon btn-google">
+                                            <span class="fa fa-google bg-google"></span>
+                                            <span>Sign up with Google </span>
+                                        </a>
+                                        <!-- <a href="javascript:void(0);" (click)="twitterLogin()" class="btn  btn-icon btn-twitter">
+                                    <span class="fa fa-twitter bg-twitter"></span>
+                                </a> -->
+                                    </div>
+                                </div>
+                                <div class="divideror">
+                                    <span>or</span>
+                                </div>
+                            </ng-container>
+                            <form id="Register" [formGroup]="form" class="card-body px-0 pb-0" tabindex="500">
+                                <!-- <div class="name">
+                                <input type="text" name="name" formControlName="user_name">
+                                <label>Name</label>
+                            </div> -->
+                                <div class="selectcat" *ngIf="type != LoginType.admin">
+                                    <label class="radio-inline">
+                                        <input type="radio" formControlName="role_id"
+                                            [value]="LoginType.buyer"><span>Buyer</span>
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" formControlName="role_id"
+                                            [value]="LoginType.vendor"><span>Vendor</span>
+                                    </label>
+                                </div>
+                                <input type="hidden" [value]="returnUrl" name="returnUrl" formControlName="returnUrl">
+                                <div class="firstName frmbx">
+                                    <label>First Name </label>
+                                    <input type="text" name="first_name" formControlName="first_name"
+                                        placeholder="Enter your first name">
+
+                                </div>
+                                <div class="lastName frmbx">
+                                    <label>Last Name </label>
+                                    <input type="text" name="last_name" formControlName="last_name"
+                                        placeholder="Enter your last name">
+
+                                </div>
+                                <div class="mail frmbx">
+                                    <label>Email</label>
+                                    <input type="email" name="mail" formControlName="email"
+                                        placeholder="Enter your email">
+
+                                </div>
+                                <div class="passwd frmbx">
+                                    <label>Password</label>
+                                    <input type="password" name="password" formControlName="password"
+                                        placeholder="Enter your password">
+
+                                </div>
+
+                                <div class="city frmbx">
+                                    <label>City</label>
+                                    <input type="text" name="city" formControlName="city" placeholder="Enter your city">
+
+                                </div>
+                                <!-- *ngIf="type == LoginType.doctor" -->
+                                <div class="phone_no  frmbx">
+                                    <label>Phone</label>
+                                    <input type="tel" name="phone_no" formControlName="phone_no" 
+                                        placeholder="Enter your phone number">
+
+                                </div>
+                                <div class="captcha">
+                                    <!-- <img src="../assets/images/captcha.png" alt="img"> -->
+                                   
+
+    
+
+
+                                </div>
+
+                                <div class="submit">
+                                    <a class="btn btn-danger btn-block gradient" type="button" (click)="submit()"
+                                        [class.disabled]="!form.valid || disableButton" href="javascript:void(0);">
+                                        <span>Sign Up</span></a>
+                                        
+                                </div>
+                                <p class="text-dark mb- 0">Already on No One 21?<a (click)="gotoSignIn()"
+                                        class="text-danger ml-1 pointer">Log in</a></p>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 px-0">
+                        <div class="formdettop">
+                            <div class="formdetails">
+                                <h2>Find and work with media professionals</h2>
+                                <ul>
+                                    <li>Find actors, singers and talent.</li>
+                                    <li>Hire a complete crew.</li>
+                                    <li>Find great projects to work on.</li>
+                                    <li>Build a strong portfolio and industry connections.
+
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

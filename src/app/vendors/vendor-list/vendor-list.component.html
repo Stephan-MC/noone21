@@ -1,0 +1,518 @@
+<div class="upper">
+    <div class=" cover-image listbg filtblock pb-0">
+        <div class="header-text1 mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
+                        <h3 class="mb-5 mt-5 exphead">Hire professionals for your media projects.<br>
+                            Explore categories</h3>
+                        <form [formGroup]="formFilter">
+                            <div class="search-background bg-transparent">
+
+                                <div class="form row no-gutters">
+
+                                    <div
+                                        class="form-group col-xl-3 col-lg-3 col-md-12 mb-0 bg-white  autocomplete-dropdown">
+                                        <ng-template #category let-r="result" let-t="term">
+                                            <small class="nameFilter">{{ r.name }}</small>
+                                        </ng-template>
+                                        <!-- <input class="form-control input-lg br-md-0" id="text5"
+                                            [ngbTypeahead]="searchCategory" [resultTemplate]="category"
+                                            [inputFormatter]="categoryFormatter" formControlName="category"
+                                            placeholder="Search Category" type="text"> -->
+                                        <input class="form-control input-lg br-md-0" id="text5" formControlName="search"
+                                            placeholder="Enter your search here" type="text">
+                                    </div>
+                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-0 bg-white">
+                                        <div class="allcat">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle"
+                                                    data-toggle="dropdown">
+                                                    <strong><i class="fa fa-th" aria-hidden="true"></i>
+                                                        {{selectedValue ? selectedValue.name : ''}}
+                                                    </strong>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <div class="divh">
+                                                        <!-- <ng-container *ngFor="let item of categories">
+                                                            <a href="javascript:void(0)" (click)="selectItem(item)"
+                                                                class="dropdown-item">{{item?.name}}</a>
+                                                        </ng-container> -->
+                                                        <ng-container>
+                                                            <ul class="customdrop">
+                                                                <ng-container *ngFor="let item of categories; let i = index">
+                                                                    <li class="dropitemain" [ngClass]="{'active': selectedItem === i}" (click)='selectedItem = i;'><a href="javascript:void(0)"
+                                                                            class="dropdown-item dropitem"
+                                                                            (click)="selectItem(item)">{{item?.name}}</a>
+                                                                        <ul *ngIf=" item?.sub_categories">
+                                                                            <ng-container
+                                                                                *ngFor="let sub of item?.sub_categories">
+                                                                                <li><a href="javascript:void(0)"
+                                                                                        (click)="selectItemSubCategory(sub)"
+                                                                                        class="dropdown-item">{{sub?.name}}</a>
+                                                                                </li>
+                                                                            </ng-container>
+
+
+                                                                        </ul>
+                                                                    </li>
+                                                                </ng-container>
+                                                            </ul>
+                                                        </ng-container>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="form-group col-xl-3 col-lg-3 col-md-12 select2-lg mb-0 bg-white clearable">
+                                        <input #search class="form-control input-lg br-md-0" id="text5"
+                                            formControlName="location" placeholder="Search by location" type="text">
+                                        <i *ngIf="formFilter.value.location" (click)="resetLatLng()"
+                                            class="clearable__clear">&times;</i>
+                                        <span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2 col-md-12 mb-0">
+                                        <a class="btn btn-lg btn-block btn-danger gradient br-tl-md-0 br-bl-md-0"
+                                            (click)="getDoctors()" href="javascript:void(0)"><span><i
+                                                class="fa fa-search"></i> Search</span></a>
+                                    </div>
+                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-0">
+                                        <div class="advsearch">
+
+                                            <a class="btn btn-lg btn-block br-tl-md-0 br-bl-md-0"
+                                                href="javascript:void(0)" (click)="clickfunct()"> 
+                                                Advanced
+                                                Search</a>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex select2-sm">
+                                        <label class="mr-2 mt-1 mb-sm-1">Sort By:</label>
+                                        <select name="item" class="form-control select2">
+                                            <option value="1">Latest</option>
+                                            <option value="2">Oldest</option>
+                                            <option value="3">Price:Low-to-High</option>
+                                            <option value="5">Price:Hight-to-Low</option>
+                                        </select>
+                                    </div> -->
+                                </div>
+
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /header-text -->
+    </div>
+    <div class="filterheader">
+        <div class="pendwork" (click)="openModel(templatea)"></div>
+        <div class="container">
+            <div class="search-background bg-transparent">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
+                        <form [formGroup]="formFilter">
+                            <div class="row">
+
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+
+                                
+                                    <!-- <select class="form-control" formControlName="availability"  data-trigger name="choices-single-default" id="availability" (change)="availabilityfun($event.target.value)">
+                                    
+                                        <option *ngFor="let item of availabilities" [value]="item?.id"
+                                        data-icon="fa fa-circle"> {{item.name}}</option>
+                                        </select> -->
+
+                                         <select class="form-control input-lg"  data-trigger name="choices-single-default" id="availability" >
+                                    
+                                        <option 
+                                        > Daily</option>
+                                        </select>
+
+                                         
+                                        
+        
+                                
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <div class="selectrange">
+                                        <div class="addicon">
+                                            <!-- <input class="form-control input-lg br-md-0" id="selectrng"
+                                                (change)="doChange($event)" placeholder="Fee Range"
+                                                formControlName="fees_range" type="text">  -->
+                                                
+                                                <input class="form-control input-lg br-md-0" id="selectrng"
+                                                 placeholder="Fee Range"
+                                                 type="text">
+                                        </div>
+                                        <!-- <div class="selectslid">
+                                            
+                                            <span class="example-val" id="lower-value"></span>
+                                            <span class="example-val" id="upper-value"></span>
+                                            <div id="nonlinear" class="noUi-target noUi-ltr noUi-horizontal"></div>
+
+                                            <a href="javascript:void(0)"
+                                                class="pricerngbtn" (click)="filtapply()"><strong>Apply</strong></a>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <!-- <select id="gender"
+                                        class="form-control w-100 select-lg" 
+                                        formControlName="gender" (change)="changegender($event.target.value)">
+
+                                        
+                                        <option data-icon="fa fa-circle">All vendors</option>
+                                        <option value="1" data-icon="fa fa-circle-thin">Male</option>
+                                        <option value="2" data-icon="fa fa-circle-thin">Female</option>
+
+                                    </select> -->
+
+                                             <select id="gender"
+                                        class="form-control w-100 select-lg input-lg" 
+                                        >
+
+                                        
+                                        <option data-icon="fa fa-circle">All vendors</option>
+                                      
+
+                                    </select>
+
+                                
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <div class="checkwhite">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                                formControlName="show_nearest" value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark"> Show Nearest</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <!-- <select id="radius"
+                                        class="form-control select-lg"
+                                        formControlName="radius" data-placeholder="Select" (change)="radiuschange($event.target.value)">
+
+                                        
+                                        <option value="5" data-icon="fa fa-circle-thin">5 km</option>
+                                        <option value="10" data-icon="fa fa-circle-thin">10 km</option>
+                                        <option value="20" data-icon="fa fa-circle-thin">20 km</option>
+                                        <option value="25" data-icon="fa fa-circle-thin">25 km</option>
+                                        <option value="30" data-icon="fa fa-circle-thin">30 km</option>
+
+
+                                    </select>                  -->
+                                    
+                                    <select id="radius"
+                                        class="form-control select-lg input-lg"
+                                         data-placeholder="Select" >
+
+                                        
+                                        <option value="5" data-icon="fa fa-circle-thin">5 km</option>
+                                       
+
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <div class="custcheck availcheckc">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="switch1"
+                                                formControlName="online_consultation" disabled>
+                                            <label class="custom-control-label" for="switch1"><strong>Available Online</strong></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="extrasearchtext">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                <div class="mapsearchbtn">
+                    <span>Search near your location with:</span>
+                    <a href="/pages/map-view">MAP SEARCH</a>
+                </div>
+                <div class="needtext">
+                    <p><b>Find and get in touch with media professionals</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--/Sliders Section-->
+
+
+
+<div class="border-bottom pt-2 mb-2" *ngIf="categorySlug">
+    <div class="container">
+        <div class="page-header bread">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">{{categorySlug}}</a></li>
+                <li class="breadcrumb-item active" *ngIf="subCategorySlug" aria-current="page">
+                    {{subCategorySlug}}</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+    <!-- <div class="popcats">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h4 class="page-title">Popular Categories</h4>
+
+                    </div>
+                    <ul>
+                        <ng-container *ngFor="let item of categories| slice:0:3">
+                            <li>
+                                <a href="javascript:void(0)" (click)="selectItem(item); getDoctors()"
+                                    *ngIf="!item.shouldNotDisplay">
+                                    {{item?.name}}</a>
+                            </li>
+                        </ng-container>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!--Section-->
+    <section class="sptb">
+        <div class="container">
+            <div class="row">
+
+
+                <!--Add lists-->
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class=" mb-lg-0">
+                        <div class="">
+                            <div class="item2-gl ">
+                                <div class=" mb-0">
+                                    <div class="">
+                                        <div class="p-5 bg-white item2-gl-nav d-flex">
+                                            <h6 *ngIf="doctorList && doctorList.length > 0" class="mb-0 mt-2">Showing
+                                                {{limit * (page-1)+1}} to {{limit*page}} of
+                                                {{limit*page}} results</h6>
+
+
+                                            <h6 *ngIf="doctorList.length == 0" class="mb-0 mt-2">No Record Found</h6>
+                                            <ul class="nav item2-gl-menu ml-auto">
+                                                <!-- <li class="">
+                                                    <a href="#tab-11" class="" data-toggle="tab" title="List style"><i
+                                                            class="fa fa-list"></i></a>
+                                                </li> -->
+                                                <!-- <li>
+                                                    <a href="#tab-12" data-toggle="tab" class="active show"
+                                                        title="Grid"><i class="fa fa-th"></i></a>
+                                                </li> -->
+                                            </ul>
+                                            <div class="d-flex sortfilt">
+                                                <label class="mr-2 mt-1 mb-sm-1">Sort By:</label>
+                                                <select name="item" (change)="doSort()" [(ngModel)]="sortType"
+                                                    class="form-control">
+                                                   
+                                                    <option value="2">Latest</option>
+                                                    <option value="1">Oldest</option>
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="tab-11">
+                                        <ng-container *ngFor="let doc of doctorList">
+                                            <div class="card overflow-hidden">
+                                                <div class="d-md-flex">
+                                                    <div class="item-card9-img">
+                                                        <div class="item-card9-imgs">
+                                                            <a  href="javascript:void(0)" (click)="viewProfile(doc)"></a>
+                                                            <img alt="img" class="cover-image"
+                                                                [src]="doc.profile_media ? doc.profile_media.base_path+'/'+doc.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="card border-0 mb-0">
+                                                        <div class="card-body">
+                                                            <div class="item-card9">
+                                                                <a class="text-dark" href="javascript:void(0)" (click)="viewProfile(doc)">
+                                                                    <h4 class="font-weight-bold mt-1 mb-2">
+                                                                        {{doc?.first_name}} {{doc?.last_name}}<i
+                                                                            class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                                    </h4>
+                                                                </a>
+                                                                <p class="mb-1 fs-14 mt-1"><span class=""><i
+                                                                            class="fa fa-location-arrow text-muted mr-1"></i></span>14
+                                                                     {{doc?.city}} {{doc?.country}}
+                                                                     </p>
+                                                                <div class="item-card9-desc mb-2 mt-3">
+                                                                    
+                                                                    <span class="mr-4" *ngIf="doc.city!='' || doc.city!='null'">{{doc?.city}}</span>
+                                                                    <span class="mr-4" *ngIf="doc.city=='' || doc.city=='null'">City name</span>
+
+                                                                    <span class="mr-4">20 Specialities</span>
+                                                                    <span class="mr-4">30 Vendor </span>
+                                                                    <span class="mr-4">8am - 6am </span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer p-0">
+                                                            <div class="item-card9-footer btn-appointment">
+                                                                <div class="btn-group w-100">
+                                                                    <a href="javascript:void(0)"
+                                                                        href="pages/vendor/{{doc.id}}"
+                                                                        class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"><i
+                                                                            class="fe fe-user mr-1"></i>Profile</a>
+                                                                    <a href="javascript:void(0)" routerLink="/pages/vendor-register" 
+                                                                        class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i
+                                                                            class="fa fa-mail mr-1"></i>Contact</a>
+                                                                    <a 
+                                                                        class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0 call-btn">
+                                                                        <div class="call-btn-1">
+                                                                            <i class="fe fe-phone mr-1"></i> Appointments
+                                                                        </div>
+                                                                        <div class="call-number">
+                                                                            <!-- {{doc?.phone_no | phone}} -->
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                    </div>
+                                    <div class="tab-pane active" id="tab-12">
+                                        <div class="row">
+                                            <ng-container *ngFor="let doc of doctorList">
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 col-xl-3">
+                                                    <div class="card overflow-hidden">
+                                                        <div class="item-card9-img">
+                                                            <div class="item-card9-imgs">
+                                                                <a href="javascript:void(0)" (click)="viewProfile(doc)"></a>
+                                                                <img alt="img" class="cover-image" height="274"
+                                                                    width="274"
+                                                                    [src]="doc.profile_media ? doc.profile_media.base_path+'/'+doc.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'">
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="item-card9">
+                                                                <a class="text-dark mt-2"
+                                                                href="javascript:void(0)" (click)="viewProfile(doc)">
+                                                                    <h4 class="font-weight-bold mb-1">
+                                                                        {{doc?.first_name}} {{doc?.last_name}}<i
+                                                                            class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                                    </h4>
+                                                                </a>
+                                                                <span class="text-muted fs-13 mt-2" *ngIf="doc.city || doc.country"><i
+                                                                        class="fa fa-location-arrow text-muted mr-2" ></i>
+                                                                        {{doc?.city}} {{doc?.country}}</span>
+
+                                                                    <span class="text-muted fs-13 mt-2" *ngIf="!doc.city && !doc.country"><i
+                                                                        class="fa fa-location-arrow text-muted mr-2" ></i>
+                                                                        My address
+                                                                   </span>
+
+                                                                <div class="mt-2 mb-0">
+                                                                    <ul class="item-card-features mb-0">
+                                                                       
+                                                                        <li> <span  *ngIf="doc.city!='' || doc.city!='null'">{{doc?.city}}</span>
+                                                                            <span  *ngIf="!doc.city" style="margin-top: -4px;">City name</span></li>
+                                                                        <li><span>20 Specialities</span></li>
+                                                                        <li><span> 30 Vendors</span></li>
+                                                                        <li><span class="">8 am - 9 am</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer p-0 btn-appointment">
+                                                            <div class="btn-group w-100">
+                                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                                    (click)="viewProfile(doc)"
+                                                                    href="javascript:void(0)"><i
+                                                                        class="fe fe-user mr-1"></i> Profile</a>
+                                                                <a href="javascript:void(0)"     routerLink="/pages/vendor-register" 
+                                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                                    <div class="call-btn-1">
+                                                                        <i class="fe fe-mail mr-1"></i> Contact
+                                                                    </div>
+                                                                    <div class="call-number">
+                                                                        <!-- {{doc?.phone_no | phone}} -->
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="center-block text-center docspaginate">
+
+                                <pagination [boundaryLinks]="true" (pageChanged)="pageChanged($event)"
+                                    [totalItems]="total" class="my-pagination" [itemsPerPage]="limit"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="page">
+                                </pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Add lists-->
+            </div>
+        </div>
+    </section>
+    <!--/Section-->
+
+    <div class="welcomepop">
+        <!-- The Modal -->
+    
+        <ng-template #templatea id="welcomepopup">
+            <div class="welcomepop">
+                <div class="modal-body">
+                    <div class="welcomebox">
+                        <span class="close" data-dismiss="modal" (click)="modalRef.hide()">&times;</span>
+    
+                        <div class="welin">
+                            <span>Buckle up for</span>
+                            <h2>Soft Launch of Version 1.03</h2>
+                            <p>Be the first to become part of this revolutionary media portal and bring the world to your
+                                doorstep.</p>
+    
+    
+                            <button class="btn btn-danger" (click)="modalRef.hide()">I UNDERSTAND...</button>
+                            <span>**Full features will become available very soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    
+    </div>
+   

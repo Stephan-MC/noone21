@@ -1,0 +1,68 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 autocomplete-dropdown clearable">
+            <label for="fname">Question<sup>*</sup></label>
+            <ng-template #faqT let-r="result" let-t="term">
+                <small class="nameFilter">{{ r.question }}</small>
+            </ng-template>
+            <input type="text" class="form-control" placeholder="Add a question" formControlName="question"
+                [ngbTypeahead]="searchFAQ" [resultTemplate]="faqT" (selectItem)="selectedItemFAQ($event,form)"
+                [inputFormatter]="faqFormatter">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('question').valid && (form.get('question').dirty || form.get('question').touched)">Please
+                enter question!</small>
+        </div>
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <label for="lname">Answer<sup>*</sup></label>
+            <textarea class="form-control" rows="3" style="height: auto !important;"
+                formControlName="answer"></textarea>
+            <i *ngIf="form.get('answer').value" (click)="clear(form)" class="clearable__clear">&times;</i>
+            <small class="form-text text-danger"
+                *ngIf="!form.get('answer').valid && (form.get('answer').dirty || form.get('answer').touched)">Please
+                enter answer!</small>
+        </div>
+
+        <div class="form-group text-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-0">
+            <a href="javascript:void(0);" [class.custom_disabled]="disableButton"
+                (click)="editId ? editFAQ(form): saveFAQ(form)" class="btn btn-danger frmbtn flr gradient btz"><span>SAVE
+                CHANGES</span></a>
+        </div>
+    </div>
+</form>
+
+<div class="doctable table-responsive" *ngIf="rows.length>0">
+    <table class="table mb-0 text-nowrap ">
+        <thead>
+            <tr>
+
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <ng-container *ngFor="let item of rows;let i=index">
+                <tr>
+                    <td class="text-muted">{{item?.question?.question}}</td>
+                    <td class="text-muted cursor-pointer faq_td"><a title="{{item?.answer}}">{{item?.answer }}</a></td>
+                    <!-- <ng-template #tipContent let-greeting="greeting">{{greeting}}, <b></b>!</ng-template> -->
+                    <td>
+                        <a class="btn btn-sm" data-toggle="tooltip" data-original-title="Edit"
+                            [class.custom_disabled]="disableButton" (click)="onEditClick(item)"><i
+                                class="fa fa-pencil"></i></a>
+                        <a class="text-danger btn btn-sm" [class.custom_disabled]="disableButton"
+                            (click)="deleteFAQ(item,i)" data-toggle="tooltip" data-original-title="Delete"><i
+                                class="fa fa-trash-o"></i></a>
+
+
+                    </td>
+                </tr>
+            </ng-container>
+
+
+
+
+        </tbody>
+    </table>
+</div>

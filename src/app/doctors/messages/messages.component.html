@@ -1,0 +1,53 @@
+<div class="messaging">
+
+    <div class="inbox_msg">
+        <div class="mesgs">
+            <div class="msg_history">
+                <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="small" color="#fff" type="timer" [fullScreen]="false">
+                    <p style="font-size: 20px; color: white" class="mt-5 ml-2">Loading...
+                    </p>
+                </ngx-spinner>
+                <div class="row" *ngIf="approvals.length == 0">
+                    <div class="col-md-12 text-center">
+                        <h3>No Message Found</h3>
+                    </div>
+                </div>
+
+                <ng-container *ngFor="let item of approvals">
+                    <div *ngIf="item.created_by?.id  != userId" class="incoming_msg">
+                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                                alt="sunil"> </div>
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p>{{item?.rejection_reasons?.name}}</p>
+                                <p>{{item?.comments}}</p>
+                                <span class="time_date">
+                                    {{item.created_at | utcTime | date:'h:mm a'}} |
+                                    {{item.created_at | utcTime | date:'MMMM d, y'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="item.created_by?.id == userId" class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>{{item?.comments}}</p>
+                            <span class="time_date">
+                                {{item.created_at | utcTime | date:'h:mm a'}} |
+                                {{item.created_at | utcTime | date:'MMMM d, y'}}</span>
+                        </div>
+                    </div>
+                </ng-container>
+
+
+            </div>
+            <div class="type_msg" *ngIf="singleUserObject && singleUserObject.status_id !=4">
+                <div class="input_msg_write">
+                    <input type="text" (keydown)="onEnter($event)" class="write_msg" [(ngModel)]="comments"
+                        [ngModelOptions]="{standalone: true}" placeholder="Type a message" />
+                    <button class="msg_send_btn" type="button" (click)="addVerification()"><i
+                            class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,178 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="fname">First Name<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="First Name" formControlName="first_name">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('first_name').valid && (form.get('first_name').dirty || form.get('first_name').touched)">Please
+                enter first name!</small>
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="lname">Last Name<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('last_name').valid && (form.get('last_name').dirty || form.get('last_name').touched)">Please
+                enter last name!</small>
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="email">Email<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('email').valid && (form.get('email').dirty || form.get('email').touched)">Please
+                enter email!</small>
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="phone">Phone Number<sup>*</sup></label>
+            <input type="tel" mask='000-000-0000' class="form-control" placeholder="Number" formControlName="phone_no">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('phone_no').valid && (form.get('phone_no').dirty || form.get('phone_no').touched)">Please
+                enter phone no.!</small>
+        </div>
+
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <label for="address">Address<sup>*</sup><a class="map_icon_rk_a" (click)="setLocationOnMap()">Find My
+                    Location<i class="fa fa-map-marker map_icon_rk_i " aria-hidden="true"></i></a></label>
+            <input #search type="text" class="form-control" placeholder="Location" formControlName="address">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('address').valid && (form.get('address').dirty || form.get('address').touched)">Please
+                enter address!</small>
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="city">City<sup>*</sup></label>
+            <input type="tel" class="form-control" placeholder="City" formControlName="city">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('city').valid && (form.get('city').dirty || form.get('city').touched)">Please
+                enter name!</small>
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="state">Postal Code<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="ZIP Code" formControlName="zip">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('zip').valid && (form.get('zip').dirty || form.get('zip').touched)">Please
+                enter zip!</small>
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Country<sup>*</sup></label>
+            <ng-select [items]="countries" bindLabel="country" bindValue="country" [multiple]="false"
+                placeholder="--Select--" formControlName="country">
+            </ng-select>
+            <small class="form-text text-danger"
+                *ngIf="!form.get('country').valid && (form.get('country').dirty || form.get('country').touched)">Please
+                enter country!</small>
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Latitude <sup>*</sup></label>
+            <input type="number" class="form-control" placeholder="Latitude" formControlName="lat" disabled>
+            <small class="form-text text-danger"
+                *ngIf="!form.get('lat').valid && (form.get('lat').dirty || form.get('lat').touched)">Please
+                enter lat!</small>
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Longitude<sup>*</sup></label>
+            <input type="number" class="form-control" placeholder="Longitude" formControlName="lng" disabled>
+            <small class="form-text text-danger"
+                *ngIf="!form.get('lng').valid && (form.get('lng').dirty || form.get('lng').touched)">Please
+                enter lng!</small>
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Google</label>
+            <input type="text" class="form-control" placeholder="https://www.google.com/" formControlName="google_link">
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Facebook</label>
+            <input type="text" class="form-control" placeholder="https://www.facebook.com/"
+                formControlName="facebook_link">
+        </div>
+
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Twitter</label>
+            <input type="text" class="form-control" placeholder="https://twitter.com/" formControlName="twitter_link">
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Pinterest</label>
+            <input type="text" class="form-control" placeholder="https://in.pinterest.com/"
+                formControlName="pinterest_link">
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Price</label>
+            <input type="text" mask="separator.2" thousandSeparator="," class="form-control currency"
+                placeholder="Price" formControlName="price">
+        </div>
+
+
+
+
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <label class="">About Me</label>
+            <textarea rows="5" class="form-control h_auto" style="height: auto !important;"
+                placeholder="Enter About your description" formControlName="about_me"></textarea>
+        </div>
+
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Average Waiting Time</label>
+            <input type="number" class="form-control" placeholder="Consultation Time" formControlName="avg_wait_time">
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Average Consultation Time</label>
+            <input type="number" class="form-control" placeholder="Consultation Time"
+                formControlName="avg_consultation_time">
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Average consultation Price</label>
+            <input type="text" mask="separator.2" thousandSeparator="," class="form-control currency"
+                placeholder="Price" formControlName="avg_consultation_price">
+        </div>
+
+
+
+        <!-- <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="state">State<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="State" formControlName="control">
+        </div> -->
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="prpicture">Profile Picture</label>
+            <div class="inputicon">
+                <div class="custom-file">
+
+                    <input type="file" class="custom-file-input" id="customFile" name="filename"
+                        (change)="fileChangeEventProfile($event)">
+
+                    <label class="custom-file-label" for="customFile">Upload
+                        Picture</label>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="singleUserObject && singleUserObject?.profile_media" class="image_upload border col-md-12">
+            <div *ngIf="singleUserObject && singleUserObject.profile_media && singleUserObject.profile_media.base_path"
+                class="upload-images d-flex">
+                <div>
+                    <img src="{{singleUserObject.profile_media.base_path+'/'+ singleUserObject.profile_media.system_name}}"
+                        alt="img" class="w73 h73 border p-0">
+                </div>
+                <div class="ml-3 mt-2">
+                    <h6 class="mb-0 mt-3 font-weight-bold">
+                        {{singleUserObject.profile_media.real_name}}</h6>
+                    <!-- <small>4.5kb</small> -->
+                </div>
+                <div class="float-right ml-auto">
+                    <!-- <a href="#" class="float-right btn btn-icon btn-danger btn-sm mt-5"><i
+                                                                class="fa fa-trash-o"></i></a> -->
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-0 text-center">
+
+           <span><input type="submit" class="btn btn-danger mt-5 gradient" [disabled]="disableButton" value="SAVE CHANGES"></span>
+        </div>
+    </div>
+</form>
+<app-map-modal #mapModal (onDoneEvent)="onDoneEvent($event)"></app-map-modal>

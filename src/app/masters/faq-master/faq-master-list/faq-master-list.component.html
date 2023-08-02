@@ -1,0 +1,77 @@
+<section class="sptb">
+    <div class="m-2">
+        <div class="card mb-0">
+            <div class="card-header d-block">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <h2>FAQ List</h2>
+                    </div>
+                    <div class="col-md-3"><button class="admbtn btn btn-primary round-btn float-sm-right" (click)="onAdd()">Add
+                            FAQ</button></div>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [headerHeight]="40"
+                            [footerHeight]="40" [rowHeight]="'auto'" [externalPaging]="true" [count]="total"
+                            [scrollbarH]="true" [limit]="limit" (page)='onPageChange($event)'>
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="Id" prop="id" [width]="40">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a href="javascript:void(0);" class="text-dark">{{value}}</a>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <!-- <ngx-datatable-column name="Name" prop="name"></ngx-datatable-column> -->
+
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="Question" prop="question" [width]="140">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a href="javascript:void(0);" class="text-dark">{{value}}
+                                    </a>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="Answer" prop="answer" [width]="140">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a href="javascript:void(0);" class="text-dark">{{value}}
+                                    </a>
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                [resizeable]="false" name="Description" prop="description" [width]="150">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    {{value}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <!-- <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                [resizeable]="false" name="Member Since" prop="description" [width]="150">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <span> {{value}}</span>
+                                </ng-template>
+                            </ngx-datatable-column> -->
+
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="" sortable="false" prop="id" [width]="120">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a class="btn btn-success btn-sm text-white mr-1" data-toggle="tooltip"
+                                        (click)="onEdit(row)" data-original-title="Edit"><i
+                                            class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-danger btn-sm text-white mr-1" data-toggle="tooltip"
+                                        (click)="onDelete(row)" data-original-title="Delete"><i
+                                            class="fa fa-trash-o"></i></a>
+                                    <!-- <a class="btn btn-primary btn-sm text-white mr-1" data-toggle="tooltip"
+                                        data-original-title="View"><i class="fa fa-eye"></i></a> -->
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>

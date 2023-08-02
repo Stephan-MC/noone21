@@ -1,0 +1,45 @@
+/* Clearable text inputs */
+.clearable{
+  position: relative;
+  display: inline-block;
+}
+.clearable textarea{
+  padding-right: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.clearable__clear{
+  position: absolute;
+  right:0; top:0;
+ padding: 20px 20px;
+    font-style: normal;
+    font-size: 1.8em;
+  user-select: none;
+  cursor: pointer;
+}
+.clearable input::-ms-clear {  /* Remove IE default X */
+  display: none;
+}
+
+.faq_td{
+      width: 315px;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 30px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.faqtable tbody tr td:nth-child(2) {
+    width: 285px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

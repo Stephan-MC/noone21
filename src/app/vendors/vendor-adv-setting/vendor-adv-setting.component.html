@@ -1,0 +1,68 @@
+<div class="card mb-5">
+    <div class="card-header">
+        <h3 class="card-title">Dashboard</h3>
+    </div>
+    <div class="card-body">
+        <div class="notifybox">
+            <h4>Before you start</h4>
+            <p>Please make sure that all information you’re providing in these sections is accurate. This information will be used by buyers to find vendors most suitable for their projects. </p>
+        </div>
+        <div class="setabs">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+              
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#conditionTreated">Skills </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#consultation">Pro. Highlights </a>
+                </li>
+
+              
+              
+               
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#FAQ">Question</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#othersetting">Additional Details</a>
+                </li>
+               
+              
+                
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+               
+              
+                <div class="tab-pane" id="consultation">
+                    <app-vendor-consultation [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-vendor-consultation>
+                </div>
+               
+
+                <div class="tab-pane active m-5" id="conditionTreated">
+                    <app-vendor-condition-treated [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-vendor-condition-treated>
+                </div>
+
+              
+
+                <div class="tab-pane fade m-5 faqt" id="FAQ">
+                    <app-vendor-faq [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-vendor-faq>
+                </div> 
+                
+                
+               
+                 
+                 <div class="tab-pane fade m-5" id="othersetting">
+                    <app-other-setting [singleUserObject]="singleUserObject"></app-other-setting>
+                 </div>
+               
+            </div>
+
+        </div>
+    </div>
+</div>

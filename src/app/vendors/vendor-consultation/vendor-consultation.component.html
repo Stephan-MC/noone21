@@ -1,0 +1,68 @@
+<!-- <a href="#" class="btn btn-grlight pull-right mb-4">Add New Consultation</a> -->
+<form [formGroup]="form">
+    <div class="row">
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 autocomplete-dropdown">
+            <label for="fname">Service Title<sup>*</sup></label>
+            <ng-template #cT let-r="result" let-t="term">
+                <small class="nameFilter">{{ r.name }}</small>
+            </ng-template>
+            <input type="text" class="form-control" placeholder="Title" formControlName="consultation_id"
+                [ngbTypeahead]="searchConsultation" [resultTemplate]="cT" [inputFormatter]="consultationFormatter">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('consultation_id').valid && (form.get('consultation_id').dirty || form.get('consultation_id').touched)">Please
+                enter consultation !</small>
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
+            <label for="lname">Price<sup>*</sup></label>
+            <input type="text" mask="separator.2" thousandSeparator="," class="form-control currency" placeholder="Fee"
+                formControlName="charges">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('charges').valid && (form.get('charges').dirty || form.get('charges').touched)">Please
+                enter last name!</small>
+        </div>
+        <div class="form-group text-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-0">
+            <a href="javascript:void(0);" [class.custom_disabled]="disableButton"
+                (click)="editId ? editConsultation(form): saveConsultations(form)" class="btn btn-danger mt-0 gradient btz"><span>SAVE
+                CHANGES</span></a>
+        </div>
+    </div>
+</form>
+
+<div class="doctable table-responsive" *ngIf="rows.length>0">
+    <table class="table mb-0 text-nowrap">
+        <thead>
+            <tr>
+
+                <th>Services Title</th>
+                <th>Charge</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <ng-container *ngFor="let item of rows;let i=index">
+                <tr>
+                    <td class="text-muted">{{item.name}}</td>
+                    <td class="text-muted">{{item?.charges | currency}}</td>
+
+                    <td>
+                        <a class="btn btn-sm" data-toggle="tooltip" data-original-title="Edit"
+                            [class.custom_disabled]="disableButton" (click)="onEditClick(item)"><i
+                                class="fa fa-pencil"></i></a>
+                        <a class="text-danger btn btn-sm" [class.custom_disabled]="disableButton"
+                            (click)="deleteConsultations(item,i)" data-toggle="tooltip" data-original-title="Delete"><i
+                                class="fa fa-trash-o"></i></a>
+
+
+                    </td>
+                </tr>
+            </ng-container>
+
+
+
+
+        </tbody>
+    </table>
+</div>
+
+<!-- <a href="#" class="btn btn-danger">SAVE CHANGES</a> -->

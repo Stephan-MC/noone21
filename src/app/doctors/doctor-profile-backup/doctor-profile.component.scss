@@ -1,0 +1,28 @@
+    .star {
+      position: relative;
+      display: inline-block;
+      font-size: 17px;
+    color: #d3d3d3;
+    top: -3px;
+    }
+      .main-rating .star {
+      position: relative;
+      display: inline-block;
+      font-size: 2rem;
+      color: #d3d3d3;
+      margin-left: 10px;
+    }
+    .full {
+    //   color: red;
+    color: #ffa22b!important;
+    }
+    .half {
+      position: absolute;
+      display: inline-block;
+      overflow: hidden;
+    //   color: red;
+    color: #ffa22b!important;
+    }
+    .profsec{
+          margin-top: 5%;
+    }

@@ -1,0 +1,63 @@
+
+<!-- <a href="#" class="btn btn-grlight pull-right mb-4">Add New Consultation</a> -->
+<form [formGroup]="form">
+    <div class="row">
+
+        <ng-container>
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <label for="prpicture">File</label>
+                <div class="inputicon pos">
+                    <div class="custom-file">
+
+                     
+
+                        <!-- <input type="hidden" formControlName="user_id" > -->
+                        <input type="file" 
+                        class="custom-file-input" accept="image/*" 
+                        (change)="fileChangeEvent($event)" class="custom-file-input" id="customFile" name="filename">
+                        <button class="btn btn-danger gradient">
+                            <span>Upload Picture</span>
+                          </button>
+                    </div>
+                </div>
+            </div>
+              <div class="col-lg-6">
+                <img [src]="imageSrc" *ngIf="imageSrc" style="width: 100px;" class="img-responsive">
+            </div>
+        </ng-container>
+    </div>
+</form>
+
+		<!-- detail experience -->
+        <div class="detailabt mt-5">
+            <div class="card bra-10 picgallery vidgal">
+                <h4 class="p-3 border-bottom mb-0">Images</h4>
+                <div class="card-body pt-5 px-5 pb-0">
+                    <div class="row" id="image_holder">
+                        <ng-container *ngFor="let item of _albums; let i=index"> 
+                            <div id="imagHolder" class="image pb-5 col-lg-4 col-md-4 col-sm-6 col-12" >
+                                <div class="vidbx">
+                                    <img id="onlyTumbImg" [src]="item.src" (click)="open(i)" />
+                                        <span class="material-icons del_btn" (click)="DeleteImage(item.modelId)">
+                                        cancel
+                                    </span>
+                                </div>
+                          </div>
+                        </ng-container>		
+                         <!-- =====================Reviews section =================================== -->
+                         <ng-container *ngFor="let item of _albums_approval; let i=index"> 
+                            <div id="imagHolder" class="image pb-5 col-lg-4 col-md-4 col-sm-6 col-12" >
+                                <div class="vidbx">
+                                    <img id="onlyTumbImg" [src]="item.src" (click)="open(i)" />
+                                        <span class="material-icons del_btn" (click)="DImgApproval(item.modelId)">
+                                        cancel
+                                    </span>
+                                </div>
+                          </div>
+                        </ng-container>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <!-- detail experience -->

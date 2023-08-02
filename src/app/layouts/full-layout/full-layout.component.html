@@ -1,0 +1,97 @@
+<!-- {{requestService.isAuthenticated()}} -->
+<ng-container *ngIf="requestService.isAuthenticated()">
+    <!-- <p>content-layout works! t</p> -->
+    <!-- <jaspero-confirmations></jaspero-confirmations> -->
+    <div class="header-main header-style1">
+
+        <!-- //For patient and Doctors -->
+        <ng-container *ngIf="user && user?.role && user?.role?.id != 1">
+            <ng-container *ngIf="page != '/pages/welcome'">
+                <!-- <app-navbar></app-navbar>
+                <app-full-content-header></app-full-content-header> -->
+                <app-header></app-header>
+            </ng-container>
+
+            <!-- <app-navbar></app-navbar> -->
+            <!-- <app-full-content-header></app-full-content-header> -->
+
+        </ng-container>
+
+        <ng-container *ngIf="user && user?.role && user?.role?.id == 1">
+            <ng-container *ngIf="ifInRoute('/pages') && page != '/'">
+                <app-admin-navbar></app-admin-navbar>
+                <app-admin-header></app-admin-header>
+            </ng-container>
+            <ng-container *ngIf="!ifInRoute('/pages') ||  page == '/'">
+                <app-header></app-header>
+            </ng-container>
+
+        </ng-container>
+    </div>
+
+    <!--Breadcrumb-->
+    <div class="bg-white border-bottom adminbread"
+        *ngIf="page != '/pages/welcome' && ifInRoute('/pages') && page != '/' && requestService.isAuthenticated() && user?.role && user?.role?.id == 1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="page-header px-3">
+                        <h4 class="page-title">{{title}}</h4>
+                        <ol class="breadcrumb">
+                            <breadcrumb #breadCrumb></breadcrumb>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Breadcrumb-->
+</ng-container>
+<ng-container *ngIf="!requestService.isAuthenticated()">
+    <!-- <p>content-layout works! t</p> -->
+    <div class="header-main header-style1">
+        <!-- <app-navbar></app-navbar> -->
+        <app-header></app-header>
+    </div>
+
+    <!--   <section *ngIf="showBreadCrumb">
+        <div class="bannerimg cover-image bg-background3" data-image-src="../assets/images/banners/banner2.jpg">
+            <div class="header-text mb-0">
+                <div class="container">
+                    <div class="text-center text-white">
+                        <h1 class="">{{this.title}}</h1>
+                        <ol class="breadcrumb text-center">
+                            <breadcrumb #breadCrumb></breadcrumb>
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">Login</li> 
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+</ng-container>
+<ng-container *ngIf="requestService.isAuthenticated() && user && user?.role && user?.role?.id == 1; else forOther">
+    <div class="app-content">
+        <router-outlet></router-outlet>
+
+    </div>
+    <ng-container *ngIf="ifInRoute('/pages') && page != '/'">
+        <footer class="container-fluid w-100 bg-info text-light py-3  text-center color-admin-f">
+            <div id="copyright">
+                <span><small>
+                    Copyright © {{moment().format('YYYY')}} <a class="fs-14 text-white-50" href="https://noone21.com">NoOne21.com</a>.
+                    All rights reserved.
+                    </small>.</span>
+            </div>
+        </footer>
+    </ng-container>
+    <ng-container *ngIf="!ifInRoute('/pages') ||  page == '/'">
+        <app-footer *ngIf="page != '/pages/welcome' && page != '/pages/map-view' && page != '/pages/vendor-register' && page != '/pages/vendor-login'"></app-footer>
+    </ng-container>
+</ng-container>
+<ng-template #forOther>
+    <router-outlet></router-outlet>
+    <app-footer *ngIf="page != '/pages/welcome' && page != '/pages/map-view' && page != '/pages/vendor-register' && page != '/pages/vendor-login'"></app-footer>
+</ng-template>

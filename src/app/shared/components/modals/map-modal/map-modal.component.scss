@@ -1,0 +1,15 @@
+::ng-deep    .map_modal .modal-lg {
+    max-width: 80% !important;
+    min-width: 80% !important;
+}
+
+::ng-deep    .map_modal .map-lg {
+    max-width: 80% !important;
+    min-width: 80% !important;
+}
+
+
+agm-map {
+  height: 300px;
+}
+

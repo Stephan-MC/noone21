@@ -1,0 +1,38 @@
+
+<div class="card mb-0">
+    <div class="card-header">
+        <h3 class="card-title">Edit Profile</h3>
+    </div>
+    <div class="card-body">
+     
+                  <mat-tab-group mat-align-tabs="center">
+                    <div class="row">
+                        <div class="col-md-6 mt-1">
+                            <mat-tab label="Profile">
+                              <input  type="button" value="Publishe Profile" class="btn btn-danger mt-5 gradient" (click)="publishedPro(user_id)">
+                              <app-basic-profile [userId]=user_id [singleUserObject]=singleUserObject></app-basic-profile>
+                            </mat-tab>
+                             <mat-tab label="Images">
+                              <input  type="button" value="Publish Images" class="btn btn-danger mt-5 gradient" (click)="publishedImages(user_id)">
+                                <app-image-galary [userId]=user_id></app-image-galary>
+                              </mat-tab>
+                            <mat-tab label="Videos">
+                              <input  type="button" value="Publish Videos" class="btn btn-danger mt-5 gradient" (click)="publishedVideo(user_id)">
+                                    <app-video-galary [userId]=user_id></app-video-galary> 
+                            </mat-tab>
+                            <mat-tab label="My Works">
+                              <input  type="button" value="Publish Works" class="btn btn-danger mt-5 gradient" (click)="publishedMyworks(user_id)">
+                                    <app-vendor-education [userId]=user_id></app-vendor-education> 
+                            </mat-tab>
+                     </div>
+                    </div>
+                  </mat-tab-group>
+                  
+                 
+                
+          
+    </div>
+    <!-- <div class="card-footer">
+        
+    </div> -->
+</div>

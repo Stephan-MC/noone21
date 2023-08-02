@@ -1,0 +1,192 @@
+<div class="adslisting">
+	<!--Breadcrumb-->
+	<section class="breadsec profpad pb-4 bg-white border-bottom">
+		<div class="container">
+			<div class="row">
+			
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Classified</li>
+
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/Breadcrumb-->
+
+	<div class="bg-white">
+	<div class="popcats">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="page-header">
+						<h4 class="page-title">Popular Categories</h4>
+						
+					</div>
+					<ul>
+						<ng-container *ngFor="let cat of catgories">
+							<li><a href="javascript:void(0)" (click)="filterCat(cat?.id);">{{cat?.title}}</a></li>
+						</ng-container>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Section-->
+	<section class="sptb">
+		<div class="container">
+			<div class="row">
+				
+				
+				<!--Add lists-->
+				<div class="col-xl-12 col-lg-12 col-md-12">
+					<div class=" mb-lg-0">
+						<div class="">
+							<div class="item2-gl ">
+								<div class=" mb-0">
+									<div class="">
+										<div class="p-5 bg-white item2-gl-nav d-flex">
+											<h6 class="mb-0 mt-2">Showing {{page}} to {{limit*page}} of {{total}} entries</h6>
+											
+											<div class="d-flex select2-sm ml-auto sortfilt">
+												<label class="mr-2 mt-1 mb-sm-1">Sort By:</label>
+									<select id="category_id" (change)="sortFilter($event)" class="form-control sortFilter">
+												<option value="desc" >Latest</option>
+												<option value="asc">Oldest</option>
+									</select>
+											</div>
+
+
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-3 col-md-4 col-sm-12 col-12 pt-5">
+										<div class="adscategory">
+											<div class="adcatbox">
+											<h4>Categories</h4>
+											<ul>
+												<ng-container *ngFor="let cat of catgories">
+													<li><a href="javascript:void(0)" (click)="filterCat(cat?.id);" >{{cat?.title}}</a></li>
+												</ng-container>
+											
+											</ul>
+											</div>
+											<div class="adcatbox">
+												<h4>Location</h4>
+												<ul>
+													<div class="form-group">
+														<div class="inpticon">
+														<input #search class="form-control input-lg br-md-0" id="text5" 
+														  placeholder="Search Location" type="search" >
+														
+															
+														<span><i  (click)="clearFilter()" class="clearable__clear fa fa-times"></i> <i class="fa fa-crosshairs  location-gps mr-1" (click)="filterLocation()"></i></span>
+													
+													</div>
+												</div>
+												
+												</ul>
+												</div>
+												<!-- <div class="adcatbox">
+													<h4>Filter</h4>
+													<ul>
+														<li><a href="#">Filter item</a></li>
+														<li><a href="#">Filter item</a></li>
+														<li><a href="#" class="active">Filter item</a></li>
+														<li><a href="#">Filter item</a></li>
+													</ul>
+													</div> -->
+										</div>
+									</div>
+									<div class="col-lg-9 col-md-8 col-sm-12 col-12">
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab-11">
+	<!-- ==============================================Card loop start ============================================================= -->
+									<ng-container *ngFor="let item of classifieds">
+											<div class="card overflow-hidden">
+													<div class="d-md-flex">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="javascript:void(0)" (click)="AdDetails(item.cls_id);"></a>
+																<img alt="img" class="cover-image" src="{{item.base_path}}/{{item.system_name}}">
+															</div>
+		
+														</div>
+														<div class="card border-0 mb-0">
+															<div class="card-body pb-2">
+																<div class="item-card9">
+																	<a class="text-dark" href="javascript:void(0)" (click)="AdDetails(item.cls_id);">
+																		
+																		<h4 class="font-weight-bold mt-1 mb-2"><span>{{(item.cls_title.length>60)? (item.cls_title | slice:0:60)+'...':(item.cls_title)}}</span><i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+																		</h4>
+																	</a>
+																     <p  class="mb-1 fs-14 mt-1" [innerHTML]="(item.cls_description.length>495)? (item.cls_description | slice:0:495)+'...':(item.cls_description)">
+
+																		<span class=""><i class="fa fa-location-arrow text-muted mr-1"></i></span>
+																     </p>
+																	<div class="item-card9-desc mb-2 mt-3">
+																		<span class="mr-4" *ngFor="let item of item.tags?.split(',')">{{item}}</span>
+																	</div>
+		
+																</div>
+															</div>
+															<span class="postdate">
+																Posted: {{item.cls_cdate | date : 'dd MMMM, y'}}
+															</span>
+															<div class="card-footer p-0">
+																<div class="item-card9-footer btn-appointment">
+																	<div class="btn-group w-100">
+																		<a href="javascript:void(0)" (click)="AdDetails(item.cls_id);" class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"><i class="fa fa-file-text-o mr-1"></i>Ad Detail</a>
+																		<a href="tel:+123456789" class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i class="fe fe-phone mr-1"></i>Call</a>
+																		<a class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0 call-btn">
+																			<div class="call-btn-1">
+																				<i class="fa fa-heart-o mr-1"></i> Wishlist
+																			</div>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										</ng-container>
+	<!-- ==============================================Card loop end ============================================================= -->
+											
+										<!--================================= pagination start =====================================================-->
+												<pagination [boundaryLinks]="true" (pageChanged)="pageChanged($event)"
+                                                    [totalItems]="total" class="my-pagination" [itemsPerPage]="limit"
+                                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="page">
+												</pagination>
+										<!--================================= pagination start =====================================================-->
+											
+											</div>
+										
+										</div>
+									</div>
+								</div>
+							
+							</div>
+						      
+						</div>
+                    </div>
+                
+				</div>
+                <!--/Add lists-->
+  
+            </div>
+
+		</div>
+	</section>
+    <!--/Section-->
+  
+</div>
+</div>

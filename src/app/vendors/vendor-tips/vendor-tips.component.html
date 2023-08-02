@@ -1,0 +1,93 @@
+
+<div class="card mb-5">
+    <div class="card-header">
+        <h3 class="card-title">Dashboard</h3>
+    </div>
+    <div class="card-body">
+        <div class="notifybox">
+            <h4>Make the most of NoOne21</h4>
+            <p>Take a look at some useful tips that are given below. They will help you make the most of your NoOne 21 profile and might just help you find the perfect project for yourself!</p>
+        </div>
+    </div>
+</div>
+<div class="card mb-5">
+    <div class="card-header">
+        <h3 class="card-title">1. Aim for Clarity in Your Profile</h3>
+    </div>
+    <div class="card-body">
+        <ul class="tipsbox">
+            <li>Choose your area of expertise from our directory and be specific. </li>
+            <li>State the service you are offering as the first thing in your profile description.  </li>
+            <li>Make sure that when someone skims your profile they can see clearly what you can offer.</li>
+        </ul>
+    </div>
+</div>
+<div class="card mb-5">
+    <div class="card-header">
+        <h3 class="card-title">2. Build Credibility</h3>
+    </div>
+    <div class="card-body">
+        <ul class="tipsbox">
+            <li>List company names when adding previous experience. </li>
+            <li>Add pictures from previous jobs/gigs.  </li>
+            <li>Add a link to your website if you have one. </li>
+            <li [ngClass]="vmcls ? '' : 'hd'">As you build your profile on NoOne 21 and find gigs, ask buyers to leave a review of your service on your profile</li>
+            <li [ngClass]="vmcls ? '' : 'hd'">If you are working on projects or are involved with a company on an ongoing basis, mention it in your profile. It will show the extent of your involvement in the industry.  </li>
+            
+        </ul>
+    </div>
+    <div class="card-footer">
+        <h3 class="card-title text-center"><a href="javascript:void(0)" class="text-danger vmbtn" (click)="vmorebtn()">{{vmcls ? 'View Less' : 'View More'}}</a></h3>
+    </div>
+</div>
+<div class="card mb-5">
+    <div class="card-header">
+        <h3 class="card-title">3. Showcase Your Talents</h3>
+    </div>
+    <div class="card-body">
+        <div class="row tipimgbx">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-5">
+                <div class="tipimg">
+                    <img src="../assets/images/image1.jpg" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-5">
+                <div class="tipimg">
+                    <img src="../assets/images/image2.jpg" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-5">
+                <div class="tipimg">
+                    <img src="../assets/images/image3.jpg" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <ul class="tipsbox">
+            <li>Add a portfolio to your profile so the buyer can see visual proof of what you can do. </li>
+            <li>Add images from any previous gigs/work you’ve done to show your experience.  </li>
+            <li>Try to get high resolution images as they make a good impression. </li>
+            <li [ngClass]="vmclse ? '' : 'hd'">It is also a good idea to add Behind The Scenes photos as it reflects understanding of the industry. </li>
+            <li [ngClass]="vmclse ? '' : 'hd'">If your profile claims a diversity of work experience in your field, your portfolio/image gallery should reflect that. </li>
+            
+        </ul>
+    </div>
+    <div class="card-footer">
+        <h3 class="card-title text-center"><a href="javascript:void(0)" class="text-danger  vmbtn" (click)="vmorebtns()">{{vmclse ? 'View Less' : 'View More'}}</a></h3>
+    </div>
+</div>
+<div class="card mb-0">
+    <div class="card-header">
+        <h3 class="card-title">4. Help People Find You</h3>
+    </div>
+    <div class="card-body">
+        <ul class="tipsbox">
+            <li>Add relevant keywords to your profile.  </li>
+            <li>Add tags specifying your skills so that anyone looking for them can find you.  </li>
+            <li>Be specific when listing the kind of gigs you are looking for so that you get relevant offers. </li>
+            
+        </ul>
+    </div>
+    <div class="card-footer">
+        <h3 class="card-title text-center"><a href="javascript:void(0)" class="text-danger vmbtn">View More</a></h3>
+    </div>
+</div>

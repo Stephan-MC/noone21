@@ -1,0 +1,754 @@
+<section class="sptb">
+    <div class="m-2">
+        <!-- <div class="section-title center-block text-center">
+            <h2>Users List</h2>
+        </div> -->
+        <div class="row">
+                <!-- <div class="page-header page-select bg-white mb-4 p-4 border">
+                    <select class="form-control select2">
+                        <option value="0">SelectOptions</option>
+                        <option value="1">Active</option>
+                        <option value="2">New</option>
+                        <option value="3">Blocked</option>
+                        <option value="4">Suspended</option>
+                        <option value="4">A-Z</option>
+                    </select>
+                    <div class="page-options d-flex">
+                        <div class="input-group">
+                            <input type="text" class="form-control br-tl-3  br-bl-3" placeholder="search">
+                            <div class="input-group-append ">
+                                <button type="button" class="btn btn-primary br-tr-3  br-br-3">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 mb-2" [formGroup]="filterForm">
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">User Name</label>
+                                            <input type="text" class="form-control" placeholder="Name"
+                                                formControlName="search">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Select Status</label>
+                                            <select class="form-control" formControlName="status_id">
+                                                <option [ngValue]=null>SelectOptions</option>
+                                                <option [ngValue]=-1>Profile Approval</option>
+                                                <option *ngFor="let item of statuses" [value]="item.id">
+                                                    {{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Role</label>
+                                            <select id="inputState" formControlName="role_id"
+                                                class="form-control nice-select">
+                                                <option [ngValue]=null>Select Role</option>
+                                                <option *ngFor="let item of roles" [value]="item.id">{{item.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 mt-1 mb-4 pt-1 text-center">
+                                        <button class="btn btn-success mr-2" (click)="onReset()"
+                                            [disabled]="isEmptyObjectKeys(filterForm.value)">
+                                            Reset </button>
+                                        <button class="btn btn-primary" (click)="onFilter()">
+                                            Filter </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <ngx-datatable ngx-resize-watcher class="material" [rows]="rows" [columnMode]="'force'"
+                                    [headerHeight]="40" [footerHeight]="40" [rowHeight]="'auto'" [externalPaging]="true"
+                                    [count]="total" [scrollbarH]="true" [limit]="limit" (page)='onPageChange($event)'>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="UUID" prop="u_uid" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="text-dark">{{row?.u_uid}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                  
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [width]="180"
+                                        [resizeable]="false" name="Rating" prop="avg_rating">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <ngb-rating [rate]="value" [max]="5" [readonly]="true">
+                                                <ng-template let-fill="fill">
+                                                    <span class="star" [class.full]="fill === 100">
+                                                        <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                                                    </span>
+                                                </ng-template>
+                                            </ngb-rating>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Name" prop="name" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <img [src]="row.profile_media ? row.profile_media.base_path+'/'+row.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'"
+                                                alt="Avatar" class="avatar"> <a href="javascript:void(0);"
+                                                class="text-dark ml-2">{{row?.first_name}}
+                                                {{row?.last_name}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+
+
+
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Email" prop="email" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="text-dark">{{value}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                    [resizeable]="false" name="Verfied" prop="Verfied" [width]="140">
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        <a href="javascript:void(0);" class="text-dark">
+                                            <span *ngIf="row.is_email_verified=='1'">Yes</span>
+                                            <span *ngIf="row.is_email_verified!='1'">No</span>
+                                            </a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Phone" prop="phone_no" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="text-dark ml-2">{{value | phone}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Address" prop="address" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);"
+                                                class="text-dark ml-2">{{row['address'] ? row['address']+' ' : ''}}
+                                                {{row['city'] ? row['city']+' ' : ''}}
+                                                {{row['state'] ? row['state']+' ' : ''}}
+                                                {{row['zip'] ? row['zip']+' ' : ''}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                        [resizeable]="false" name="Status" prop="status_id" [width]="150">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="badge badge-danger" *ngIf="value != 4">
+                                                {{value == 1 ? 'Created' : value == 2 ? "Waiting For Approval" : value == 3 ? "Rejected" : '' }}</a>
+                                            <a href="javascript:void(0);" class="badge badge-success"
+                                                *ngIf="value == 4"> Approved</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                        [resizeable]="false" name="Role" prop="role.name" [width]="150">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <span> {{value }}</span>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                        [resizeable]="false" name="Member Since" prop="created_at" [width]="150">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <span> {{value | utcTime | date : 'MMMM d, y'}}</span>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Actions" sortable="false" prop="id" [width]="210">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <ng-container *ngIf="row.role_id != 1">
+
+                                                <div class="dtdropbox">
+                                                   
+                                                      <a href="javascript:void(0);"(click)="approvalReviews(row)"
+                                                    class="btn btn-primary btn-sm text-white"
+
+                                                     title="approval" >
+                                                     <i class="fa fa-bell" aria-hidden="true" ><span class="plusNoti" *ngIf="row.edu_aprval?.length>0|| row.pro_aprval?.length>0 || row.uu_img_approval?.length>0 || row.u_vid_approval?.length>0">+1</span></i>
+                                                        
+                                                       
+                                                    </a>
+                                                    <a href="javascript:void(0);"
+                                                    class="btn btn-primary btn-sm text-white"
+                                                    (click)="approvalReviews(row)" title="Profile approval"><i
+                                                        class="fa fa-thumbs-o-up"></i></a>
+
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="viewProfile(row)" title="View User"><i
+                                                            class="fa fa-eye"></i></a>
+
+                                                    <a *ngIf="row.role_id == 4" href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="showRejectionModal(row)" title="Add Rejection"><i
+                                                            class="fa fa-ban"></i></a>
+
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="approveUser(row)" title="Approve User"><i
+                                                            class="fa fa-check-circle"></i>
+                                                        </a>
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="viewVerifications(row)" title="View Verifications"><i
+                                                            class="fa fa-check" aria-hidden="true"></i></a>
+
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="viewReviews(row)" title="View Reviews"><i
+                                                            class="fa fa-star" aria-hidden="true"></i></a>
+
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="onResetP(row)" title="Reset Password"><i
+                                                            class="fa fa-key" aria-hidden="true"></i></a>
+
+                                                    <a href="javascript:void(0);"
+                                                    class="btn btn-primary btn-sm text-white"
+                                                    (click)="Delete(row?.id)" title="Delete User">
+                                                    <i class="fa fa-remove" aria-hidden="true"></i>
+                                                 </a>
+                                                </div>
+                                            </ng-container>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </ngx-datatable>
+                            </div>
+                        </div>
+
+                        <div bsModal #RejectionModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="dialog-child-name" (onHide)="selectedUser=null;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 id="dialog-child-name" class="modal-title pull-left">Add Rejection</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close"
+                                            (click)="hideRejectionModal()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form" [formGroup]="form" novalidate>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group  autocomplete-dropdown">
+                                                        <ng-template #rT let-r="result" let-t="term">
+                                                            <small class="nameFilter">{{ r.name }}</small>
+                                                        </ng-template>
+                                                        <label class="form-label">Rejection Reason <sup>*</sup></label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Rejection Reason"
+                                                            [ngbTypeahead]="searchRejection" [resultTemplate]="rT"
+                                                            [inputFormatter]="rejectionFormatter"
+                                                            formControlName="rejection_reason_id">
+                                                        <small class="form-text text-danger"
+                                                            *ngIf="!form.get('rejection_reason_id').valid && (form.get('rejection_reason_id').dirty || form.get('rejection_reason_id').touched)">Please
+                                                            enter rejection reason!</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Comment <sup>*</sup></label>
+                                                        <textarea rows="5" class="form-control"
+                                                            placeholder="Enter Comment"
+                                                            formControlName="comments"></textarea>
+                                                        <small class="form-text text-danger"
+                                                            *ngIf="!form.get('comments').valid && (form.get('comments').dirty || form.get('comments').touched)">Please
+                                                            enter comments!</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 mt-5 pt-1 text-center">
+                                                    <!-- <button class="btn btn-success mr-2" (click)="onReset()" [disabled]="isEmptyObjectKeys(form.value)">
+                                                                Reset </button> -->
+                                                    <button class="btn btn-primary" (click)="addRejection()"
+                                                        [disabled]="isEmptyObjectKeys(form.value) || !form.valid">
+                                                        Add </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div bsModal #verificationsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="dialog-child-name" (onHide)="selectedUser=null;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 id="dialog-child-name" class="modal-title pull-left">Verifications</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close"
+                                            (click)="verificationsModal.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="messaging">
+
+                                            <div class="inbox_msg">
+                                                <div class="mesgs">
+                                                    <div class="msg_history">
+                                                        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="small"
+                                                            color="#fff" type="timer" [fullScreen]="false">
+                                                            <p style="font-size: 20px; color: white" class="mt-5 ml-2">
+                                                                Loading...
+                                                            </p>
+                                                        </ngx-spinner>
+                                                        <ng-container *ngFor="let item of approvals">
+                                                            <div *ngIf="selectedUser && item && item?.created_by?.id  != selectedUser.id"
+                                                                class="incoming_msg">
+                                                                <div class="incoming_msg_img"> <img
+                                                                        src="https://ptetutorials.com/images/user-profile.png"
+                                                                        alt="sunil"> </div>
+                                                                <div class="received_msg">
+                                                                    <div class="received_withd_msg">
+                                                                        <p>{{item?.rejection_reasons?.name}}</p>
+                                                                        <p>{{item?.comments}}</p>
+                                                                        <span class="time_date">
+                                                                            {{item.created_at | utcTime | date:'h:mm a'}}
+                                                                            |
+                                                                            {{item.created_at | utcTime | date:'MMMM d, y'}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div *ngIf="selectedUser && item && item?.created_by?.id == selectedUser.id"
+                                                                class="outgoing_msg">
+                                                                <div class="sent_msg">
+                                                                    <p>{{item?.comments}}</p>
+                                                                    <span class="time_date">
+                                                                        {{item.created_at | utcTime | date:'h:mm a'}} |
+                                                                        {{item.created_at | utcTime | date:'MMMM d, y'}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div bsModal #reviewsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="dialog-child-name" (onHide)="selectedUser=null;">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 id="dialog-child-name" class="modal-title pull-left">Reviews</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close"
+                                            (click)="reviewsModal.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ngx-datatable ngx-resize-watcher class="material" [rows]="reviews"
+                                            [columnMode]="'force'" [headerHeight]="40" [externalPaging]="false"
+                                            [limit]="50" [scrollbarH]="true" [footerHeight]="40" [rowHeight]="'auto'">
+                                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                                [resizeable]="false" name="Id" prop="id" [width]="40">
+                                                <ng-template let-row="row" let-value="value"
+                                                    ngx-datatable-cell-template>
+                                                    <a href="javascript:void(0);" class="text-dark">{{value}}</a>
+                                                </ng-template>
+                                            </ngx-datatable-column>
+                                            <!-- <ngx-datatable-column name="Name" prop="name"></ngx-datatable-column> -->
+
+                                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                                [resizeable]="false" name="Review To" prop="user" [width]="140">
+                                                <ng-template let-row="row" let-value="value"
+                                                    ngx-datatable-cell-template>
+                                                    <a href="javascript:void(0);" (click)="viewProfile(row.user)"
+                                                        class="text-dark">{{row?.user?.first_name}}
+                                                        {{row?.user?.last_name}}
+                                                    </a>
+                                                </ng-template>
+                                            </ngx-datatable-column>
+                                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                                [width]="180" [resizeable]="false" name="Rating" prop="review">
+                                                <ng-template let-row="row" let-value="value"
+                                                    ngx-datatable-cell-template>
+                                                    <ngb-rating [rate]="value" [max]="5" [readonly]="true">
+                                                        <ng-template let-fill="fill">
+                                                            <span class="star" [class.full]="fill === 100">
+                                                                <span class="half"
+                                                                    [style.width.%]="fill">&#9733;</span>&#9733;
+                                                            </span>
+                                                        </ng-template>
+                                                    </ngb-rating>
+                                                </ng-template>
+                                            </ngx-datatable-column>
+                                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                                [resizeable]="false" name="Comment" prop="comments" [width]="140">
+                                                <ng-template let-row="row" let-value="value"
+                                                    ngx-datatable-cell-template>
+                                                    <a href="javascript:void(0);" class="text-dark">{{value}}
+                                                    </a>
+                                                </ng-template>
+                                            </ngx-datatable-column>
+
+                                            <ngx-datatable-column [canAutoResize]="true" [width]="100"
+                                                [draggable]="false" [resizeable]="false" name="Review by"
+                                                prop="review_by" [width]="150">
+                                                <ng-template let-row="row" let-value="value"
+                                                    ngx-datatable-cell-template>
+                                                    {{row?.review_by?.first_name}} {{row?.review_by?.last_name}}
+                                                </ng-template>
+                                            </ngx-datatable-column>
+
+                                            <ngx-datatable-column [canAutoResize]="true" [width]="100"
+                                                [draggable]="false" [resizeable]="false" name="Status"
+                                                prop="is_approved" [width]="150">
+                                                <ng-template let-row="row" let-value="value"
+                                                    ngx-datatable-cell-template>
+                                                    <a *ngIf="value" class="badge badge-success">Approved</a>
+                                                    <a *ngIf="!value" class="badge badge-danger">Not
+                                                        Approved</a>
+                                                </ng-template>
+                                            </ngx-datatable-column>
+
+                                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                                [width]="180" [resizeable]="false" name="Created At" prop="created_at">
+                                                <ng-template let-row="row" let-value="value"
+                                                    ngx-datatable-cell-template>
+                                                    {{value  | date:'MM-dd-yyyy hh:mm:ss aa'}}
+                                                </ng-template>
+                                            </ngx-datatable-column>
+
+
+                                        </ngx-datatable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div bsModal #resetPModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="dialog-child-name" (onHide)="selectedUser=null;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 id="dialog-child-name" class="modal-title pull-left">Reset password</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close"
+                                            (click)="resetPModal.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form" [formGroup]="fg" novalidate>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group ">
+                                                        <label class="form-label">Password <sup>*</sup></label>
+                                                        <input type="password" class="form-control"
+                                                            placeholder="Password" formControlName="password">
+                                                        <small class="form-text text-danger"
+                                                            *ngIf="!fg.get('password').valid && (fg.get('password').dirty || fg.get('password').touched)">Please
+                                                            enter password!</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group ">
+                                                        <label class="form-label">Confirm Password <sup>*</sup></label>
+                                                        <input type="password" class="form-control"
+                                                            placeholder="Confirm Password" formControlName="repeat">
+                                                        <small class="form-text text-danger"
+                                                            *ngIf="fg.get('repeat')?.errors?.notEquivalent  && (fg.get('repeat').dirty || fg.get('repeat').touched)">Passwords
+                                                            did not match</small>
+                                                        <small class="form-text text-danger"
+                                                            *ngIf="fg.get('repeat')?.errors?.required  && (fg.get('repeat').dirty || fg.get('repeat').touched)">Confirm
+                                                            password is required</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 mt-5 pt-1 text-center">
+                                                    <!-- <button class="btn btn-success mr-2" (click)="onReset()" [disabled]="isEmptyObjectKeys(form.value)">
+                                                                Reset </button> -->
+                                                    <button class="btn btn-primary" (click)="resetPassword()"
+                                                        [disabled]="isEmptyObjectKeys(fg.value) || !fg.valid">
+                                                        Reset Password </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="user-tabel  table-responsive border-top">
+
+                            <table class="table card-table table-bordered table-hover table-vcenter text-nowrap">
+                                <tbody>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Membership Status</th>
+                                        <th>Member Since</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <td class=""><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/25.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Jane Pearson</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>December-05-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/male/9.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Jason Porter</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>December-01-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/25.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Teresa Wood</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>November-29-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/16.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Mary Butler</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-info">Paused</a></td>
+                                        <td>November-29-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/27.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Janice Lane</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>November-25-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/male/26.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Anthony Miller</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-info">Pasused</a></td>
+                                        <td>November-24-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/9.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Denise Elliott</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>November-21-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/16.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Rose Cook</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-danger">Blocked</a></td>
+                                        <td>November-15-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/male/17.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Terry Tucker</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active,paused</a>
+                                        </td>
+                                        <td>November-14-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/6.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Grace Knight</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>November-11-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/26.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Elizabeth Martin</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active,paused</a>
+                                        </td>
+                                        <td>November-05-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/17.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Michelle Schultz</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-danger">Blocked</a></td>
+                                        <td>November-01-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/21.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Crystal Austin</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>October-25-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/male/32.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Douglas Ray</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>October-24-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/12.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Teresa Reyes</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-info">Paused</a></td>
+                                        <td>October-22-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/4.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Emma Wade</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>October-21-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/27.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Carol Henderson</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-danger">Blocked</a></td>
+                                        <td>October-19-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/male/20.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Christopher Harvey</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active</a></td>
+                                        <td>October-17-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/female/5.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Deborah Alvarado</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-success">Active,Paused</a>
+                                        </td>
+                                        <td>October-15-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar avatar-md  d-block brround cover-image"
+                                                data-image-src="../assets/images/users/male/10.jpg"></span></td>
+                                        <td><a href="javascript:void(0);" class="text-dark">Gregory Hunt</a></td>
+                                        <td><a href="javascript:void(0);" class="badge badge-danger">Blocked</a></td>
+                                        <td>October-12-2019</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-purple btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="View"><i
+                                                    class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> -->
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</section>

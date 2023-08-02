@@ -1,0 +1,106 @@
+
+<!--Contact-->
+<div class="contactpg">
+<div class="contact-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <h2 class="text-center">CONTACT US</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="leftcontact">
+                    <div class="cntbox">
+                        <h5>Customer Support</h5>
+                        <p>For service and application support, please use our <a href="javascript:void(0)" routerLink="/pages/contact-us">Online Support Center</a> or call 
+                            us at: <strong>+1 (888) 877-1301 (Canada/USA Toll-Free)</strong>. Our staff will be happy to assist you 
+                            between the hours of 8:30 AM to 5:30 PM Eastern (6:00 AM to 4:30 PM Pacific), 
+                            Monday to Friday.
+                            Or email us at <a href="mailto:support@noone21.com">support@noone21.com</a>  
+                            </p>
+                    </div>
+                    <div class="cntform">
+                        <h5>Contact No One 21</h5>
+                        <form [formGroup]="requestForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="name" placeholder="Full Name">
+                                <small class="form-text text-danger"
+                                *ngIf="!requestForm.get('name').valid && (requestForm.get('name').dirty || requestForm.get('name').touched)">Please
+                                enter name!</small>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" formControlName="email" class="form-control" placeholder="Email">
+                                <small class="form-text text-danger"
+                                *ngIf="!requestForm.get('email').valid && (requestForm.get('email').dirty || requestForm.get('email').touched)">Please
+                                enter email!</small>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Phone">
+                            </div>
+                            <div class="form-group">
+                              <textarea name="msg" formControlName="remark" id="msg" placeholder="Write message here" class="form-control"></textarea>
+                              <small class="form-text text-danger"
+                              *ngIf="!requestForm.get('remark').valid && (requestForm.get('remark').dirty || requestForm.get('remark').touched)">Please
+                                  Please
+                                  enter remark!</small>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 px-0">
+                               
+
+                                    <!-- <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"
+                                    [useGlobalDomain]="true" (reset)="handleReset()"
+                                    (success)="handleSuccessOuterForm($event)"
+                                    formControlName="recaptcha">
+                                </ngx-recaptcha2> -->
+
+ <re-captcha (resolved)="resolved($event)" [siteKey]="siteKey"  ></re-captcha>
+
+                               
+                            </div>
+                            <!-- <div class="form-group">
+                                <div class="captchaimg">
+                                    <img src="../assets/images/captcha.png" class="img-fluid" alt="">
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <button type="button"
+                                (click)="addRequestForm(requestForm,handleSuccessOuter)"
+                                class="btnsub btn-danger btn gradient"><span>SUBMIT DETAILS</span>
+                                </button>
+                              </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="rightcontact">
+                    <div class="cntbox">
+                        <h5>Sales Inquiries & Demonstrations</h5>
+                        <p>North America: <strong>+1 (888) 877-1301 (Canada/USA Toll-Free)</strong>  
+                            </p>
+                            <p>Outside North America: <strong>+1 (888) 877-1301</strong></p>
+                            <p>Email: <a href="mailto:join@noone21.com">join@noone21.com</a></p>
+                    </div>
+                    <div class="cntbox">
+                        <h5>General/Compliance Inquiries</h5>
+                        <p>North America: <strong>+1 (888) 877-1301 (Canada/USA Toll-Free)</strong>  
+                            </p>
+                            <p>Outside North America: <strong>+1 (888) 877-1301</strong></p>
+                            <p>Email: <a href="mailto:info@noone21.com">info@noone21.com</a></p>
+                    </div>
+                    <div class="cntbox">
+                        <h5>Address</h5>
+                        <p>165 Matheson Blvd, EAST Mississauga, ON, Canada, - ON L4Z 3K2
+                            </p>
+                        <p>Web: <a href="https://noone21.com/">www.noone21.com</a> </p>
+                        <p>Email: <a href="mailto:info@noone21.com">info@noone21.com</a> </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--/Contact-->

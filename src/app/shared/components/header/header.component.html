@@ -1,0 +1,126 @@
+<!-- Horizontal Header -->
+<div class="horizontal-header clearfix">
+    <div class="container">
+        <a class="animated-arrow horizontal-navtoggle" id="horizontal-navtoggle" (click)="horizontalnavtoggle()"><span></span></a>
+        <a class="smllogo" href="javascript:void(0);" routerLink="/">
+            <img alt="" src="../assets/images/brand/logo1.png" width="120">
+        </a>
+        <a class="btn btn-danger callusbt gradient" *ngIf="!requestService.isAuthenticated()"
+            href="javascript:void(0)" routerLink="/pages/vendor-login" ><span>LOGIN</span></a>
+
+        <a class="btn btn-danger callusbt logout gradient" href="javascript:void(0);" *ngIf="requestService.isAuthenticated()"
+            (click)="onLogout()"><span>Logout</span></a>
+
+
+    </div>
+</div>
+<!-- /Horizontal Header -->
+
+
+
+<a href="javascript:void(0)" id="crossicon" class="crossicon" (click)="delclass()"><i class="fa fa-times"></i></a>
+
+<!-- Horizontal Menu -->
+<div class="sticky">
+    <div class="horizontal-main  bg-dark-transparent  clearfix">
+        <div class="horizontal-mainwrapper clearfix" [class.container]="page != '/pages/map-view'"
+            [class.container-fluid]="page == '/pages/map-view'">
+            <div class="desktoplogo">
+                <a href="javascript:void(0);" routerLink="/"><img src="../assets/images/brand/logo1.png" alt=""></a>
+            </div>
+            <div class="desktoplogo-1">
+                <a href="javascript:void(0);" routerLink="/"><img src="../assets/images/brand/logo1.png" alt=""></a>
+            </div>
+            <nav class="horizontalMenu clearfix d-md-flex">
+                <div class="horizontal-overlapbg"></div>
+                <ul class="horizontalMenu-list left-align">
+
+                   
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);" routerLink="/pages/vendor-list"
+                        [routerLinkActive]="['active']" (click)="delclass()">Show Talent</a>
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="/pages/buyer-register"  routerLink="/pages/buyer-register"
+                        [routerLinkActive]="['active']" (click)="delclass()">For Buyer</a>
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);" [routerLinkActive]="['active']" routerLink="/pages/how-it-works" (click)="delclass()">How It Works</a>
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);" [routerLinkActive]="['active']"  routerLink="/pages/all-categories" (click)="delclass()">All Categories </a>
+                    </li>
+                    <li aria-haspopup="true" >
+                        <a href="javascript:void(0);" routerLink="/pages/map-view" [routerLinkActive]="['active']" class="mpshbtn" (click)="delclass()">Map Search</a>
+                    </li>
+                   
+                    <!-- <li aria-haspopup="true" *ngIf="!requestService.isAuthenticated()">
+                        <a href="javascript:void(0);" routerLink="/pages/doctor-login"
+                            [routerLinkActive]="['active']">For
+                            Doctors</a>
+                    </li>
+                    <li aria-haspopup="true" *ngIf="!requestService.isAuthenticated()">
+                        <a href="javascript:void(0);" routerLink="/pages/patient-login"
+                            [routerLinkActive]="['active']">For
+                            Patients</a>
+                    </li>
+                     <li aria-haspopup="true" routerLink="/pages/map-view">
+                        <a href="javascript:void(0);" class="mpshbtn">Map Search</a>
+                    </li> -->
+
+                   
+                    <!-- <li><a href="javascript:void(0);">How It Works</a></li> -->
+
+                    <li aria-haspopup="true" class="d-lg-none mt-lg-0" *ngIf="requestService.isAuthenticated()">
+                        <span>
+                            <a (click)="gotoDashboard()" class="btn btn-danger btn-block mb-lg-0 gradient btz"><span>Dashboard</span></a>
+                        </span>
+                    </li>
+                  
+                    <li aria-haspopup="true" class="d-lg-none mt-lg-0" *ngIf="requestService.isAuthenticated()">
+                        <span>
+                            <a href="javascript:void(0);" (click)="onLogout()"
+                                class="btn btn-danger btn-block mb-lg-0 gradient btz"><span>Logout</span></a>
+                        </span>
+                    </li>
+
+                </ul>
+            
+
+                <ul class="mb-0 logbox">
+                    <li *ngIf="!requestService.isAuthenticated()" aria-haspopup="true" class="d-none d-lg-block ">
+                        <span>
+                            <a href="javascript:void(0)" routerLink="/pages/vendor-register" class="btn btn-danger btn-block mb-lg-0 gradient" (click)="delclass()"><span>Signup</span></a>
+                        </span>
+                    </li>
+                    <li *ngIf="!requestService.isAuthenticated()" aria-haspopup="true" class="d-none d-lg-block ">
+                        <span>
+                            <a href="javascript:void(0)" routerLink="/pages/vendor-login" class="btn btn-block mb-lg-0" (click)="delclass()">Login</a>
+                        </span>
+                    </li>
+                    <div class="logbtnsb">
+                        <li *ngIf="requestService.isAuthenticated()" aria-haspopup="true" class="d-none d-lg-block f_right">
+                            <span>
+                                <a href="javascript:void(0);" (click)="onLogout()"
+                                    class="btn btn-block mb-lg-0 logout gradient"><span>Logout</span></a>
+                            </span>
+                        </li>
+                    <li *ngIf="requestService.isAuthenticated()" aria-haspopup="true" class=" mr-3  d-none d-lg-block f_right">
+                        <span>
+                            <a href="javascript:void(0);" (click)="gotoDashboard()"
+                                class="btn btn-block mb-lg-0 gradnon"><span>Dashboard</span></a>
+                        </span>
+                    </li>
+                  
+                    </div>
+
+                </ul>
+            </nav>
+        </div>
+        <div *ngIf="requestService.isAuthenticated() && requestService.getLoggedInUser() && requestService.getLoggedInUser().status_id != 4 && requestService.getLoggedInUser().role_id == 4 && ifInRoute('/pages') && page != '/'"
+            class="alert alert-warning text-right font-weight-bold text-center profileverif" role="alert" [ngClass]="mapcls ? '' : 'act'">
+            <h6>Your profile is not verified yet!</h6>
+        </div>
+    </div>
+
+</div>

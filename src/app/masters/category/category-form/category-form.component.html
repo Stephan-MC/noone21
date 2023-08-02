@@ -1,0 +1,74 @@
+<div class="card mb-0">
+    <div class="card-header">
+        <h3 class="card-title">{{title}}</h3>
+    </div>
+    <div class="card-body">
+        <form class="form" [formGroup]="form" novalidate>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Category Name <sup>*</sup></label>
+                        <input type="text" class="form-control" placeholder="Category Name" formControlName="name">
+                        <small class="form-text text-danger"
+                            *ngIf="!form.get('name').valid && (form.get('name').dirty || form.get('name').touched)">Please
+                            enter name!</small>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Category Description</label>
+                        <textarea rows="5" class="form-control" placeholder="Description" rows="1"
+                            formControlName="description"></textarea>
+                        <!-- <input type="text" class="form-control" placeholder="Last Name" formControlName="description"> -->
+                    </div>
+                </div>
+                <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <label for="prpicture">File</label>
+                    <div class="inputicon">
+                        <div class="custom-file">
+
+                            <input type="file" class="custom-file-input" id="customFile" name="filename"
+                                accept="image/*" (change)="fileChangeEvent($event)">
+
+                            <label class="custom-file-label" for="customFile">Upload
+                                Picture</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                    <div class="checkwhite is-home-page">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                formControlName="is_home" value="option3">
+                            <span class="custom-control-label">
+                                <span class="text-dark"> Show on Home Page</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="data && data?.media" class="image_upload border col-md-4">
+                    <div *ngIf="data && data.media && data.media.base_path" class="upload-images d-flex">
+                        <div>
+                            <img src="{{data.media.base_path+'/'+ data.media.system_name}}" alt="img"
+                                class="w73 h73 border p-0">
+                        </div>
+                        <div class="ml-3 mt-2">
+                            <h6 class="mb-0 mt-3 font-weight-bold">
+                                {{data.media.real_name}}</h6>
+                            <!-- <small>4.5kb</small> -->
+                        </div>
+                        <div class="float-right ml-auto">
+                            <!-- <a href="#" class="float-right btn btn-icon btn-danger btn-sm mt-5"><i
+                                                                                    class="fa fa-trash-o"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer text-center">
+        <button type="button" (click)="onSubmit()" class="btn btn-primary mr-1" (click)="closeForm()">Cancel</button>
+        <button type="button" [disabled]="!form.valid || disableButton" (click)="onSubmit()"
+            class="btn btn-secondary">{{!id ? 'Add' :'Update'}} Category</button>
+    </div>
+</div>

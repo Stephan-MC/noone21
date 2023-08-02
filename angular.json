@@ -1,0 +1,248 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "medical-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/medical-app/browser",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/robots.txt",
+              "src/sitemap.xml"
+              
+            ],
+            "styles": [
+              "src/assets/scss/_main.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.bubble.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "src/assets/css/icons.css",
+              "src/assets/plugins/horizontal/horizontal.css",
+              "src/assets/plugins/select2/select2.min.css",
+              "src/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css",
+              "src/assets/color-skins/color10.css",
+              "src/assets/css/buttons.css",
+              "src/assets/css/loaders.css",
+              "src/assets/plugins/owl-carousel/owl.carousel.css",
+              "src/assets/plugins/date-picker/spectrum.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/admin-custom.css",
+              "src/assets/plugins/sidemenu/sidemenu.css",
+              "src/assets/plugins/jquery-uislider/jquery-ui.css",
+              "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/slick-carousel/slick/slick-theme.scss",
+              "src/assets/css/nouislider.min.css",
+              "node_modules/select2/dist/css/select2.min.css",                        
+              "src/assets/css/choices.min.css",     
+              "node_modules/summernote/dist/summernote-lite.min.css",         
+              "src/assets/css/style.css",   
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/summernote/dist/summernote-lite.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js",
+              "src/assets/js/jquery.sparkline.min.js",
+              "src/assets/js/circle-progress.min.js",              
+              "src/assets/plugins/rating/jquery.rating-stars.js",
+              "src/assets/plugins/horizontal/horizontal.js",
+              "src/assets/plugins/select2/select2.full.min.js",
+              "src/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js",
+              "src/assets/plugins/owl-carousel/owl.carousel.js",
+              "src/assets/plugins/date-picker/spectrum.js",
+              "src/assets/plugins/date-picker/jquery-ui.js",
+              "src/assets/plugins/date-picker/datepicker.js",
+              "src/assets/plugins/jquery-uislider/jquery-ui.js",
+              "node_modules/quill/dist/quill.min.js",
+              "src/assets/js/nouislider.min.js",                   
+              "src/assets/js/choices.min.js",
+              "src/assets/js/custom.js"
+              
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "stage": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stage.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "medical-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "medical-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "medical-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "medical-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "medical-app:serve:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/medical-app/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "medical-app:build",
+            "serverTarget": "medical-app:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "medical-app:build:production",
+              "serverTarget": "medical-app:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "medical-app:build:production",
+            "serverTarget": "medical-app:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "medical-app",
+  "cli": {
+    "analytics": false
+  }
+}

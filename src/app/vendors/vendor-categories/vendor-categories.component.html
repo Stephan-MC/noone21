@@ -1,0 +1,104 @@
+<!-- <a href="javascript:void();" (click)="editId ? editCatSub(form): addCatSub(form)"
+    class="btn btn-grlight pull-right mb-4">{{!editId ? 'Add New' : 'Update'}} Category</a> -->
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+        <p style="font-size: 20px; color: white" class="mt-5 ml-2">Loading...</p>
+    </ngx-spinner>
+    <form [formGroup]="form">
+        <div class="row">
+    
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
+                <label for="fname">Category<sup>*</sup></label>
+                <select class="form-control" id="sel1" formControlName="category" (change)='getSubCategories()'>
+                    <option [ngValue]=null>Select Category</option>
+                    <option *ngFor="let item of categories" value="{{item?.id}}">{{item?.name}}</option>
+                </select>
+                <small class="form-text text-danger"
+                    *ngIf="!form.get('category').valid && (form.get('category').dirty || form.get('category').touched)">Please
+                    enter category!</small>
+            </div>
+    
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
+                <label for="fname">Sub Category<sup>*</sup></label>
+                <select class="form-control" id="sel1" formControlName="sub_category">
+                    <option [ngValue]=null>Select Sub Category</option>
+                    <option *ngFor="let item of subcategories" value="{{item?.id}}">{{item?.name}}</option>
+                </select>
+                <small class="form-text text-danger"
+                    *ngIf="!form.get('sub_category').valid && (form.get('sub_category').dirty || form.get('sub_category').touched)">Please
+                    enter sub category!</small>
+            </div>
+    
+            <!-- <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 autocomplete-dropdown">
+                <label for="fname">Category<sup>*</sup></label>
+                <ng-template #categoryT let-r="result" let-t="term">
+                    <small class="nameFilter">{{ r.name }}</small>
+                </ng-template>
+                <input type="text" class="form-control" placeholder="Category Name" [class.custom_disabled]="form.value.id"
+                    formControlName="category" [ngbTypeahead]="searchCategory" [resultTemplate]="categoryT"
+                    [inputFormatter]="categoryFormatter">
+                <small class="form-text text-danger"
+                    *ngIf="!form.get('category').valid && (form.get('category').dirty || form.get('category').touched)">Please
+                    enter category!</small>
+            </div>
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="form-label">Subcategory</label>
+                <mat-chip-list #matChipCat>
+    
+                    <mat-chip *ngFor="let s of sub_categories" (removed)="removeSUB(form.value?.sub_categories,s)">
+                        {{s?.name}}
+                        <span matChipRemove style="font-size:16px;color:grey;padding-left: 5px; cursor: pointer;"
+                            class="material-icons">
+                            cancel
+                        </span>
+                    </mat-chip>
+    
+                    <input placeholder="Search Sub Category" class="form-control" [matAutocomplete]="auto"
+                        #trigger="matAutocompleteTrigger" (keyup)="changed(form,$event.target.value)"
+                        [matChipInputFor]="matChipCat" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        formControlName="sub_category">
+                </mat-chip-list>
+    
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let sub of subCategoriesArray; let i=index " [value]="sub"
+                        (click)="selectionMade($event, trigger,sub,form,i)">
+                        {{ sub?.name }}
+                    </mat-option>
+                </mat-autocomplete>
+    
+            </div> -->
+            <div class="form-group text-center mb-0 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+               <a href="javascript:void(0);" (click)="editId ? editCatSub(form): addCatSub(form)"
+                    class="btn btn-danger frmbtn flr gradient btz" ><span>SAVE CHANGES</span></a>
+            </div>
+        </div>
+    </form>
+    <div class="doctable table-responsive" *ngIf="selectedCate.length>0">
+        <table class="table mb-0 text-nowrap">
+            <thead>
+                <tr>
+    
+                    <th>Category</th>
+                    <th><span class="pull-left">Sub Category</span> <span class="pull-right">Action</span></th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of selectedCate;let i=index">
+                    <tr>
+    
+    
+                        <td class="text-muted">{{item?.category}}</td>
+                        <td class="text-muted">
+
+                            <ng-container *ngFor="let sc of item.sub_category;let y=index;last as isLast">
+                                {{sc?.subcategory}}  <a class="text-danger btn btn-sm pull-right" (click)="delSubCategory(item.user_id,sc.subCategoryId)" data-toggle="tooltip"
+                                data-original-title="Delete"><i class="fa fa-trash-o"></i></a><br>
+                            </ng-container>
+                        </td>
+                    </tr>
+                </ng-container>
+    
+    
+            </tbody>
+        </table>
+    </div>

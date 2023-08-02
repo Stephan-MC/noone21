@@ -1,0 +1,60 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <label class="form-label">Service</label>
+            <mat-chip-list #matChipService>
+
+                <mat-chip *ngFor="let s of services" (removed)="removeService(services,s)">
+                    {{s?.name}}
+                    <span matChipRemove style="font-size:16px;color:grey;padding-left: 5px; cursor: pointer;"
+                        class="material-icons">
+                        cancel
+                    </span>
+                </mat-chip>
+
+                <input placeholder="Search Service" class="form-control " [matAutocomplete]="autoCondition"
+                    #trigger="matAutocompleteTrigger" (keyup)="changedService(form,$event.target.value)"
+                    [matChipInputFor]="matChipService" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    formControlName="service_id">
+            </mat-chip-list>
+
+            <mat-autocomplete #autoCondition="matAutocomplete">
+                <mat-option *ngFor="let val of serviceDropdown ;let i=index" [value]="val"
+                    (click)="selectionMadeService($event, trigger,val,form,i)">
+                    {{ val?.name }}
+                </mat-option>
+            </mat-autocomplete>
+
+
+        </div>
+        <div class="form-group text-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <a [class.custom_disabled]="disableButton" href="javascript:void(0);" (click)="onSubmit()"
+                class="btn btn-danger frmbtn flr">SAVE
+                CHANGES</a>
+        </div>
+    </div>
+</form>
+
+<!-- <div class="doctable table-responsive">
+    <table class="table mb-0 text-nowrap">
+        <thead>
+            <tr>
+
+                <th>Name>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of rows;let i=index">
+                <tr>
+
+
+                    <td class="text-muted">{{item?.name}}</td>
+                    <td class="text-muted">{{item?.description}}</td>
+                </tr>
+            </ng-container>
+
+
+        </tbody>
+    </table>
+</div> -->

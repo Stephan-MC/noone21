@@ -1,0 +1,132 @@
+<section class="sptb">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-12">
+                <div class="card">
+                    <div class="item-user">
+                        <div class="profile-pic wideget-user-img mb-0 pt-3">
+                            <img src="../assets/images/users/female/17.jpg" class="brround" alt="user">
+                        </div>
+                    </div>
+                    <div class="card-body item-user text-center">
+                        <div class="ml-1">
+                            <a href="userprofile2.html" class="text-dark">
+                                <h4 class="mt-0 mb-2 font-weight-bold">{{currentPatient?.first_name}}
+                                    {{currentPatient?.last_name}}<i
+                                        class="ion-checkmark-circled text-success fs-14 ml-1"></i></h4>
+                            </a>
+                            <span class="mb-3">Gynecologist</span><br>
+                            <div class="rating-stars d-inline-flex mb-2 mr-3">
+                                <input type="number" readonly="readonly" class="rating-value star"
+                                    name="rating-stars-value" value="4">
+                                <div class="rating-stars-container mr-2">
+                                    <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                                    <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                                    <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                                    <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                                    <div class="rating-star sm"> <i class="fa fa-star"></i> </div>
+                                </div>
+                                4.0
+                            </div>
+                            <h6 class="mt-2 mb-0"><a href="javascript:void(0);" class="btn btn-secondary btn-sm">1245
+                                    Views</a>
+                                <a href="javascript:void(0);" class="btn btn-info btn-sm">850 Likes</a></h6>
+                        </div>
+                    </div>
+                    <div class="card-body item-user">
+                        <h4 class="mb-4">Contact Info</h4>
+                        <div>
+                            <h6><span class="font-weight-semibold"><i class="fa fa-map-marker mr-2 mb-2"></i></span><a
+                                    href="javascript:void(0);" class="text-body"> {{currentPatient?.address}},
+                                    {{currentPatient?.country}}</a></h6>
+                            <h6><span class="font-weight-semibold"><i class="fa fa-envelope mr-3 mb-2"></i></span><a
+                                    href="javascript:void(0);" class="text-body"> {{currentPatient?.email}}</a></h6>
+                            <h6><span class="font-weight-semibold"><i class="fa fa-phone mr-3  mb-2"></i></span><a
+                                    href="javascript:void(0);" class="text-body"> {{currentPatient?.phone_no}}</a></h6>
+                            <h6><span class="font-weight-semibold"><i class="fa fa-link mr-3 "></i></span><a
+                                    href="javascript:void(0);" class="text-body">http://spruko.com/</a></h6>
+                        </div>
+                        <div class=" item-user-icons mt-4">
+                            <a href="javascript:void(0);" class="facebook-bg mt-0"><i class="fa fa-facebook"></i></a>
+                            <a href="javascript:void(0);" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+                            <a href="javascript:void(0);" class="google-bg"><i class="fa fa-google"></i></a>
+                            <a href="javascript:void(0);" class="dribbble-bg"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-list text-left">
+                            <a href="javascript:void(0);" class="btn  btn-primary"><i class="fa fa-envelope"></i>
+                                Chat</a>
+                            <a href="javascript:void(0);" class="btn btn-secondary" data-toggle="modal"
+                                data-target="#contact"><i class="fa fa-user"></i> Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12">
+                <div class=" mb-5">
+                    <div class="wideget-user-tab wideget-user-tab3">
+                        <div class="tab-menu-heading">
+                            <div class="tabs-menu1">
+                                <ul class="nav">
+                                    <li class=""><a href="#tab-5" class="active" data-toggle="tab">Description</a></li>
+                                    <!-- <li><a href="#tab-6" data-toggle="tab" class="">Edit Profile</a></li> -->
+                                    <li><a href="#tab-7" data-toggle="tab" class="">Reviews </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-0">
+                        <div class="tab-content  border-left border-right details-tab-content bg-white">
+                            <div class="tab-pane active" id="tab-5">
+                                <div class=" p-5">
+                                    <h3 class="card-title mb-3">Personal Details</h3>
+                                    <ul class="usertab-list mb-4">
+                                        <li><a href="javascript:void(0);" class="text-dark"><span
+                                                    class="font-weight-semibold">Full Name
+                                                    :</span> {{currentPatient?.first_name}}
+                                                {{currentPatient?.last_name}}</a></li>
+                                        <li><a href="javascript:void(0);" class="text-dark"><span
+                                                    class="font-weight-semibold">Location
+                                                    :</span> {{currentPatient?.country}}</a></li>
+                                        <li><a href="javascript:void(0);" class="text-dark"><span
+                                                    class="font-weight-semibold">Languages
+                                                    :</span> English, German,Vehiclenish.</a></li>
+                                        <li><a href="javascript:void(0);" class="text-dark"><span
+                                                    class="font-weight-semibold">Website
+                                                    :</span>smithabgd.com</a></li>
+                                        <li><a href="javascript:void(0);" class="text-dark"><span
+                                                    class="font-weight-semibold">Email
+                                                    :</span> {{currentPatient?.email}}</a></li>
+                                        <li><a href="javascript:void(0);" class="text-dark"><span
+                                                    class="font-weight-semibold">Phone
+                                                    :</span>{{currentPatient?.phone_no}} </a></li>
+                                    </ul>
+                                    <h3 class="card-title mb-3">Biography</h3>
+                                    <div class="mb-0">
+                                        <p>{{currentPatient?.about_me}}.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer bg-white br-bl-2 br-br-2 border-left border-right border-bottom">
+                            <div class="icons">
+                                <a href="javascript:void(0);" class="btn btn-info icons"><i
+                                        class="icon icon-share mr-1"></i> Share</a>
+                                <a href="javascript:void(0);" class="btn btn-danger icons" data-toggle="modal"
+                                    data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>
+                                <a href="javascript:void(0);" class="btn btn-primary icons"><i
+                                        class="icon icon-heart  mr-1"></i> 678</a>
+                                <a href="javascript:void(0);" class="btn btn-secondary icons"><i
+                                        class="icon icon-printer  mr-1"></i>
+                                    Print</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

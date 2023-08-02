@@ -1,0 +1,113 @@
+<!-- Top Bar -->
+<div class="top-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-sm-4 col-7">
+                <div class="top-bar-left d-flex">
+                    <div class="clearfix">
+                        <ul class="socials">
+                            <li>
+                                <a class="social-icon text-dark" href="javascript:void(0);"><i
+                                        class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a class="social-icon text-dark" href="javascript:void(0);"><i
+                                        class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a class="social-icon text-dark" href="javascript:void(0);"><i
+                                        class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a class="social-icon text-dark" href="javascript:void(0);"><i
+                                        class="fa fa-google-plus"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix">
+                        <ul class="contact">
+                            <li class="d-lg-none">
+                                <a class="callnumber text-dark" href="javascript:void(0);"><span><i
+                                            class="fa fa-phone mr-1"></i>: +425
+                                        345 8765</span></a>
+                            </li>
+                            <li class="select-country">
+                                <select class="form-control select2-flag-search" data-placeholder="Select Country">
+                                    <option *ngFor="let country of countries" [value]="country.abbreviation">
+                                        {{country?.country}}
+                                    </option>
+
+                                </select>
+                            </li>
+                            <li class="dropdown">
+                                <a class="text-dark" data-toggle="dropdown" href="javascript:void(0);"><span>Language <i
+                                            class="fa fa-caret-down text-muted"></i></span></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" href="javascript:void(0);">English</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Arabic</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">German</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Greek</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Vehiclenish</a>
+                                </div>
+                            </li>
+                            <!-- <li class="dropdown">
+                                <a class="text-dark" data-toggle="dropdown" href="javascript:void(0);"><span>Currency <i
+                                            class="fa fa-caret-down text-muted"></i></span></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" href="javascript:void(0);">USD</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">EUR</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">INR</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">GBP</a>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-sm-8 col-5">
+                <div class="top-bar-right">
+                    <ul class="custom">
+                        <li *ngIf="requestService.isAuthenticated()">
+                            <a href="javascript:void(0);" class="d-flex" (click)="onLogout()">
+                                <span class="icon1 mr-3"><i class="icon icon-power"></i></span> Logout
+                            </a>
+                        </li>
+                        <ng-container *ngIf="!requestService.isAuthenticated()">
+
+                            <li class="dropdown">
+                                <a class="text-dark pointer" data-toggle="dropdown"><i class="fa fa-user mr-1"></i>
+                                    <span>Register</span></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" routerLink="/pages/buyer-register"><i
+                                            class="dropdown-icon icon icon-user"></i> Buyer</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"
+                                        routerLink="/pages/vendor-register"><i
+                                            class="dropdown-icon icon icon-speech"></i>
+                                        Vendor</a>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a class="text-dark pointer" data-toggle="dropdown"><i class="fa fa-sign-in mr-1"></i>
+                                    <span>Login</span></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" routerLink="/pages/buyer-login"><i
+                                            class="dropdown-icon icon icon-user"></i>
+                                        Buyer</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"
+                                        routerLink="/pages/vendor-login"><i class="dropdown-icon icon icon-speech"></i>
+                                        Vendor</a>
+                                </div>
+                            </li>
+                        </ng-container>
+                        <!-- <li class="dropdown">
+										<a class="text-dark" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-home mr-1"></i> <span>My Dashboard</span></a>
+										<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+											<a class="dropdown-item" href="javascript:void(0);"><i class="dropdown-icon icon icon-user"></i> My Profile</a> <a class="dropdown-item" href="javascript:void(0);"><i class="dropdown-icon icon icon-speech"></i> Inbox</a> <a class="dropdown-item" href="javascript:void(0);"><i class="dropdown-icon icon icon-bell"></i> Notifications</a> <a class="dropdown-item" href="javascript:void(0);"><i class="dropdown-icon icon icon-settings"></i> Account Settings</a> <a class="dropdown-item" href="javascript:void(0);"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+										</div>
+									</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

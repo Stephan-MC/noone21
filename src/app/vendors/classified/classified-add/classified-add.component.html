@@ -1,0 +1,321 @@
+<style>.example-chip-list {
+    width: 100%;
+  }</style>
+
+<div class="adpage">
+    <!-- <section class="breadsec profpad pb-4 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-xl-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#recodepop" data-toggle="modal">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Classified</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Post a classified</li>
+
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    	<!-- Ad Section -->
+
+		<section class="adsection py-0">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="adshead">
+							<h2>ADD NEW CLASSIFIED</h2>
+							<!-- <p class="reqifld">Required fields are <b>bold and marked with an asterisk (*).</b></p>
+							<p>The following errors occured while attempting to save your classified. Fix them and try
+								again.</p> -->
+						</div>
+					</div>
+				</div>
+				<form [formGroup]="form" (ngSubmit)="onSubmit()" ngxScrollToFirstInvalid>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="adsform setabs">
+								<div class="detailabt">
+									<div class="card bra-10">
+										<h4 class="p-3 border-bottom mb-0">Details</h4>
+										<div class="card-body  px70">
+											<div class="adcheckbox form-group">
+												<label for="">Ad Type<sup>*</sup></label>
+												<div class="row">
+													<div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 mb-0">
+														<div class="custom-control custom-radio">
+                                                           
+                                                            <input type="radio"  name="type_id" value="1" id="customRadio" checked  (change)="changeType($event)" class="custom-control-input">
+                                                            <label class="custom-control-label" for="customRadio">I’m
+																offering - You are offering item to sale</label>
+                                                          </div>
+                                                        
+                                                  
+
+													</div>
+													<div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 mb-0">
+
+                                                        
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="customRadio2" value="2"  name="type_id"   (change)="changeType($event)">
+                                                            <label class="custom-control-label" for="customRadio2">I
+																want to find - You want to buy an item</label>
+                                                          </div>
+
+                                                    </div>
+                                                    <!-- <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <small class="form-text text-danger"
+                                                        *ngIf="!typeId">Type is required
+                                                        !</small>
+                                                    </div> -->
+												</div>
+
+											</div>
+											<div class="row">
+
+                                                <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+													<label for="city">Category<sup>*</sup></label>
+                                                    <select id="category_id" (change)="changeCategory($event)" class="form-control w-100"
+                                                    formControlName="category_id" data-placeholder="Select">
+                                                      <option value="" disabled>Select Category</option>
+                                                    <ng-container *ngFor="let item of category; let i=index">
+                                                        <option [value]="item.id" data-icon="fa fa-circle-thin">{{item.title}}</option>
+                                                    </ng-container>
+
+                                            </select>
+                                            <small class="form-text text-danger"
+                *ngIf="!form.get('category_id').valid && (form.get('category_id').dirty || form.get('category_id').touched)">Please
+                select category!</small>
+												</div>
+												
+												<div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<label for="title">Title<sup>*</sup></label>
+                                                    <input type="text" class="form-control" placeholder="Title" formControlName="title">
+                                                    <small class="form-text text-danger"
+                                                        *ngIf="!form.get('title').valid && (form.get('title').dirty || form.get('title').touched)">Please
+                                                        enter title!</small>
+												</div>
+												<div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<label for="description">Description<sup>*</sup></label>
+                                                    <quill-editor   placeholder="Share a brief professional summary"
+                                                    formControlName="description">
+                                                   </quill-editor>
+                                                   <small class="form-text text-danger"
+                                                   *ngIf="!form.get('description').valid && (form.get('description').dirty || form.get('description').touched)">Please
+                                                   enter description!</small>
+												</div>
+												<div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-0">
+                                                    <label for="tags">Tags <small>(limit 6)</small></label>
+                                                    
+                                                    <mat-form-field class="example-chip-list">
+                                                        <mat-chip-list #chipList aria-label="Fruit selection">
+                                                          <mat-chip *ngFor="let tgs of tags" [selectable]="selectable"
+                                                                   [removable]="removable" (removed)="remove(tgs)">
+                                                            {{tgs.name}}
+                                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                          </mat-chip>
+                                                          <input class="form-control" type="text"
+                                                                 [matChipInputFor]="chipList"
+                                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                                 [matChipInputAddOnBlur]="addOnBlur"
+                                                                 (matChipInputTokenEnd)="add($event)">
+                                                        </mat-chip-list>
+                                                      </mat-form-field>
+                                                   
+                                                <!-- <small class="form-text text-danger"
+                                                *ngIf="tags.length<0">At least one tag is requried
+                                                !</small> -->
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+									<div class="card bra-10 mt-5">
+										<h4 class="p-3 border-bottom mb-0">Location Info</h4>
+										<div class="card-body  px70">
+											<div class="row">
+												<div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+													<label for="city">General Location</label>
+                                                    <input type="text" class="form-control" placeholder="Enter location name" formControlName="location">
+                                                    <small class="form-text text-danger"
+                                                        *ngIf="!form.get('location').valid && (form.get('location').dirty || form.get('location').touched)">Please
+                                                        enter location!</small>
+												</div>
+												<div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+													<label for="city">Region</label>
+                                                    <input type="text" class="form-control" placeholder="Enter region name" formControlName="region">
+                                                    <small class="form-text text-danger"
+                                                        *ngIf="!form.get('region').valid && (form.get('region').dirty || form.get('region').touched)">Please
+                                                        enter region!</small>
+
+
+													
+												</div>
+												<div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12  mb-0">
+													<label for="city">City<sup>*</sup></label>
+                                                    <input type="text" class="form-control" placeholder="Enter city name" formControlName="city">
+                                                    <small class="form-text text-danger"
+                                                        *ngIf="!form.get('city').valid && (form.get('city').dirty || form.get('city').touched)">Please
+                                                        enter city!</small>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="card bra-10 mt-5">
+										<h4 class="p-3 border-bottom mb-0">Contact Info</h4>
+										<div class="card-body  px70">
+											<div class="row">
+												<div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+													<label for="tags">Contact Name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter contact name" formControlName="contactName">
+                                                    <small class="form-text text-danger"
+                                                        *ngIf="!form.get('contactName').valid && (form.get('contactName').dirty || form.get('contactName').touched)">Please
+                                                        enter contact Name!</small>
+												</div>
+												<div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+													<label for="tags">Email</label>
+                                                    <input type="text" class="form-control" placeholder="Enter email" formControlName="email">
+                                                    <small class="form-text text-danger"
+                                                        *ngIf="!form.get('email').valid && (form.get('email').dirty || form.get('email').touched)">Please
+                                                        enter valid email!</small>
+												</div>
+												<div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+													<label for="tags">Phone Number</label>
+                                                    <input type="tel" mask='000-00000000'  class="form-control" placeholder="Enter phone number" formControlName="phone">
+                                                    <small class="form-text text-danger"
+                                                        *ngIf="!form.get('phone').valid && (form.get('phone').dirty || form.get('phone').touched)">Please
+                                                        enter phone!</small>
+												</div>
+												<div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12 alphone  mb-0">
+                                                    <label for="tags">Contact Prefences</label><br>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" id="EmailRadio" name="prefence_id" value="1" checked  (change)="changePrefence($event)">
+                                                        <label class="custom-control-label" for="EmailRadio">Allow
+															Emails?</label>
+                                                      </div>
+                                                      
+                                                      <div class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" id="PhoneRadio" name="prefence_id" value="2"  (change)="changePrefence($event)">
+                                                        <label class="custom-control-label" for="PhoneRadio">Allow
+															Phone Calls?</label>
+                                                      </div>
+                                                      <p>
+                                                      <small class="form-text text-danger"
+                                                      *ngIf="!prefenceId">Preference is requried
+                                                      !</small>
+                                                      </p>
+												
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card bra-10 mt-5 adimgup">
+										<h4 class="p-3 border-bottom mb-0">Add photos to attract interest to your ad
+										</h4>
+										<div class="card-body px70 pb-5">
+											<div class="row">
+                                                <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+                                                    <div class="inputadimg">
+                            
+                                                        <input type="file" formControlName="image01" 
+                                                        class="custom-file-input" id="customFile" 
+                                                        (change)="imgchange1($event)">
+                                                        <div class="adresimg">
+                                                           
+                                                            <img [src]="image1Src" *ngIf="image1Src" class="img-responsive">
+                                                            <i class="fa fa-times" *ngIf="image1Src"></i>
+                                                          
+                                                            <img src="assets/images/default.jpg" *ngIf="!image1Src" class="defimg img-responsive">
+                                                        </div>
+                                                   
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+                                                    <div class="inputadimg">
+                            
+                                                        <input type="file" formControlName="image01" 
+                                                        class="custom-file-input" id="customFile" 
+                                                        (change)="imgchange2($event)">
+                                                        <div class="adresimg">
+                                                          
+                                                                <img [src]="image2Src" *ngIf="image2Src" class="img-responsive">
+                                                                <i class="fa fa-times" *ngIf="image2Src"></i>
+                                                               
+                                                            <img src="assets/images/default.jpg" *ngIf="!image2Src" class="defimg img-responsive">
+                                                        </div>
+                                                   
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+                                                    <div class="inputadimg">
+                            
+                                                        <input type="file" formControlName="image01" 
+                                                        class="custom-file-input" id="customFile" 
+                                                        (change)="imgchange3($event)">
+                                                        <div class="adresimg">
+                                                           
+                                                                <img [src]="image3Src" *ngIf="image3Src" class="img-responsive">
+                                                                <i class="fa fa-times" *ngIf="image3Src"></i>
+                                                               
+                                                            <img src="assets/images/default.jpg" *ngIf="!image3Src" class="defimg img-responsive">
+                                                        </div>
+                                                   
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+                                                    <div class="inputadimg">
+                            
+                                                        <input type="file" formControlName="image01" 
+                                                        class="custom-file-input" id="customFile" 
+                                                        (change)="imgchange4($event)">
+                                                        <div class="adresimg">
+                                                            
+                                                                <img [src]="image4Src" *ngIf="image4Src" class="img-responsive">
+                                                                <i class="fa fa-times" *ngIf="image4Src"></i>
+                                                              
+                                                            <img src="assets/images/default.jpg" *ngIf="!image4Src" class="defimg img-responsive">
+                                                        </div>
+                                                   
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+                                                    <div class="inputadimg">
+                            
+                                                        <input type="file" formControlName="image01" 
+                                                        class="custom-file-input" id="customFile" 
+                                                        (change)="imgchange5($event)">
+                                                        <div class="adresimg">
+                                                           
+                                                                <img [src]="image5Src" *ngIf="image5Src" class="img-responsive">
+                                                                <i class="fa fa-times" *ngIf="image5Src"></i>
+                                                              
+                                                            <img src="assets/images/default.jpg" *ngIf="!image5Src" class="defimg img-responsive">
+                                                        </div>
+                                                   
+                                                </div>
+                                                </div>
+
+											</div>
+										</div>
+									</div>
+									<div class="row">
+									<div class="col-lg-12 col-sm-12 col-md-12">
+                                       <span> <input type="submit" class="btn btn-danger  float-right gradient" value="SUBMIT FORM"></span>
+                                    </div>
+                                       
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+	</section>
+    </div>
+    <app-classified-listview></app-classified-listview>

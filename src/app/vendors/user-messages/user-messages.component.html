@@ -1,0 +1,80 @@
+<div class="messaging msg_inbox">
+    <div class="chatprofilebox chatbxe">
+        <h4>Inbox</h4>
+        <div class="chheight">
+    <ul class="nav nav-tabs" id="chattabs" role="tablist">
+        <ng-container *ngFor="let user of userList index as i" >
+        <li class="nav-item" >
+          <a [class.active]="i=='0'" class="nav-link" (click)="getSingleData(user.userId)"data-toggle="tab" href="#home" role="tab" aria-controls="home">
+              <div class="chatpro">
+                  <div class="chtimg">
+                      <img src="{{user.base_path}}/{{user.system_name}}" class="img-fluid" alt="">
+                  </div>
+                  <div class="chtdetail">
+                      <p><strong [(userName)]="user.username">{{user.username}}</strong> 
+                        <span> 
+                           
+                        {{user.join_date | utcTime | date:'MMMM d, y'}}</span>
+                    </p>
+                      <!-- <p>I am here...</p> -->
+                  </div>
+              </div>
+          </a>
+        </li>
+    </ng-container>
+       
+      </ul>
+      </div>
+    </div>
+    <div class="chatrightbox chatbxe">
+        <!-- <h4>John Doe <span>Active 4h ago</span></h4>
+         -->
+      <div class="tab-content">
+        <div class="inbox_msg tab-pane active" id="home" role="tabpanel">
+            <div class="mesgs p-0">
+                <div class="msg_history">
+                    <div class="backend-loader" style="display:none;">Updating...</div>
+                    <ng-container *ngFor="let item of conversions index as i">
+                        <h4 *ngIf="i==0">{{item.username}}<span>Active 4h ago</span></h4>
+                       
+                        <div class="incoming_msg" *ngIf="item.sender_id!=userId">
+                           
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>{{item.message}}</p>
+                                    <span class="time_date">
+                                        {{item.created_at | utcTime | date:'MMMM d, y'}}  |
+                                        {{item.created_at | utcTime | date:'h:mm a'}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="outgoing_msg" *ngIf="item.sender_id==userId">
+                            <div class="sent_msg">
+                                <p>{{item.message}}</p>
+                                <span class="time_date">{{item.created_at | utcTime | date:'MMMM d, y'}} |
+                                    {{item.created_at | utcTime | date:'h:mm a'}}</span>
+                                    
+                            </div>
+                        </div>
+                    </ng-container>
+
+                </div>
+                <div class="type_msg" >
+                    <div class="input_msg_write">
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()" ngxScrollToFirstInvalid>
+                        <input type="text" class="write_msg"  formControlName="message" 
+                            placeholder="Type a message" />
+                        <button class="msg_send_btn" type="submit" >
+                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    </div>
+    </div>
+
+</div>

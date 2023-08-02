@@ -1,0 +1,113 @@
+<div class="card mb-5">
+    <div class="card-header">
+        <h3 class="card-title">Dashboard</h3>
+    </div>
+    <div class="card-body">
+        <div class="notifybox">
+            <h4>Notification for Patient</h4>
+            <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem
+                quis bibendum auctor, nisi elit
+                consequat ipsum, nec sagittis sem nibh id elit. <a href="#">Duis sed</a> </p>
+        </div>
+        <div class="setabs">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#editprof">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#categories">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#consultation">Consultations</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#education">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#conditionTreated">Condition treated</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#service">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#FAQ">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#security">Security</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="editprof">
+                    <app-basic-profile [userId]="userId" [singleUserObject]="singleUserObject"></app-basic-profile>
+                </div>
+                <div class="tab-pane fade" id="categories">
+
+                    <app-doctor-categories [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-doctor-categories>
+                </div>
+                <div class="tab-pane fade" id="consultation">
+                    <app-doctor-consultation [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-doctor-consultation>
+                </div>
+                <div class="tab-pane fade m-5" id="education">
+                    <app-doctor-education [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-doctor-education>
+                </div>
+
+                <div class="tab-pane fade m-5" id="conditionTreated">
+                    <app-doctor-condition-treated [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-doctor-condition-treated>
+                </div>
+
+                <div class="tab-pane fade m-5" id="service">
+                    <app-doctor-services [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-doctor-services>
+                </div>
+
+                <div class="tab-pane fade m-5" id="FAQ">
+                    <app-doctor-faq [userId]="userId" [singleUserObject]="singleUserObject">
+                    </app-doctor-faq>
+                </div>
+                <div class="tab-pane fade p-5" id="security">
+                    <form class="form" [formGroup]="fg" novalidate (ngSubmit)="resetPassword()">
+                        <div class="row">
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <label for="npsd">New Password</label>
+                                <input type="password" class="form-control" placeholder="8-charactors"
+                                    formControlName="password">
+                                <small class="form-text text-danger"
+                                    *ngIf="!fg.get('password').valid && (fg.get('password').dirty || fg.get('password').touched)">Please
+                                    enter password!</small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <label for="cpsd">Confirm Password</label>
+                                <input type="password" class="form-control" placeholder="8-charactors"
+                                    formControlName="repeat">
+                                <!-- <p>8 characters or longer. Combine upper and lowercase letters and numbers.</p> -->
+                                <small class="form-text text-danger"
+                                    *ngIf="fg.get('repeat')?.errors?.notEquivalent  && (fg.get('repeat').dirty || fg.get('repeat').touched)">Passwords
+                                    did not match</small>
+                                <small class="form-text text-danger"
+                                    *ngIf="fg.get('repeat')?.errors?.required  && (fg.get('repeat').dirty || fg.get('repeat').touched)">Confirm
+                                    password is required</small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-0">
+                                <span><input type="submit" class="btn btn-danger gradient" value="SAVE CHANGES"
+                                    [disabled]="isEmptyObjectKeys(fg.value) || !fg.valid"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

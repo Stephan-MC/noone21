@@ -1,0 +1,428 @@
+<div class="upper">
+    <div class=" cover-image listbg filtblock">
+        <div class="header-text1 mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
+                        <form [formGroup]="formFilter">
+                            <div class="search-background bg-transparent">
+
+                                <div class="form row no-gutters">
+
+                                    <div
+                                        class="form-group col-xl-3 col-lg-3 col-md-12 mb-0 bg-white  autocomplete-dropdown">
+                                        <ng-template #category let-r="result" let-t="term">
+                                            <small class="nameFilter">{{ r.name }}</small>
+                                        </ng-template>
+                                        <!-- <input class="form-control input-lg br-md-0" id="text5"
+                                            [ngbTypeahead]="searchCategory" [resultTemplate]="category"
+                                            [inputFormatter]="categoryFormatter" formControlName="category"
+                                            placeholder="Search Category" type="text"> -->
+                                        <input class="form-control input-lg br-md-0" id="text5" formControlName="search"
+                                            placeholder="Type here to search for" type="text">
+                                    </div>
+                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-0 bg-white">
+                                        <div class="allcat">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle"
+                                                    data-toggle="dropdown">
+                                                    <strong><i class="fa fa-th" aria-hidden="true"></i>
+                                                        {{selectedValue ? selectedValue.name : ''}}
+                                                    </strong>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <div class="divh">
+                                                        <!-- <ng-container *ngFor="let item of categories">
+                                                            <a href="javascript:void(0)" (click)="selectItem(item)"
+                                                                class="dropdown-item">{{item?.name}}</a>
+                                                        </ng-container> -->
+                                                        <ng-container>
+                                                            <ul class="customdrop">
+                                                                <ng-container *ngFor="let item of categories">
+                                                                    <li><a href="javascript:void(0)"
+                                                                            class="dropdown-item dropitem"
+                                                                            (click)="selectItem(item)">{{item?.name}}</a>
+                                                                        <ul *ngIf=" item?.sub_categories">
+                                                                            <ng-container
+                                                                                *ngFor="let sub of item?.sub_categories">
+                                                                                <li><a href="javascript:void(0)"
+                                                                                        (click)="selectItemSubCategory(sub)"
+                                                                                        class="dropdown-item">{{sub?.name}}</a>
+                                                                                </li>
+                                                                            </ng-container>
+
+
+                                                                        </ul>
+                                                                    </li>
+                                                                </ng-container>
+                                                            </ul>
+                                                        </ng-container>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="form-group col-xl-3 col-lg-3 col-md-12 select2-lg mb-0 bg-white clearable">
+                                        <input #search class="form-control input-lg br-md-0" id="text5"
+                                            formControlName="location" placeholder="Search Location" type="text">
+                                        <i *ngIf="formFilter.value.location" (click)="resetLatLng()"
+                                            class="clearable__clear">&times;</i>
+                                        <span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2 col-md-12 mb-0">
+                                        <a class="btn btn-lg btn-block btn-danger br-tl-md-0 br-bl-md-0"
+                                            (click)="getDoctors()" href="javascript:void(0)"><i
+                                                class="fa fa-search"></i> Search</a>
+                                    </div>
+                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-0">
+                                        <div class="advsearch">
+
+                                            <a class="btn btn-lg btn-block br-tl-md-0 br-bl-md-0"
+                                                href="javascript:void(0)">
+                                                Advanced
+                                                Search</a>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex select2-sm">
+                                        <label class="mr-2 mt-1 mb-sm-1">Sort By:</label>
+                                        <select name="item" class="form-control select2">
+                                            <option value="1">Latest</option>
+                                            <option value="2">Oldest</option>
+                                            <option value="3">Price:Low-to-High</option>
+                                            <option value="5">Price:Hight-to-Low</option>
+                                        </select>
+                                    </div> -->
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /header-text -->
+    </div>
+    <div class="filterheader">
+
+        <div class="container">
+            <div class="search-background bg-transparent">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
+                        <form [formGroup]="formFilter">
+                            <div class="row">
+
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <select id="availability"
+                                        class="form-control select2-avail-search border-bottom-0 w-100"
+                                        formControlName="availability" data-placeholder="Select">
+
+                                        <option></option>
+                                        <option *ngFor="let item of availabilities" [value]="item?.id"
+                                            data-icon="fa fa-circle"> {{item.name}}</option>
+                                        <!-- <option value="1" data-icon="fa fa-circle">Daily</option>
+                                    <option value="2" data-icon="fa fa-circle-thin">Morning</option>
+                                    <option value="3" data-icon="fa fa-circle-thin">Evening</option>
+                                    <option value="4" data-icon="fa fa-circle-thin">Night</option> -->
+
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <div class="selectrange">
+                                        <div class="addicon">
+                                            <input class="form-control input-lg br-md-0" id="selectrng"
+                                                (change)="doChange($event)" placeholder="Fees Range"
+                                                formControlName="fees_range" type="text">
+                                        </div>
+                                        <div class="selectslid">
+                                            <input id="price" type="text">
+                                            <div id="mySlider"></div>
+                                            <a href="javascript:void(0)" class="pricerngbtn"><strong>Apply</strong></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <select id="gender" class="form-control select2-gender-search border-bottom-0 w-100"
+                                        formControlName="gender" data-placeholder="Select">
+
+                                        <option></option>
+                                        <option data-icon="fa fa-circle">All doctors</option>
+                                        <option value="1" data-icon="fa fa-circle-thin">Male</option>
+                                        <option value="2" data-icon="fa fa-circle-thin">Female</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <div class="checkwhite">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                                formControlName="show_nearest" value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark"> Show Nearest</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <select id="radius" class="form-control border-bottom-0 w-100 select2-radius-search"
+                                        (change)="doFilter()" formControlName="radius" data-placeholder="Select">
+
+                                        <option></option>
+                                        <!-- <option value="1" data-icon="fa fa-circle">Lahore</option> -->
+                                        <option value="5" data-icon="fa fa-circle-thin">5 km</option>
+                                        <option value="10" data-icon="fa fa-circle-thin">10 km</option>
+                                        <option value="20" data-icon="fa fa-circle-thin">20 km</option>
+                                        <option value="25" data-icon="fa fa-circle-thin">25 km</option>
+                                        <option value="30" data-icon="fa fa-circle-thin">30 km</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+                                    <div class="custcheck">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="switch1"
+                                                formControlName="online_consultation">
+                                            <label class="custom-control-label" for="switch1"><strong>Online
+                                                    Consultation</strong></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/Sliders Section-->
+
+
+
+<div class="bg-white border-bottom pt-2 mb-2" *ngIf="categorySlug">
+    <div class="container">
+        <div class="page-header bread">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">{{categorySlug}}</a></li>
+                <li class="breadcrumb-item active" *ngIf="subCategorySlug" aria-current="page">
+                    {{subCategorySlug}}</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-white">
+    <!-- <div class="popcats">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h4 class="page-title">Popular Categories</h4>
+
+                    </div>
+                    <ul>
+                        <ng-container *ngFor="let item of categories| slice:0:3">
+                            <li>
+                                <a href="javascript:void(0)" (click)="selectItem(item); getDoctors()"
+                                    *ngIf="!item.shouldNotDisplay">
+                                    {{item?.name}}</a>
+                            </li>
+                        </ng-container>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!--Section-->
+    <section class="sptb">
+        <div class="container">
+            <div class="row">
+
+
+                <!--Add lists-->
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class=" mb-lg-0">
+                        <div class="">
+                            <div class="item2-gl ">
+                                <div class=" mb-0">
+                                    <div class="">
+                                        <div class="p-5 bg-white item2-gl-nav d-flex">
+                                            <h6 *ngIf="doctorList && doctorList.length > 0" class="mb-0 mt-2">Showing
+                                                {{limit * (page-1)+1}} to {{limit*page}} of
+                                                {{total}} entries</h6>
+                                            <h6 *ngIf="doctorList.length == 0" class="mb-0 mt-2">No Record Found</h6>
+                                            <ul class="nav item2-gl-menu ml-auto">
+                                                <li class="">
+                                                    <a href="#tab-11" class="" data-toggle="tab" title="List style"><i
+                                                            class="fa fa-list"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab-12" data-toggle="tab" class="active show"
+                                                        title="Grid"><i class="fa fa-th"></i></a>
+                                                </li>
+                                            </ul>
+                                            <div class="d-flex select2-sm">
+                                                <label class="mr-2 mt-1 mb-sm-1">Sort By:</label>
+                                                <select name="item" (change)="doSort()" [(ngModel)]="sortType"
+                                                    class="form-control select2">
+                                                    <option value="1">Latest</option>
+                                                    <option value="2">Oldest</option>
+                                                    <option value="3">Price:Low-to-High</option>
+                                                    <option value="5">Price:Hight-to-Low</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="tab-11">
+                                        <ng-container *ngFor="let doc of doctorList">
+                                            <div class="card overflow-hidden">
+                                                <div class="d-md-flex">
+                                                    <div class="item-card9-img">
+                                                        <div class="item-card9-imgs">
+                                                            <a href="javascript:void(0);"></a>
+                                                            <img alt="img" class="cover-image"
+                                                                [src]="doc.profile_media ? doc.profile_media.base_path+'/'+doc.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="card border-0 mb-0">
+                                                        <div class="card-body">
+                                                            <div class="item-card9">
+                                                                <a class="text-dark" href="pages/doctor/{{doc.id}}">
+                                                                    <h4 class="font-weight-bold mt-1 mb-2">
+                                                                        {{doc?.first_name}} {{doc?.last_name}}<i
+                                                                            class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                                    </h4>
+                                                                </a>
+                                                                <p class="mb-1 fs-14 mt-1"><span class=""><i
+                                                                            class="fa fa-location-arrow text-muted mr-1"></i></span>14
+                                                                    {{doc?.address}} {{doc?.city}} {{doc?.state}}
+                                                                    {{doc?.zip}} </p>
+                                                                <div class="item-card9-desc mb-2 mt-3">
+                                                                    <span class="mr-4">{{doc?.city}}</span>
+                                                                    <span class="mr-4">20 Specialities</span>
+                                                                    <span class="mr-4">30 Docors </span>
+                                                                    <span class="mr-4">8am - 6am </span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer p-0">
+                                                            <div class="item-card9-footer btn-appointment">
+                                                                <div class="btn-group w-100">
+                                                                    <a href="javascript:void(0)"
+                                                                        href="pages/doctor/{{doc.id}}"
+                                                                        class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"><i
+                                                                            class="fe fe-user mr-1"></i>Profile</a>
+                                                                    <a href="javascript:void(0)"
+                                                                        class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i
+                                                                            class="fa fa-phone mr-1"></i>Call</a>
+                                                                    <a
+                                                                        class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0 call-btn">
+                                                                        <div class="call-btn-1">
+                                                                            <i class="fe fe-phone mr-1"></i> Appointment
+                                                                        </div>
+                                                                        <div class="call-number">
+                                                                            {{doc?.phone_no | phone}}
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                    </div>
+                                    <div class="tab-pane active" id="tab-12">
+                                        <div class="row">
+                                            <ng-container *ngFor="let doc of doctorList">
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 col-xl-3">
+                                                    <div class="card overflow-hidden">
+                                                        <div class="item-card9-img">
+                                                            <div class="item-card9-imgs">
+                                                                <a href="pages/doctor/{{doc.id}}"></a>
+                                                                <img alt="img" class="cover-image" height="274"
+                                                                    width="274"
+                                                                    [src]="doc.profile_media ? doc.profile_media.base_path+'/'+doc.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'">
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="item-card9">
+                                                                <a class="text-dark mt-2"
+                                                                    href="pages/doctor/{{doc.id}}">
+                                                                    <h4 class="font-weight-bold mb-1">
+                                                                        {{doc?.first_name}} {{doc?.last_name}}<i
+                                                                            class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                                    </h4>
+                                                                </a>
+                                                                <span class="text-muted fs-13 mt-2"><i
+                                                                        class="fa fa-location-arrow text-muted mr-2"></i>
+                                                                    {{doc?.address}} {{doc?.city}} {{doc?.state}}
+                                                                    {{doc?.zip}}</span>
+                                                                <div class="mt-2 mb-0">
+                                                                    <ul class="item-card-features mb-0">
+                                                                        <li><span class="">{{doc?.city}}</span></li>
+                                                                        <li><span>20 Specialities</span></li>
+                                                                        <li><span> 30 Docors</span></li>
+                                                                        <li><span class="">8 am - 9 am</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer p-0 btn-appointment">
+                                                            <div class="btn-group w-100">
+                                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                                    (click)="viewProfile(doc)"
+                                                                    href="javascript:void(0)"><i
+                                                                        class="fe fe-user mr-1"></i> Profile</a>
+                                                                <a
+                                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                                    <div class="call-btn-1">
+                                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                                    </div>
+                                                                    <div class="call-number">
+                                                                        {{doc?.phone_no | phone}}
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="center-block text-center docspaginate">
+
+                                <pagination [boundaryLinks]="true" (pageChanged)="pageChanged($event)"
+                                    [totalItems]="total" class="my-pagination" [itemsPerPage]="limit"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="page">
+                                </pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Add lists-->
+            </div>
+        </div>
+    </section>
+    <!--/Section-->
+</div>

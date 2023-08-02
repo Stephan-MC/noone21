@@ -1,0 +1,112 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" ngxScrollToFirstInvalid>
+    <div class="row">
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="fname">First Name<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="First Name" formControlName="first_name">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('first_name').valid && (form.get('first_name').dirty || form.get('first_name').touched)">Please
+                enter first name!</small>
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="lname">Last Name<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('last_name').valid && (form.get('last_name').dirty || form.get('last_name').touched)">Please
+                enter last name!</small>
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="email">Email<sup>*</sup></label>
+            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('email').valid && (form.get('email').dirty || form.get('email').touched)">Please
+                enter email!</small>
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="phone">Phone Number</label>
+            <input type="tel" mask='000-000-0000' class="form-control" placeholder="Number" formControlName="phone_no">
+            <small class="form-text text-danger"
+                *ngIf="!form.get('phone_no').valid && (form.get('phone_no').dirty || form.get('phone_no').touched)">Please
+                enter phone no.!</small>
+        </div>
+
+    </div>
+        <div class="row">
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <label class="">About me</label>
+            <quill-editor  [maxLength]="3100" placeholder="Share a brief professional summary"
+             formControlName="about_me" (change)="getaboutval($event)">
+            </quill-editor>
+           
+            <small class="form-text text-danger"
+            *ngIf="!form.get('about_me').valid && (form.get('about_me').dirty || form.get('about_me').touched)">Please
+            add words less than 500</small>
+           
+        </div>
+    </div>
+       
+    <div class="row">
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">I will respond in</label>
+            <input type="number" class="form-control" placeholder="Days" formControlName="avg_wait_time">
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="">Service Charges</label>
+            <input type="text" mask="separator.2" thousandSeparator="," class="form-control currency"
+                placeholder="Price" formControlName="avg_consultation_price">
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label for="prpicture">Profile Picture</label>
+            <div class="inputicon">
+                <div class="custom-file">
+                        <input #_fileInput type="file" (change)="openCropperDialog($event)" accept="image/*" hidden class="custom-file-input" id="customFile" name="filename">
+                        <a href="javascript:void(0)" class="btn btn-danger gradient" (click)="_fileInput.click()">
+                          <span>Upload Picture</span>
+                        </a>
+                </div>
+            </div>
+
+          
+          
+        </div>
+
+          <!-- ============Cropper Start============== -->
+         <div class="col-lg-12 col-md-12 col-sm-12">
+             
+             <div class="croprofile">
+            <div class="row">
+    <div class="col-lg-12">
+        <h5 class="mb-2">Uploaded Image</h5>
+    <div *ngIf="cropped" ><img [src]="cropped" class="border"></div>
+    </div>
+
+    <div *ngIf="!cropped || cropped=='null' && singleUserObject && singleUserObject?.profile_media" class="image_upload col-md-12">
+        <div *ngIf="singleUserObject && singleUserObject.profile_media && singleUserObject.profile_media.base_path"
+            class="upload-images imgnm d-flex">
+           
+                <img src="{{singleUserObject.profile_media.base_path+'/'+ singleUserObject.profile_media.system_name}}"
+                    alt="img" class="img-fluid border">
+               
+                    <!-- {{singleUserObject.profile_media.real_name}} -->
+                <!-- <small>4.5kb</small> -->
+        </div>
+    </div>
+
+  
+    
+            </div>
+            
+            </div>
+         </div>
+        
+         
+        <!-- ============Cropper End============== -->
+
+       
+          
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-0 text-center">
+
+            <span><input type="submit" class="btn btn-danger mt-5 gradient"  value="SAVE CHANGES"></span>
+        </div>
+    </div>
+</form>
+<app-map-modal #mapModal ></app-map-modal>

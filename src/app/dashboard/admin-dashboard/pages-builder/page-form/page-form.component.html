@@ -1,0 +1,137 @@
+<style>
+   .mat-tab-body {
+        top: 10px !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        }
+</style>
+
+<div class="card mb-0">
+        <h3 class="card-title">{{title}}</h3>
+        <form class="form" [formGroup]="form" novalidate>
+        <mat-tab-group mat-align-tabs="left">
+                    
+                    <mat-tab label="Page">
+                        <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Page Type <sup>*</sup></label>
+                                        <select class="form-control"  formControlName="page_type" (change)="changePage($event)">
+                                            <option value="0" [selected]>Select Page</option>
+                                            <!-- <option value="1" >Select123 Page</option>
+                                            <option value="2" >Select123 Page</option> -->
+                                            <option *ngFor="let item of pages" [ngValue]="item.id">
+                                                {{ item.name }}
+                                              </option>
+                                            <!-- <option value="3" *ngFor="let page of pages" >33 Page</option> -->
+                                            <!-- <ng-container *ngFor="let page of pages">
+                                            <option [ngValue]="page.id">{{page.page_slug}}</option>
+                                        </ng-container> -->
+                                        </select>
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('page_type').valid && (form.get('page_type').dirty || form.get('page_type').touched)">Please
+                                            select type!</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Name <sup>*</sup></label>
+                                        <input type="text" (keyup)="keyupSlugs($event.target.value)" class="form-control" placeholder="Page Name" 
+                                        formControlName="page_name" >
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('page_name').valid && (form.get('page_name').dirty || form.get('page_name').touched)">Please
+                                            enter page name!</small> 
+                                          
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Page Slugs <sup>*</sup></label>
+                                        <input disabled type="text" class="form-control" placeholder="Page Slug" 
+                                        formControlName="page_slug" >
+                                      
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Page Title <sup>*</sup></label>
+                                        <input type="text" class="form-control" placeholder="Page Title" 
+                                        formControlName="page_title">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Page Keywords <sup>*</sup></label>
+                                        <input type="text" class="form-control" placeholder="Page Keywords" 
+                                        formControlName="page_keywords">
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('page_keywords').valid && (form.get('page_keywords').dirty || form.get('page_keywords').touched)">Please
+                                            enter page keywords!</small>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="form-label">Page Description</label>
+                                        <textarea style="height: 98px;" rows="6" class="form-control" placeholder="Description" rows="1"
+                                            formControlName="page_description"></textarea>
+                                        <!-- <input type="text" class="form-control" placeholder="Last Name" formControlName="description"> -->
+                                    </div>
+                                   
+                                   </div>
+
+                                <!-- <div class="col-md-12">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Page Content <sup>*</sup></label>
+                                        <input  [ngxSummernote] type="text" class="form-control" placeholder="Page Slug" 
+                                        formControlName="page_content" >
+                                      
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Page Content1 <sup>*</sup></label>
+                                        <input  [ngxSummernote] type="text" class="form-control" placeholder="Page Slug" 
+                                        formControlName="page_content1" >
+                                      
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Page Content2 <sup>*</sup></label>
+                                        <input  [ngxSummernote] type="text" class="form-control" placeholder="Page Slug" 
+                                        formControlName="page_content2" >
+                                      
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Page Content3 <sup>*</sup></label>
+                                        <input  [ngxSummernote] type="text" class="form-control" placeholder="Page Slug" 
+                                        formControlName="page_content3" >
+                                      
+                                    </div>
+                                </div> -->
+
+
+
+                         </div>
+                         <div class="card-footer text-center">
+                            <button type="button"  (click)="onSubmit()"
+                                class="btn btn-secondary">{{!id ? 'Add' :'Update'}} Page</button>
+                        </div>
+                    </mat-tab>
+                   
+                    <mat-tab label="Add Page Content">
+                        
+                               <app-add-content [id]=id [pageCont]=pages></app-add-content>
+                           
+                    </mat-tab>
+                   
+                   
+          </mat-tab-group>
+         
+        </form>
+    
+</div>

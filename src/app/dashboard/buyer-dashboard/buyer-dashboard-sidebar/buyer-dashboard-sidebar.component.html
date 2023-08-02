@@ -1,0 +1,89 @@
+<!-- <div class="card">
+    <div class="card-header">
+        <a href="javascript:void(0);" routerLink="myDashboard" [routerLinkActive]="['active']" class=" text-dark">
+            <h3 class="card-title">My Dashboard</h3>
+        </a>
+    </div>
+    <div class="card-body text-center item-user border-bottom">
+        <div class="profile-pic">
+            <div class="profile-pic-img">
+                <span class="bg-success dots" data-toggle="tooltip" data-placement="top" title="online"></span>
+                <img [src]="user && user.profile_media ? user.profile_media.base_path+'/'+user.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'"
+                    class="brround" alt="user" class="brround" alt="user">
+            </div>
+            <a href="userprofile2.html" class="text-dark">
+                <h4 class="mt-3 mb-0 font-weight-semibold">{{user?.first_name}} {{user?.last_name}}</h4>
+            </a>
+        </div>
+    </div>
+    <div class="item1-links  mb-0">
+        <a href="javascript:void(0);" class="d-flex border-bottom" routerLink="editProfile"
+            [routerLinkActive]="['active']">
+            <span class="icon1 mr-3"><i class="icon icon-user"></i></span> Edit Profile
+        </a>
+        <a href="javascript:void(0);" class="d-flex  border-bottom">
+            <span class="icon1 mr-3"><i class="icon icon-diamond"></i></span> My Appointments
+        </a>
+        <a href="javascript:void(0);" class=" d-flex border-bottom">
+            <span class="icon1 mr-3"><i class="icon icon-heart"></i></span> My Favorites
+        </a>
+        <a href="javascript:void(0);" class=" d-flex  border-bottom">
+            <span class="icon1 mr-3"><i class="icon icon-credit-card"></i></span> Payments
+        </a>
+
+        <a href="javascript:void(0);" class="d-flex border-bottom">
+            <span class="icon1 mr-3"><i class="icon icon-game-controller"></i></span> Tips for You
+        </a>
+        <a href="javascript:void(0);" class="d-flex">
+            <span class="icon1 mr-3"><i class="icon icon-power"></i></span> Logout
+        </a>
+    </div>
+</div>
+<div class="card my-select">
+</div> -->
+
+<div class="card">
+    <div class="card-header">
+        <div class="profile-pic">
+            <div class="profile-pic-img mb-2">
+                <span class="bg-success dots" data-toggle="tooltip" data-placement="top" title="online"></span>
+                <img [src]="user && user.profile_media ? user.profile_media.base_path+'/'+user.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'"
+                    class="brround" alt="user">
+            </div>
+            <a routerLink="myDashboard" class="text-dark">
+                <h3 class="card-title">{{user?.first_name}} {{user?.last_name}}</h3>
+            </a>
+        </div>
+        <!-- <h3 class="card-title">{{user?.first_name}} {{user?.last_name}}</h3> -->
+    </div>
+    <div class="item1-links  mb-0">
+        <a href="javascript:void(0)" [routerLink]="['/dashboard/buyer/myDashboard']" routerLinkActive="active"
+            class="d-flex  border-bottom">
+            Dashboard
+        </a>
+        <a href="javascript:void(0)" class="d-flex  border-bottom">
+            Messages
+        </a>
+        <a href="javascript:void(0)" class="d-flex  border-bottom" [routerLink]="['/dashboard/buyer/appointments']"
+            [routerLinkActive]="['active']">
+            Appointments
+        </a>
+
+        <a href="javascript:void(0)" class="d-flex border-bottom">
+            My Favorite
+        </a>
+
+        <a href="javascript:void(0)" class="d-flex border-bottom" [routerLink]="['/dashboard/buyer/tips']"
+            [routerLinkActive]="['active']">
+            Tips for You
+        </a>
+
+        <a href="javascript:void(0)" class="d-flex border-bottom" [routerLink]="['/dashboard/buyer/settings']"
+            [routerLinkActive]="['active']">
+            Settings
+        </a>
+        <a href="javascript:void(0)" class="d-flex" (click)="onLogout()">
+            Logout
+        </a>
+    </div>
+</div>

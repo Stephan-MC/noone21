@@ -1,0 +1,51 @@
+
+
+<div class="procontform">
+    <form [formGroup]="requestForm">
+        
+
+            <div class="form-group">
+                <input type="text" placeholder="Enter your name" class="form-control"
+                    formControlName="name">
+                <small class="form-text text-danger"
+                    *ngIf="!requestForm.get('name').valid && (requestForm.get('name').dirty || requestForm.get('name').touched)">Please
+                    enter name!</small>
+            </div>
+           
+            <div class="form-group">
+                <input type="email" placeholder="Email" class="form-control"
+                    formControlName="email">
+                <small class="form-text text-danger"
+                    *ngIf="!requestForm.get('email').valid && (requestForm.get('email').dirty || requestForm.get('email').touched)">Please
+                    enter valid email!</small>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" formControlName="remark"  rows="4" placeholder="Type your message here...">
+
+                </textarea>
+                <small class="form-text text-danger"
+                *ngIf="!requestForm.get('remark').valid && (requestForm.get('remark').dirty || requestForm.get('remark').touched)">Please
+                    Please
+                    enter remark!</small>
+            </div>
+
+        <!-- <div class=" form-group">
+
+            <div *ngIf="!openModal">
+                <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"
+                    [useGlobalDomain]="true" (reset)="handleReset()"
+                    (success)="handleSuccessOuterForm($event)"
+                    formControlName="recaptcha">
+                </ngx-recaptcha2>
+            </div>
+        </div> -->
+       
+            <div class="form-group mb-0">
+                <button type="button"
+                    (click)="addRequestForm(requestForm,handleSuccessOuter)"
+                    class="btnsub btn-danger btn gradient"><span>SUBMIT DETAILS</span>
+                    </button>
+            </div>
+       
+    </form>
+</div>

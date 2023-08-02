@@ -1,0 +1,158 @@
+<section class="sptb">
+    <div class="m-2">
+        <!-- <div class="section-title center-block text-center">
+                <h2>Category List</h2>
+                <button class="btn btn-primary round-btn  mb-2" (click)="onAdd()">Add Category</button>
+            </div> -->
+        <div class="card mb-0">
+            <div class="card-header">
+                <h2>Review List</h2>
+            </div>
+            <div class="card-body" novalidate>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12" [formGroup]="form">
+                        <div class="row">
+                            <div class="col-sm-5 col-md-5">
+                                <div class="form-group">
+                                    <label class="form-label">Review To</label>
+                                    <input type="text" class="form-control" placeholder="Vendor Name"
+                                        formControlName="search">
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-md-5">
+                                <div class="form-group">
+                                    <label class="form-label">Status</label>
+                                    <select id="inputState" formControlName="is_approved"
+                                        class="form-control nice-select">
+                                        <option [ngValue]=null>Select Status</option>
+                                        <option *ngFor="let item of approvesList" [value]="item.value">{{item.text}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-md-42 mt-5 pt-1 text-center">
+                                <button class="btn btn-success mr-2" (click)="onReset()"
+                                    [disabled]="isEmptyObjectKeys(form.value)">
+                                    Reset </button>
+                                <button class="btn btn-primary" (click)="onFilter()">
+                                    Filter </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pb-2">
+                        <button class="btn btn-primary round-btn ml-2" style="float: right;" [disabled]="disableButton"
+                            *ngIf="selectedRows.length!=0" (click)="approveReview(1)">Approve Review's
+                            [{{selectedRows.length}}]</button>
+                        <button class="btn btn-primary round-btn ml-2" style="float: right;" [disabled]="disableButton"
+                            *ngIf="selectedRows.length!=0" (click)="approveReview(0)">Reject Review's
+                            [{{selectedRows.length}}]</button>
+                        <button class="btn btn-secondary round-btn ml-2" style="float: right;"
+                            [disabled]="disableButton" *ngIf="selectedRows.length!=0" (click)="onDelete()">Delete
+                            Review
+                            [{{selectedRows.length}}]</button>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                        <ngx-datatable ngx-resize-watcher class="material" [rows]="rows" [columnMode]="'force'"
+                            [headerHeight]="40" [externalPaging]="true" [count]="total" [limit]="limit"
+                            (page)='onPageChange($event)' [scrollbarH]="true" [scrollbarH]="true" [offset]="offset"
+                            [footerHeight]="40" [rowHeight]="'auto'">
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="Id" prop="id" [width]="40">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a href="javascript:void(0);" class="text-dark">{{value}}</a>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <!-- <ngx-datatable-column name="Name" prop="name"></ngx-datatable-column> -->
+
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="Review To" prop="user" [width]="140">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a href="javascript:void(0);" (click)="viewProfile(row.user)"
+                                        class="text-dark">{{row?.user?.first_name}}
+                                        {{row?.user?.last_name}}
+                                    </a>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [width]="180"
+                                [resizeable]="false" name="Rating" prop="review">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <ngb-rating [rate]="value" [max]="5" [readonly]="true">
+                                        <ng-template let-fill="fill">
+                                            <span class="star" [class.full]="fill === 100">
+                                                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                                            </span>
+                                        </ng-template>
+                                    </ngb-rating>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="Comment" prop="comments" [width]="140">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a href="javascript:void(0);" class="text-dark">{{value}}
+                                    </a>
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                [resizeable]="false" name="Review by" prop="review_by" [width]="150">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    {{row?.review_by?.first_name}} {{row?.review_by?.last_name}}
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                [resizeable]="false" name="Status" prop="is_approved" [width]="150">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a *ngIf="value" class="badge badge-success">Approved</a>
+                                    <a *ngIf="!value" class="badge badge-danger">Not
+                                        Approved</a>
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [width]="180"
+                                [resizeable]="false" name="Created At" prop="created_at">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    {{value  | date:'MM-dd-yyyy hh:mm:ss aa'}}
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <!-- <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                [resizeable]="false" name="Member Since" prop="description" [width]="150">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <span> {{value}}</span>
+                                </ng-template>
+                            </ngx-datatable-column> -->
+
+                            <ngx-datatable-column [canAutoResize]="true" [draggable]="false" [resizeable]="false"
+                                name="Choose" sortable="false" prop="id" [width]="120">
+                                <ng-template let-column="column" ngx-datatable-header-template>
+                                    <label class="custom-control custom-checkbox main_check">
+                                        <span class="label_check">Choose</span>
+                                        <input type="checkbox" class="custom-control-input" name="checkbox"
+                                            [(ngModel)]="checkBoxChecked" [checked]="checkBoxChecked"
+                                            (click)="selectAll($event)">
+                                        <span class="custom-control-label inner-check"></span>
+                                    </label>
+                                </ng-template>
+
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <label class="custom-control custom-checkbox main_check">
+                                        <input type="checkbox" class="custom-control-input"
+                                            [checked]="row.checkBoxChecked" (click)="SelectSingle($event,row)">
+                                        <span class="custom-control-label inner-check"></span>
+                                    </label>
+
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>

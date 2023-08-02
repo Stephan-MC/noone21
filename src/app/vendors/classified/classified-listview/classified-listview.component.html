@@ -1,0 +1,221 @@
+<section class="addetaillist">
+ 
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+               
+                <h2 class="mb-0 pb-2 mt-3">Ads List</h2>
+             
+           
+        </div>
+            <div class="col-lg-12 users-list">
+
+
+                <div class="card mb-0 mt-2" *ngFor="let row of rows">
+                    <div class="card-body p-4">
+                        <div class="row">
+                         
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                               <div class="addlistbox">
+                                 
+                                     <div class="adimg" *ngFor="let item of row.media; let i=index">
+                                        <div *ngIf="i < 1">
+                                            
+                                        <img [src]="item.base_path+'/'+item.system_name" class="img-responsive">
+                                               
+                                        </div>
+                                        <div *ngIf="item?.length < 1">
+                                        <img src="../assets/images/dummyimg.png" class="img-responsive">
+                                        </div>
+                                       
+                                     </div>
+                                   
+                                     <div class="addright">
+                                         <h4>{{row.title}} &nbsp; <span *ngIf="row.category">| &nbsp; {{row.category}}</span></h4>
+                                     </div>
+
+                                     <div class="adeditbox">
+                                        
+                                         <a href="javascript:void(0)" (click)="edit(row.id)"><i class="fa fa-pencil"></i> Edit Ad</a>
+                                         <a href="javascript:void(0)" (click)="Delete(row.id)"><i class="fa fa-trash"></i> Delete Ad</a>
+                                     </div>
+                                 
+                               </div>
+                           </div>
+                        </div>
+
+                       
+                    </div>
+                </div>
+               
+             
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+               
+                    <h2 class="mb-0 text-center pb-5">Post List</h2>
+                 
+               
+            </div>
+        
+            <div class="col-lg-12 users-list">
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 mb-2" [formGroup]="filterForm">
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">User Name</label>
+                                            <input type="text" class="form-control" placeholder="Name"
+                                                formControlName="search">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Select Status</label>
+                                            <select class="form-control" formControlName="status_id">
+                                                <option [ngValue]=null>SelectOptions</option>
+                                                <option value="0">Waiting For Approval</option>
+                                                <option value="1">Approved</option>
+                                                <option value="2">Rejected</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Catgory</label>
+                                            <select id="inputState" formControlName="categoryId"
+                                                class="form-control nice-select">
+                                                <option [ngValue]=null>Select Role</option>
+                                                <option *ngFor="let item of catgories" [value]="item.id">{{item.title}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 mt-1 mb-4 pt-1 text-center">
+                                        <button class="btn btn-success mr-2" (click)="onReset()"
+                                            [disabled]="isEmptyObjectKeys(filterForm.value)">
+                                            Reset </button>
+                                        <button class="btn btn-primary" (click)="onFilter()">
+                                            Filter </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <ngx-datatable ngx-resize-watcher class="material" [rows]="rows" [columnMode]="'force'"
+                                    [headerHeight]="40" [footerHeight]="40" [rowHeight]="'auto'" [externalPaging]="true"
+                                    [count]="total" [scrollbarH]="true" [limit]="limit" (page)='onPageChange($event)'>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Id" prop="Id" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="text-dark">{{row?.id}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                  
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Name" prop="name" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <img [src]="row.profile_media ? row.profile_media.base_path+'/'+row.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'"
+                                                alt="Avatar" class="avatar"> <a href="javascript:void(0);"
+                                                class="text-dark ml-2">{{row?.contactName}}
+                                                </a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+
+
+
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Email" prop="email" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="text-dark">{{row?.email}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Phone" prop="phone_no" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="text-dark ml-2">{{row?.phone}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Address" prop="address" [width]="140">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);"
+                                                class="text-dark ml-2">{{row['region'] ? row['location']+' ' : ''}}
+                                              </a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                        [resizeable]="false" name="Status" prop="status_id" [width]="150">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="badge badge-danger" *ngIf="value != 4">
+                                                {{value == 0 ? "Waiting For Approval" : value == 2 ? "Rejected" : '' }}</a>
+                                            <a href="javascript:void(0);" class="badge badge-success"
+                                                *ngIf="value == 1"> Approved</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                        [resizeable]="false" name="Post" prop="Post" [width]="150">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <span> {{row.title}}</span>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [width]="100" [draggable]="false"
+                                        [resizeable]="false" name="Create at" prop="created_at" [width]="150">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <span> {{row.created_at | utcTime | date : 'MMMM d, y'}}</span>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Actions" sortable="false" prop="id" [width]="210">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <ng-container >
+                                                <div class="dtdropbox">
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="edit(row.id)" title="Edit Post"><i
+                                                            class="fa fa-eye"></i></a>
+                                                </div>
+                                                <div class="dtdropbox">
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="Delete(row.id)" title="Delete Post"><i
+                                                            class="fa fa-close"></i></a>
+                                                </div>
+                                            </ng-container>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </ngx-datatable>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </div> -->
+</section>

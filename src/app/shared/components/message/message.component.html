@@ -1,0 +1,37 @@
+
+
+<div class="procontform">
+    <form [formGroup]="requestForm">
+        
+
+          
+            <div class="form-group">
+                <textarea class="form-control" formControlName="message"  rows="4" placeholder="Type your message here...">
+
+                </textarea>
+                <small class="form-text text-danger"
+                *ngIf="!requestForm.get('message').valid && (requestForm.get('message').dirty || requestForm.get('message').touched)">Please
+                    Please
+                    enter message!</small>
+            </div>
+
+        <!-- <div class=" form-group">
+
+            <div *ngIf="!openModal">
+                <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"
+                    [useGlobalDomain]="true" (reset)="handleReset()"
+                    (success)="handleSuccessOuterForm($event)"
+                    formControlName="recaptcha">
+                </ngx-recaptcha2>
+            </div>
+        </div> -->
+       
+            <div class="form-group mb-0">
+                <button type="button"
+                    (click)="messageSent(requestForm,handleSuccessOuter)"
+                    class="btnsub btn-danger btn gradient"><span>SUBMIT DETAILS</span>
+                    </button>
+            </div>
+       
+    </form>
+</div>

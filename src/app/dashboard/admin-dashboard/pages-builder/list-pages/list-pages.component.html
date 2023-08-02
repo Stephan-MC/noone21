@@ -1,0 +1,135 @@
+<section class="sptb">
+    <div class="m-2">
+    
+        <div class="row">
+              
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 mb-2" [formGroup]="filterForm">
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Search</label>
+                                            <input type="text" class="form-control" placeholder="Name"
+                                                formControlName="search">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Select type</label>
+                                            <select class="form-control" formControlName="page_type">
+                                                <option [ngValue]=null>Select Options</option>
+                                                <option *ngFor="let item of pagetypes" [ngValue]="item.id">
+                                                    {{ item.name }}
+                                                  </option>
+                                               
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Select type</label>
+                                            <button class="btn btn-success mr-2" (click)="AddNewPage()" >
+                                          
+                                            Add New 
+                                        </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 mt-1 mb-4 pt-1 text-center">
+                                        <button class="btn btn-success mr-2" (click)="onReset()"
+                                            [disabled]="isEmptyObjectKeys(filterForm.value)">
+                                            Reset </button>
+                                        <button class="btn btn-primary" (click)="onFilter()">
+                                            Filter </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <ngx-datatable ngx-resize-watcher class="material" [rows]="rows" [columnMode]="'force'"
+                                    [headerHeight]="40" [footerHeight]="40" [rowHeight]="'auto'" [externalPaging]="true"
+                                    [count]="total" [scrollbarH]="true" [limit]="limit" (page)='onPageChange($event)'>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="id" prop="pageId" [width]="20">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <a href="javascript:void(0);" class="text-dark">{{row?.pageId}}</a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                    [resizeable]="false" name="Type" prop="page_type.name" [width]="140">
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        <a href="javascript:void(0);" class="text-dark">{{row?.page_type.name}}</a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                    [resizeable]="false" name="Name" prop="id" [width]="140">
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        <a href="javascript:void(0);" class="text-dark">{{row?.page_name}}</a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                    [resizeable]="false" name="Keywords" prop="page_keywords" [width]="140">
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        <a href="javascript:void(0);" class="text-dark">{{row?.page_keywords}}</a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                [resizeable]="false" name="Description" prop="page_description" [width]="140">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <a href="javascript:void(0);" class="text-dark">{{row?.page_description}}</a>
+                                </ng-template>
+                            </ngx-datatable-column>
+                                    <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Created at" prop="created_at" [width]="40">
+                                            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                                <a href="javascript:void(0);" class="text-dark"> {{row?.created_at | utcTime | date:'MMMM d h:m:s'}}</a>
+                                            </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                [resizeable]="false" name="Updated at" prop="updated_at" [width]="40">
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        <a href="javascript:void(0);" class="text-dark"> {{row?.updated_at | utcTime | date:'MMMM d h:m:s'}}</a>
+                                    </ng-template>
+                            </ngx-datatable-column>
+                                  <ngx-datatable-column [canAutoResize]="true" [draggable]="false"
+                                        [resizeable]="false" name="Actions" sortable="false" prop="id" [width]="50">
+                                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                            <ng-container *ngIf="row.role_id != 1">
+
+                                                <div class="dtdropbox">
+                                                 
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="viewPage(row)" title="View page"><i
+                                                            class="fa fa-eye"></i></a>
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-primary btn-sm text-white"
+                                                        (click)="editPage(row)" title="Edit Page"><i
+                                                            class="fa fa-edit" aria-hidden="true"></i></a>
+
+                                                    <a href="javascript:void(0);"
+                                                    class="btn btn-primary btn-sm text-white"
+                                                    (click)="Delete(row)" title="Delete Page">
+                                                    <i class="fa fa-remove" aria-hidden="true"></i>
+                                                 </a>
+                                                </div>
+                                            </ng-container>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </ngx-datatable>
+                            </div>
+                        </div>
+
+                  
+                     
+
+                     
+                    
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</section>
+
+

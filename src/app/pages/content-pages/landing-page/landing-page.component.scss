@@ -1,0 +1,105 @@
+.h_image{
+    height: 270px;
+}
+
+::ng-deep .tab-container .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+::ng-deep .tab-container .nav-tabs .nav-item{
+    margin-bottom: -4px;
+}
+
+::ng-deep .tab-container .nav-tabs .nav-item.active > a{
+   border-bottom: 0!important;
+    padding: 10px 20px 12px;
+    border-radius: 2px 2px 0 0;
+    margin-bottom: -2px;
+    background: #fff;
+    border: 1px solid#e4e6f1;
+    color: black;
+}
+
+::ng-deep .tab-container .nav-tabs .nav-item > a{
+  padding: 10px 20px 12px;
+    display: block;
+    margin: 4px 4px 0;
+    border: 1px solid #e4e6f1;
+    background: #dee0ec;
+    border-radius: 2px 2px 0 0;
+    font-size: 16px;
+    border-bottom: 0!important;
+}
+
+::ng-deep .tab-container .nav-tabs .nav-item > a {
+    padding: 10px 20px 12px;
+    display: block;
+    margin: 4px 4px 0;
+    border: 1px solid #e4e6f1;
+    background: #dee0ec;
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 4px;
+    font-size: 16px;
+    border-bottom: 0 !important;
+    margin-left: 0px;
+    margin-right: 10px;
+        color: black;
+}
+
+::ng-deep .tab-container .nav-tabs .nav-item.active > a {
+    margin-bottom: 3px;
+}
+::ng-deep .tab-container  .tab-content {
+    margin-top: 4px;
+}
+
+::ng-deep .tab-container .tab-content {
+    margin-top: 0px;
+    margin-left: -5px;
+    margin-right: -5px;
+    /* border: 2px solid black; */
+    border: 1px solid #e4e6f1;
+    border-top: 0;
+    padding: 5px;
+}
+
+::ng-deep .nav-tabs{
+        display: flex;
+    justify-content: center;
+}
+
+
+/* Clearable text inputs */
+.clearable{
+  position: relative;
+  display: inline-block;
+}
+.clearable input[type=text]{
+  padding-right: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.clearable__clear{
+    /* display: none; */
+    position: absolute;
+    right: 25px;
+    top: 2px;
+    padding: 0 8px;
+    font-style: normal;
+    font-size: 2em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.clearable input::-ms-clear {  /* Remove IE default X */
+  display: none;
+}
+
+.search-background {
+       overflow: visible;
+}
+
+.allcat .dropdown-menu .dropdown-item:last-child {
+text-align: left;
+}

@@ -1,0 +1,374 @@
+<!--Header Search-->
+<header class="header-search border-bottom p-2 bg-white">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <div class="header-search-logo d-none d-lg-block">
+                    <a class="header-logo" href="javascript:void(0);" routerLink="/">
+                        <img src="../assets/images/brand/logo.png" class="header-brand-img" alt="medlist logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 header-support">
+                <ul class="hor-support float-right">
+                    <li class="support-header">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-phone"></i>
+                            <div class="support-text">
+                                <h6>+68 872-627-9735</h6>
+                                <p>24/7 available services </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="support-header">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-envelope"></i>
+                            <div class="support-text">
+                                <h6>support@yourdomain.com</h6>
+                                <p>Ask For any questions</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!--/Header Search-->
+
+<!-- Horizontal Header -->
+<div class="horizontal-header clearfix">
+    <div class="container">
+        <a class="animated-arrow" id="horizontal-navtoggle"><span></span></a>
+        <a class="smllogo" href="javascript:void(0);">
+            <img alt="" src="../assets/images/brand/logo.png" width="120">
+        </a>
+        <a class="callusbtn" href="tel:245-6325-3256"><i aria-hidden="true" class="fa fa-phone"></i></a>
+    </div>
+</div>
+<!-- /Horizontal Header -->
+
+<!-- Horizontal Menu -->
+<div class="sticky">
+
+    <div class="header-style horizontal-main bg-dark-transparent bg-white clearfix">
+        <div *ngIf=" requestService.isAuthenticated() && user && user.status_id != 4"
+            class="alert alert-warning text-right font-weight-bold text-center profileverif" [ngClass]="mapcls ? '' : 'acts'"  role="alert">
+            <h6>Your profile is not verified yet!</h6>
+        </div>
+        <div class="horizontal-mainwrapper container clearfix">
+            <nav class="horizontalMenu clearfix d-md-flex">
+                <ul class="horizontalMenu-list">
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);">Home <span class="fe fe-chevron-down"></span></a>
+                        <!-- <ul class="sub-menu">
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home-Default</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Text</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Slides</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Video</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Animation</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Map</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Intro Page</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Pop-up login</a></li>
+                            <li aria-haspopup="true"><a href="javascript:void(0);">Home Banner</a></li>
+                        </ul> -->
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);">About Us</a>
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);">Widgets</a>
+                    </li>
+                    <li aria-haspopup="true">
+                        <a class="active" href="javascript:void(0);">Pages <span class="fe fe-chevron-down"></span></a>
+                        <!-- <div class="horizontal-megamenu clearfix">
+                            <div class="container">
+                                <div class="megamenu-content">
+                                    <div class="row">
+                                        <ul class="col link-list">
+                                            <li class="title">Listing pages</li>
+                                            <li><a href="javascript:void(0);">Page List</a></li>
+                                            <li><a href="javascript:void(0);">Page List Right</a></li>
+                                            <li><a href="javascript:void(0);">Page Map List</a></li>
+                                            <li><a href="javascript:void(0);">Page Map List 02</a></li>
+                                            <li><a href="javascript:void(0);">Page Map List 03</a></li>
+                                        </ul>
+                                        <ul class="col link-list">
+                                            <li class="title">Other pages</li>
+                                            <li><a href="javascript:void(0);">Ad Posts</a></li>
+                                            <li><a href="javascript:void(0);">Ad Posts2</a></li>
+                                            <li><a href="javascript:void(0);">Pricing</a></li>
+                                            <li><a href="javascript:void(0);">Typography</a></li>
+                                            <li><a href="javascript:void(0);">Categories</a></li>
+                                            <li><a href="javascript:void(0);">Testimonial</a></li>
+                                            <li><a href="javascript:void(0);">Invoice</a></li>
+                                        </ul>
+                                        <ul class="col link-list">
+                                            <li class="title">User pages</li>
+                                            <li><a href="javascript:void(0);">User Profile</a> </li>
+                                            <li><a href="javascript:void(0);">User Profile 2</a></li>
+                                            <li><a href="javascript:void(0);">My Dashboard</a></li>
+                                            <li><a href="javascript:void(0);">Ads</a></li>
+                                            <li><a href="javascript:void(0);">Favorite Ads</a></li>
+                                            <li><a href="javascript:void(0);">Settings</a></li>
+                                            <li><a href="javascript:void(0);">Tips</a></li>
+                                        </ul>
+                                        <ul class="col link-list">
+                                            <li class="title">User pages</li>
+                                            <li><a href="javascript:void(0);">Manged Ads</a></li>
+                                            <li><a href="javascript:void(0);">Payments</a></li>
+                                            <li><a href="javascript:void(0);">Orders</a></li>
+                                            <li><a href="javascript:void(0);">Faq</a></li>
+                                            <li><a href="javascript:void(0);">User Lists</a></li>
+                                        </ul>
+                                        <ul class="col link-list">
+                                            <li class="title">Headers & Footer Pages</li>
+                                            <li><a href="javascript:void(0);">Header Style 01</a></li>
+                                            <li><a href="javascript:void(0);">Header Style 02</a></li>
+                                            <li><a href="javascript:void(0);">Header Style 03</a></li>
+                                            <li><a href="javascript:void(0);">Header Style 04</a></li>
+                                            <li><a href="javascript:void(0);">Footer Style 01</a></li>
+                                            <li><a href="javascript:void(0);">Footer Style 02</a></li>
+                                            <li><a href="javascript:void(0);">Footer Style 03</a></li>
+                                            <li><a href="javascript:void(0);">Footer Style 04</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);">Categories <span class="fe fe-chevron-down"></span></a>
+                        <!-- <ul class="sub-menu">
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">Hospitals <i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">Hospital List</a></li>
+                                    <li><a href="javascript:void(0);">Hospital List Right</a></li>
+                                    <li><a href="javascript:void(0);">Hospital Details</a></li>
+                                    <li><a href="javascript:void(0);">Hospital Details 02</a></li>
+                                    <li><a href="javascript:void(0);">Hospital Details Right</a></li>
+                                </ul>
+                            </li>
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">Doctors <i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">Doctors List</a></li>
+                                    <li><a href="javascript:void(0);">Doctors List Right</a></li>
+                                    <li><a href="javascript:void(0);">Doctor Details</a></li>
+                                    <li><a href="javascript:void(0);">Doctor Details 2</a></li>
+                                    <li><a href="javascript:void(0);">Doctor Details Right</a></li>
+                                </ul>
+                            </li>
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">FitnessCenter<i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">Fitness List</a></li>
+                                    <li><a href="javascript:void(0);">Fitness List Right</a></li>
+                                    <li><a href="javascript:void(0);">Fitness Details</a></li>
+                                    <li><a href="javascript:void(0);">Fitness Details02</a></li>
+                                    <li><a href="javascript:void(0);">Fitness Details Right</a></li>
+                                </ul>
+                            </li>
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">Pharmacy<i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">Pharmacy List</a></li>
+                                    <li><a href="javascript:void(0);">Pharmacy List Right</a></li>
+                                    <li><a href="javascript:void(0);">Pharmacy Details</a></li>
+                                    <li><a href="javascript:void(0);">Pharmacy Details02</a></li>
+                                    <li><a href="javascript:void(0);">Pharmacy Details Right</a></li>
+                                </ul>
+                            </li>
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">BloodBank<i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">BloodBank List</a></li>
+                                    <li><a href="javascript:void(0);">BloodBank List Right</a></li>
+                                    <li><a href="javascript:void(0);">BloodBank Details</a></li>
+                                    <li><a href="javascript:void(0);">BloodBank Details Right</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);">Custom Pages <span class="fe fe-chevron-down"></span></a>
+                        <ul class="sub-menu">
+                            <!-- <li><a href="javascript:void(0);">Register</a></li> -->
+                            <li *ngIf="userRole && userRole.id == 4"><a
+                                    routerLink="/dashboard/vendor/myDashboard">Vendor Dashboard</a></li>
+
+                            <li *ngIf="userRole && userRole.id == 4"><a
+                                    routerLink="/dashboard/vendor/editProfile">Vendor Profile</a></li>
+
+                            <li *ngIf="userRole && userRole.id == 3"><a
+                                    routerLink="/dashboard/buyer/myDashboard">Buyer Dashboard</a></li>
+
+                            <li *ngIf="userRole && userRole.id == 3"><a
+                                    routerLink="/dashboard/buyer/editProfile">Buyer Profile</a></li>
+
+                            <!-- <li *ngIf="userRole && userRole.id == 4"><a routerLink="/doctors/list">Doctor List</a>
+                            </li>
+
+                            <li *ngIf="userRole && userRole.id == 4"><a routerLink="/users/list">User
+                                    List</a></li> -->
+
+                            <!-- <li><a href="javascript:void(0);">Login</a></li>
+                            <li><a href="javascript:void(0);">Login 02</a></li>
+                            <li><a href="javascript:void(0);">Forgot Password</a></li>
+                            <li><a href="javascript:void(0);">Lock Screen</a></li>
+                            <li><a href="javascript:void(0);">UnderConstruction</a></li>
+                            <li><a href="javascript:void(0);">404</a></li> -->
+                        </ul>
+                    </li>
+                    <li aria-haspopup="true" *ngIf="userRole && userRole.id == 1">
+                        <a href="javascript:void(0);">Masters<span class="fe fe-chevron-down"></span></a>
+                        <ul class="sub-menu">
+                            <!-- <li><a href="javascript:void(0);">Register</a></li> -->
+                            <li><a routerLink="/category/list">Category</a></li>
+
+                            <li><a routerLink="/skill/list">Skills</a></li>
+
+                            <li><a routerLink="/rejection-reason/list">Rejection Reason</a>
+                            </li>
+
+                            <li><a routerLink="/consultation/list">Consultation</a></li>
+
+                            <!-- <li *ngIf="userRole && userRole.id == 4"><a routerLink="/doctors/list">Doctor List</a>
+                                                </li>
+                    
+                                                <li *ngIf="userRole && userRole.id == 4"><a routerLink="/users/list">User
+                                                        List</a></li> -->
+
+                            <!-- <li><a href="javascript:void(0);">Login</a></li>
+                                                <li><a href="javascript:void(0);">Login 02</a></li>
+                                                <li><a href="javascript:void(0);">Forgot Password</a></li>
+                                                <li><a href="javascript:void(0);">Lock Screen</a></li>
+                                                <li><a href="javascript:void(0);">UnderConstruction</a></li>
+                                                <li><a href="javascript:void(0);">404</a></li> -->
+                        </ul>
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);">Blog <span class="fe fe-chevron-down"></span></a>
+                        <!-- <ul class="sub-menu">
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">Blog Grid <i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">Blog Grid Left</a></li>
+                                    <li><a href="javascript:void(0);">Blog Grid Right</a></li>
+                                    <li><a href="javascript:void(0);">Blog Grid Center</a></li>
+                                </ul>
+                            </li>
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">Blog List <i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">Blog List Left</a></li>
+                                    <li><a href="javascript:void(0);">Blog List Right</a></li>
+                                    <li><a href="javascript:void(0);">Blog List Center</a></li>
+                                </ul>
+                            </li>
+                            <li aria-haspopup="true">
+                                <a href="javascript:void(0);">Blog Details <i
+                                        class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="javascript:void(0);">Blog Details Left</a></li>
+                                    <li><a href="javascript:void(0);">Blog Details Right</a></li>
+                                    <li><a href="javascript:void(0);">Blog Details Center</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li aria-haspopup="true">
+                        <a href="javascript:void(0);">Contact Us </a>
+                    </li>
+                    <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
+                        <span>
+                            <a href="javascript:void(0);" class="btn btn-secondary btn-block mb-lg-0"><i
+                                    class="icon icon-plus mr-1 text-white"></i>Add Your Post</a>
+                        </span>
+                    </li>
+                </ul>
+                <ul class="mb-0">
+                    <li aria-haspopup="true" class="d-none d-lg-block ">
+                        <span>
+                            <a href="javascript:void(0);" class="btn btn-danger btn-block mb-lg-0"><i
+                                    class="fe fe-plus-circle mr-1 text-white"></i>Add Your Post</a>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- /Horizontal Menu -->
+
+<!-- /Header-main -->
+
+<!--Sliders Section-->
+<div>
+    <!-- <div class=" cover-image sptb-1 bg-background" data-image-src="../assets/images/banners/banner1.jpg">
+        <div class="header-text1 mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 col-md-12 d-block mx-auto">
+                        <div class="text-center text-white text-property">
+                            <h1 class=""><span class="font-weight-bold">12,000+</span> Medical Facilities Available!
+                            </h1>
+                        </div>
+                        <div class="search-background bg-transparent">
+                            <div class="form row no-gutters">
+                                <div class="form-group col-xl-5 col-lg-5 col-md-12 mb-0 bg-white">
+                                    <input class="form-control input-lg br-md-0" id="text5"
+                                        placeholder="Search Location" type="text"> <span><i
+                                            class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                </div>
+                                <div class="form-group col-xl-5 col-lg-5 col-md-12 select2-lg mb-0 bg-white">
+                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                        data-placeholder="Select">
+                                        <optgroup label="Categories">
+                                            <option class="text-muted">
+                                                Select
+                                            </option>
+                                            <option value="1">
+                                                Hospitals
+                                            </option>
+                                            <option value="2">
+                                                Doctors
+                                            </option>
+                                            <option value="3">
+                                                Fitness Centers
+                                            </option>
+                                            <option value="3">
+                                                Pharmacies
+                                            </option>
+                                            <option value="3">
+                                                Clinics
+                                            </option>
+                                            <option value="3">
+                                                Bloodbanks
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-md-12 mb-0">
+                                    <a class="btn btn-lg btn-block btn-secondary br-tl-md-0 br-bl-md-0"
+                                        href="javascript:void(0);">Search
+                                        Here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+<!--/Sliders Section-->

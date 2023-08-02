@@ -1,0 +1,73 @@
+<style>
+    .mat-tab-body {
+         top: 10px !important;
+         left: 10px !important;
+         right: 10px !important;
+         bottom: 10px !important;
+         }
+ </style>
+ 
+ <div class="card mb-0">
+         <h3 class="card-title">{{title}}</h3>
+         <form class="form" [formGroup]="form" novalidate>
+                        <div class="col-md-2" *ngIf="!id">
+                            <div class="form-group  autocomplete-dropdown">
+                                <label class="form-label">Select page <sup>*</sup></label>
+                                <select class="form-control"  formControlName="page_id" (change)="changePage($event)">
+                                    <option value="0" [selected]>Select Page</option>
+                                    <ng-container *ngFor="let page of pages">
+                                    <option [ngValue]="page.id">{{page.page_slug}}</option>
+                                </ng-container>
+                                </select>
+                            
+                            </div>
+                        </div>
+                       
+                       
+                         <div class="row" >
+                            <ng-container *ngFor="let control of contents.controls; index as i">
+                                <div class="col-md-6">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Section Name <sup>*</sup></label>
+                                        <input   type="text" class="form-control" placeholder="Section Name" 
+                                        [formControl]="display_name.controls[i]" >
+                                            <!-- <small class="form-text text-danger"
+                                            *ngIf="!form.get('display_name').valid && (form.get('display_name').dirty || form.get('display_name').touched)">Please
+                                            select type!</small> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group  autocomplete-dropdown">
+                                        <label class="form-label">Remove Content <sup>*</sup></label>
+                                        <button class="btn btn-danger" (click)="removeContent(i)">X</button>
+                                    </div>
+                                </div>
+                                 <div class="col-md-12">
+                                     <div class="form-group  autocomplete-dropdown" >
+                                         <label class="form-label">Page Content <sup>*</sup></label>
+                                         <input  [ngxSummernote] type="text" class="form-control" placeholder="Content" 
+                                         [formControl]="contents.controls[i]" >
+                                         <!-- <small class="form-text text-danger"
+                                         *ngIf="!form.get('content').valid && (form.get('content').dirty || form.get('content').touched)">Please
+                                         select type!</small> -->
+                                     </div>
+                                     
+                                 </div>
+                                </ng-container>
+                                <div class="col-md-12" text-center>
+                                    <div class="form-group  autocomplete-dropdown" >
+                                        <label class="form-label">Page Content <sup>*</sup></label>
+                                        <button  class="btn btn-secondary" (click)="addContent()">Add Content</button>
+                                    </div>
+                                    
+                                </div>
+                            
+ 
+                          </div>
+                    <div class="card-footer text-center">
+                        <button type="button"  (click)="onSubmit()"
+                            class="btn btn-secondary"> Save Change</button>
+                        </div>
+         </form>
+     
+ </div>

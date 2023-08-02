@@ -1,0 +1,66 @@
+
+<!-- <a href="#" class="btn btn-grlight pull-right mb-4">Add New Consultation</a> -->
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+
+        <ng-container>
+            <div class="form-group col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                <label class="form-label">Video Link<sup>*</sup></label>
+                <input type="text"  class="form-control required" placeholder="Video Link" formControlName="videoLink"
+                >
+                <small class="form-text text-danger" 
+                *ngIf="!form.get('videoLink').valid && (form.get('videoLink').dirty || form.get('videoLink').touched)"
+                >Please add video link!</small>
+            </div>
+            
+            <div class="form-group text-center col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <br>
+                <button class="btn btn-danger frmbtn flr gradient" type="submit"><span>SAVE
+                    CHANGES</span></button>
+            </div>
+            <div class="col-lg-6">
+                <img [src]="imageSrc" *ngIf="imageSrc" style="width: 100px;">
+            </div>
+            
+        </ng-container>
+    </div>
+</form>
+
+
+ <div class="detailabt mt-5">
+    <div class="card bra-10 videogallery">
+        <h4 class="p-3 border-bottom mb-0">Videos</h4>
+        <!-- =================== Published Video ============================= -->
+        <div class="card-body pt-5 px-5 pb-0">
+            <div class="row vidgal" id="video-gallery">
+                <ng-container *ngFor="let item of _iframe_html; let i=index">
+                    <div class="video pb-5 col-lg-4 col-md-4 col-sm-6 col-12" >
+                        <div class="vidbx">
+                            <div class="" [innerHtml]="item.emedVidoe">
+                            </div>
+                            <span class="material-icons del_btn" (click)="DeleteVideo(item.itemObj)">
+                         cancel
+                         </span>
+                         </div>
+                    </div>
+                </ng-container >
+                 <!-- ====================Reviews Video   ======================== -->
+      
+                <ng-container *ngFor="let item of _iframe_html_approval; let i=index">
+                    <div class="video pb-5 col-lg-4 col-md-4 col-sm-6 col-12" >
+                        <div class="vidbx">
+                            <div class="" [innerHtml]="item.emedVidoeApproval">
+                            </div>
+                            <span class="material-icons del_btn" (click)="DelVidApproval(item.itemObj)">
+                         cancel
+                         </span>
+                         </div>
+                    </div>
+                </ng-container >
+              
+        <!-- ====================End Reviews Video ============================== -->
+            </div>
+        </div>
+       
+    </div>
+ </div>

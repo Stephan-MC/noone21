@@ -1,0 +1,530 @@
+<!--Section-->
+<section>
+
+    <div class="banner-2 cover-image sptb-2 sptb-tab bg-background2 banner-section homebg">
+        <div class="header-text mb-0">
+            <div class="container">
+
+                <div class="text-center text-white mb-6">
+                    <h1 class="mb-1">Hire Talent: Actors, Directors and Support Crew<br> to Make the Best of Productions
+                    </h1>
+                    <p>Find and hire professionals, build media teams, and share your work with the world </p>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-xl-10 col-lg-10 col-md-12 d-block mx-auto">
+                        <div class="search-background">
+                            <div class="form row no-gutters">
+                                <div class="form-group col-xl-10 col-lg-10 col-md-12 mb-0 location">
+                                    <input #search class="form-control border" placeholder="Search Location"
+                                        type="text">
+                                    <i (click)="resetLatLng()" *ngIf="formFilter.value.location"
+                                        class="clearable__clear">&times;</i>
+                                    <span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                </div>
+
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                    <a (click)="doSearch()" class="btn btn-block btn-danger fs-15"
+                                        href="javascript:void(0);"><i class="fa fa-search"></i>
+                                        Search</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+                <div class="row">
+                    <div class="col-xl-10 col-lg-10 col-md-12 d-block mx-auto srchfilt">
+                        <div class="search-background bg-transparent">
+                            <div class="form row no-gutters">
+                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 bg-white">
+                                    <input class="form-control input-lg br-md-0" id="text5"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="Search"
+                                        placeholder="Who are you looking for?" type="text">
+                                </div>
+                                <div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-0 bg-white">
+                                    <div class="allcat">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                                <strong><i class="fa fa-th" aria-hidden="true"></i>
+                                                    {{selectedValue ? selectedValue.name : ''}}
+                                                </strong>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <div class="divh">
+                                                    <!-- <ng-container *ngFor="let item of categories">
+                                                        <a href="javascript:void(0)" (click)="selectItem(item)"
+                                                            class="dropdown-item">{{item?.name}}</a>
+                                                    </ng-container> -->
+
+                                                    <ng-container>
+                                                        <ul class="customdrop">
+                                                            <ng-container *ngFor="let item of categoriesALL; let i = index">
+                                                                <li class="dropitemain" [ngClass]="{'active': selectedItem === i}" (click)='selectedItem = i;'><a
+                                                                        href="javascript:void(0)"
+                                                                        class="dropdown-item dropitem"
+                                                                        (click)="selectItem(item)">{{item?.name}}</a>
+                                                                    <ul *ngIf=" item?.sub_categories">
+                                                                        <ng-container
+                                                                            *ngFor="let sub of item?.sub_categories">
+                                                                            <li><a href="javascript:void(0)"
+                                                                                    (click)="selectItemSubCategory(sub)"
+                                                                                    class="dropdown-item">{{sub?.name}}</a>
+                                                                            </li>
+                                                                        </ng-container>
+
+
+                                                                    </ul>
+                                                                </li>
+                                                            </ng-container>
+                                                        </ul>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="form-group col-xl-4 col-lg-4 col-md-12 select2-lg mb-0 bg-white border-left">
+                                    <input #search class="form-control input-lg br-md-0" id="text6"
+                                        placeholder="Search by Location" type="text">
+                                    <i (click)="resetLatLng()" *ngIf="formFilter.value.location"
+                                        class="clearable__clear">&times;</i>
+                                    <span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-md-12 mb-0">
+                                    <a class="btn btn-lg btn-block btn-danger gradient br-tl-md-0 br-bl-md-0"
+                                        href="javascript:void(0);" (click)="doSearch()"><span><i
+                                                class="fa fa-search"></i>
+                                            Search</span></a>
+                                </div>
+
+                            </div>
+                            <div class="mpsrchbtn"><span>Search near your location with:</span><a
+                                    routerLink="/pages/map-view">MAP SEARCH</a></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--/Section-->
+
+<section class="doc_section section-bg serv_sec">
+    <div class="sptb pb-0">
+        <div class="container">
+            <div class="section-title center-block text-center">
+                <h2>Look through the categories</h2>
+                <p>Find the right talent to collaborate with</p>
+            </div>
+            <div class="row justify-content-center">
+
+                <div class="col-lg-10 col-xs-10 col-md-12">
+                    <div class="row">
+                        <ng-container *ngFor="let item of categoriesALL; let i=index " >
+                           
+                            <div class="col-xl-2 col-sm-4 col-4" *ngIf="item.is_home==1">
+                                <div class="card border-0 mb-7">
+                                    <div class="cardbody active">
+                                        <div class="cat-item text-center">
+                                            <a href="javascript:void(0);" (click)="doSearchClickCategory(item)"></a>
+                                            <div class="caticon">
+                                                <img src="{{item && item.media?  item.media.base_path+'/'+ item.media.system_name :'assets/images/face.png'}}"
+                                                    height="70" width="70" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="cat-desc">
+                                                <h5 class="mb-2">{{item?.name}}</h5>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-xl-2 col-sm-4 col-4" *ngIf="i==1">
+                                <div class="card border-0 mb-7">
+                                    <div class="cardbody ">
+                                        <div class="cat-item text-center">
+                                            <a href="javascript:void(0);" (click)="doSearchClickCategory(item)"></a>
+                                            <div class="caticon">
+                                                <img src="../assets/images/Nail.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="cat-desc">
+                                                <h5 class="mb-2">{{item?.name}}</h5>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-2 col-sm-4 col-4" *ngIf="i==2">
+                                <div class="card border-0 mb-7">
+                                    <div class="cardbody">
+                                        <div class="cat-item text-center">
+                                            <a href="javascript:void(0);" (click)="doSearchClickCategory(item)"></a>
+                                            <div class="caticon">
+                                                <img src="../assets/images/body.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="cat-desc">
+                                                <h5 class="mb-2">{{item?.name}}</h5>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-sm-4 col-4" *ngIf="i==3">
+                                <div class="card border-0 mb-7">
+                                    <div class="cardbody">
+                                        <div class="cat-item text-center">
+                                            <a href="javascript:void(0);" (click)="doSearchClickCategory(item)"></a>
+                                            <div class="caticon">
+                                                <img src="../assets/images/teeth.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="cat-desc">
+                                                <h5 class="mb-2">{{item?.name}}</h5>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-sm-4 col-4" *ngIf="i==4">
+                                <div class="card border-0 mb-7">
+                                    <div class="cardbody">
+                                        <div class="cat-item text-center">
+                                            <a href="javascript:void(0);" (click)="doSearchClickCategory(item)"></a>
+                                            <div class="caticon">
+                                                <img src="../assets/images/hair.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="cat-desc">
+                                                <h5 class="mb-2">{{item?.name}}</h5>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-2 col-sm-4 col-4" *ngIf="i==5">
+                                <div class="card border-0 mb-7">
+                                    <div class="cardbody">
+                                        <div class="cat-item text-center">
+                                            <a href="javascript:void(0);" (click)="doSearchClickCategory(item)"></a>
+                                            <div class="caticon">
+                                                <img src="../assets/images/med-spa.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="cat-desc">
+                                                <h5 class="mb-2">{{item?.name}}</h5>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </ng-container>
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="col-lg-12 col-xl-12 col-md-12 border-bottom">
+                    <a href="javascript:void(0)" class="btn btn-danger gradient d-lg-none d-md-none btn-block"
+                        routerLink="/pages/all-categories"><span>All Categories</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="doc_content pos_sec">
+        <div class="container">
+            <div class="row ptb border-bottom justify-content-center">
+                <div class="col-xl-5 col-lg-6 col-md-6">
+                    <div class="cont_left">
+                        <h2>Find and book<br> the best media gigs</h2>
+                        <ul>
+                            <li>Set up your profile on NoOne 21.</li>
+                            <li>Add portfolio and relevant information.</li>
+                            <li>Book a gig that best represents you.</li>
+                        </ul>
+                        <a href="javascript:void(0);" routerLink="/pages/vendor-register" class="btn btn-danger mt-6 mb-4 gradient"><span>Sign
+                                Up</span></a>
+
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="cont_right">
+                        <img src="../assets/images/talentimg1.jpg" class="img-fluid" alt="">
+                    </div>
+                    <a href="javascript:void(0);" routerLink="/pages/vendor-register"
+                        class="btn btn-danger d-lg-none d-md-none btn-block mt-5 gradient"><span>Sign Up</span></a>
+                </div>
+            </div>
+            <div class="row ptb">
+                <div class="col-xl-6 col-lg-6 col-md-6 order-last order-sm-2 order-md-1">
+                    <div class="cont_right">
+                        <img src="../assets/images/talentimg2.jpg" class="img-fluid" alt="">
+                    </div>
+                    <a href="javascript:void(0);" routerLink="/pages/vendor-list"
+                        class="btn btn-danger d-lg-none d-md-none btn-block mt-5 gradient"><span>Start
+                            Looking</span></a>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 order-sm-1 order-md-2 order-first tm30">
+                    <div class="cont_left">
+                        <h2>All media industry talent <br>
+                            in one place </h2>
+                        <ul>
+                            <li>A place for producers, directors, actors and support to come together. </li>
+                            <li>Book talent directly without the help of an agency.</li>
+                            <li>An outlet for media professionals to present their skills and collaborate! </li>
+                        </ul>
+                        <a href="javascript:void(0);" routerLink="/pages/vendor-list" class="btn btn-danger mt-6 mb-4 gradient"><span>Start
+                                Looking</span></a>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Section-->
+<section class="sptb bgblues hitb hmb">
+    <div class="container">
+        <div class="section-title center-block text-center">
+            <h2>How it works</h2>
+            <p>Here is how you can book a job</p>
+        </div>
+        <div class="row ">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="">
+                    <div class="mb-lg-0 mb-4">
+                        <div class="service-card text-center">
+                            <div class="icon-bg box-shadow icon-service text-danger about bg-white">
+                                <img src="../assets/images/Make-a-search.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="servic-data mt-3">
+                                <h4 class="font-weight-semibold mb-2">Make a Profile</h4>
+                                <p class="text-muted mb-0">Set up a profile with relevant information about your
+                                    experience and goals. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="">
+                    <div class="mb-sm-0 mb-4">
+                        <div class="service-card text-center">
+                            <div class="icon-bg box-shadow icon-service text-danger about bg-white">
+                                <img src="../assets/images/Explore-Options.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="servic-data mt-3">
+                                <h4 class="font-weight-semibold mb-2">Define Your Talent</h4>
+                                <p class="text-muted mb-0">Include your portfolio and define your skills and talent to
+                                    get opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="">
+                    <div class="mb-sm-0 mb-4">
+                        <div class="service-card text-center">
+                            <div class="icon-bg box-shadow icon-service text-danger about bg-white">
+                                <img src="../assets/images/Connect-with-freelancers.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="servic-data mt-3">
+                                <h4 class="font-weight-semibold mb-2">Talk to Producers</h4>
+                                <p class="text-muted mb-0">Discuss projects and gigs that interest you and respond to
+                                    any offers that you get. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="">
+
+                    <div class="service-card text-center">
+                        <div class="icon-bg box-shadow icon-service text-danger about bg-white">
+                            <img src="../assets/images/Get-to-work!.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="servic-data mt-3">
+                            <h4 class="font-weight-semibold mb-2">Find a Gig!</h4>
+                            <p class="text-muted mb-0">Once you’ve received an offer that is best suited for you, seal
+                                the deal and get to work! </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/Section-->
+
+<!--Section-->
+<section class="sptb bg-white">
+    <div class="container">
+        <div class="section-title center-block text-center">
+            <h2>As seen on TV</h2>
+
+        </div>
+        <owl-carousel-o [options]="customOptions" id="small-categories">
+            <ng-template carouselSlide>
+                <div class="client-img">
+                    <img src="../assets/images/clients/1.png" alt="img">
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="client-img">
+                    <img src="../assets/images/clients/2.png" alt="img">
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="client-img">
+                    <img src="../assets/images/clients/3.png" alt="img">
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="client-img">
+                    <img src="../assets/images/clients/4.png" alt="img">
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="client-img">
+                    <img src="../assets/images/clients/5.png" alt="img">
+                </div>
+            </ng-template>
+           
+        </owl-carousel-o>
+      
+    </div>
+</section>
+<!--/Section-->
+
+<section class="keycity section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 py-6 col-sm-6 col-6">
+                <div class="keywordbox">
+                    <h4>DIRECTORIES </h4>
+                    <ul>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/associate-directors"><span>Associate Directors
+                                </span></a></li>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/commercial-directors"><span>Commercial Directors
+                                </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/film-directors"><span>Film
+                                    Directors</span></a></li>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/first-assistant-directors"><span>First Assistant
+                                    Directors / 1st AD </span></a></li>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/second-assistant-directors"><span>Second Assistant
+                                    Directors / 2nd AD</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 py-6 col-sm-6 col-6">
+                <div class="keywordbox">
+                    <h4>STORY DEVELOPMENT </h4>
+                    <ul>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/screenwriter"><span>Screenwriter </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/story-editor"><span>Story
+                                    Editor </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/researcher"><span>Researcher
+                                </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/script-reader"><span>Script
+                                    Reader</span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/literary-agent"><span>Literary
+                                    Agent </span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 py-6 col-sm-6 col-6">
+                <div class="keywordbox">
+                    <h4>PRODUCTION COMPANIES </h4>
+                    <ul>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/video-editor"><span>Video
+                                    Editor </span></a></li>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/marketing-manager"><span>Marketing Manager </span></a>
+                        </li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/marketing-lead"><span>Marketing
+                                    Lead </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/intern"><span>Intern
+                                </span></a></li>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/production-office-facilities"><span>Production Office
+                                    Facilities </span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 py-6 col-sm-6 col-6">
+                <div class="keywordbox">
+                    <h4>ART DEPARTMENT</h4>
+                    <ul>
+                        <li><a href="javascript:void(0);"
+                                routerLink="/pages/vendor-list/24-frame-video-playback"><span>24 Frame Video Playback
+                                </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/antique-props"><span>Antique
+                                    Props / Period Items </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/armorer"><span>Armorer /
+                                    Military Props </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/prop-weapons"><span>Prop
+                                    Weapons </span></a></li>
+                        <li><a href="javascript:void(0);" routerLink="/pages/vendor-list/art-directors"><span>Art
+                                    Directors </span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- model topover -->
+
+<div class="welcomepop">
+    <!-- The Modal -->
+
+    <ng-template #template id="welcomepopup">
+        <div class="welcomepop">
+            <div class="modal-body">
+                <div class="welcomebox">
+                    <span class="close" data-dismiss="modal" (click)="modalRef.hide()">&times;</span>
+
+                    <div class="welin">
+                        <span>Buckle up for</span>
+                        <h2>Soft Launch of Version 1.03</h2>
+                        <p>Be the first to become part of this revolutionary media portal and bring the world to your
+                            doorstep.</p>
+
+
+                        <button class="btn btn-danger" (click)="modalRef.hide()">I UNDERSTAND...</button>
+                        <span>**Full features will become available very soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</div>
+<!-- model topover end -->
+
+<div>
+<span id="clkbtns" #clckbtns (click)="openModal(template)"></span></div>

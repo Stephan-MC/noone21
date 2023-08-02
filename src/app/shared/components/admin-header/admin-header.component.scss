@@ -1,0 +1,35 @@
+.app-sidebar .side-menu li ul li a:hover {
+    color: #1c46c5;
+    cursor: pointer;
+}
+
+.navbar {
+    margin-top: 65px;
+    padding:0 30px;
+    background: #4b4b4b;
+
+    .nav-link {
+        display: block;
+        padding: 0.6rem 1.6rem 0.6rem 0rem;
+    }    
+
+    .dropdown-menu  {
+        padding:0px;
+    }
+
+    .collapse {
+        background: #4b4b4b;
+    }
+    
+    .navbar-nav .nav-link {
+        color: #fff;
+
+         i {
+            color: #fff;
+            margin-right: 0px;
+        }
+        
+    }
+    
+}
+

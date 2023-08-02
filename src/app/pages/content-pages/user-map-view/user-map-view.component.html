@@ -1,0 +1,536 @@
+<!--Sliders Section-->
+<div class="map_sectbox">
+	<div class="filtmapbtns d-lg-none">
+		<a href="javascript:void(0)" class="mpfiltbtn" (click)="listfiltfunction()" [ngClass]="mapclsa ? 'active' : ''">{{mapclsa ? '&times;' : 'Filter'}}</a>
+		<a href="javascript:void(0)" class="mplistbtn" (click)="listmapfunction()" [ngClass]="mapclse ? 'acti' : ''">{{mapclse ? 'Map' : 'List'}}</a>
+	</div>
+	<div class="mapfilthide" [ngClass]="mapclsa ? 'active' : ''">
+		<div class=" cover-image listbg filtblock">
+			<div class="header-text1 mb-0">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
+							<form [formGroup]="formFilter">
+								<div class="search-background bg-transparent">
+
+									<div class="form row no-gutters">
+
+										<div
+											class="form-group col-xl-3 col-lg-3 col-md-12 mb-0 bg-white  autocomplete-dropdown">
+											<ng-template #category let-r="result" let-t="term">
+												<small class="nameFilter">{{ r.name }}</small>
+											</ng-template>
+											<input class="form-control input-lg br-md-0" id="text5"
+												[ngbTypeahead]="searchCategory" [resultTemplate]="category"
+												[inputFormatter]="categoryFormatter" formControlName="category"
+												placeholder="Type here to search for" type="text">
+										</div>
+										<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-0 bg-white">
+											<div class="allcat">
+												<div class="dropdown">
+													<button type="button" class="btn dropdown-toggle"
+														data-toggle="dropdown">
+														<strong><i class="fa fa-th" aria-hidden="true"></i>
+															{{selectedValue ? selectedValue.name : ''}}</strong>
+													</button>
+													<div class="dropdown-menu mt-0">
+														<div class="divh">
+															<!-- <ng-container *ngFor="let item of categories">
+																<a href="javascript:void(0)" (click)="selectItem(item)"
+																	class="dropdown-item">{{item?.name}}</a>
+															</ng-container> -->
+															<ng-container>
+																<ul class="customdrop">
+																	<ng-container *ngFor="let item of categories; let i = index">
+																		<li class="dropitemain" [ngClass]="{'active': selectedItem === i}" (click)='selectedItem = i;'><a href="javascript:void(0)"
+																				class="dropdown-item dropitem"
+																				(click)="selectItem(item)">{{item?.name}}</a>
+																			<ul *ngIf=" item?.sub_categories">
+																				<ng-container
+																					*ngFor="let sub of item?.sub_categories">
+																					<li><a href="javascript:void(0)"
+																							(click)="selectItemSubCategory(sub)"
+																							class="dropdown-item">{{sub?.name}}</a>
+																					</li>
+																				</ng-container>
+
+
+																			</ul>
+																		</li>
+																	</ng-container>
+																</ul>
+															</ng-container>
+														</div>
+
+
+														<!-- <a href="javascript:void(0)" class="dropdown-item">Nose
+														Reshaping</a>
+													<a href="javascript:void(0)" class="dropdown-item">Ears</a>
+													<a href="javascript:void(0)" class="dropdown-item">Hips</a>
+													<a href="javascript:void(0)" class="dropdown-item">Hairs
+														Transplant</a>
+													<a href="javascript:void(0)" class="dropdown-item">Lips filler</a> -->
+														<!-- <a href="javascript:void(0)"
+														class="showmorebtn dropdown-item"><strong>Show
+															All</strong></a> -->
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div class="form-group col-xl-3 col-lg-3 col-md-12 select2-lg mb-0 bg-white">
+											<input #search class="form-control input-lg br-md-0" id="text5"
+												formControlName="location" placeholder="Search Location" type="text">
+											<i *ngIf="formFilter.value.location" (click)="resetLatLng()"
+												class="clearable__clear">&times;</i>
+											<span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-12 mb-0">
+											<a class="btn btn-lg btn-block btn-danger gradient br-tl-md-0 br-bl-md-0"
+												(click)="getDoctors()" href="javascript:void(0)"><span><i
+													class="fa fa-search"></i> Search</span></a>
+										</div>
+										<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-0">
+											<div class="advsearch">
+
+												<a class="btn btn-lg btn-block br-tl-md-0 br-bl-md-0"
+													href="javascript:void(0)" (click)="clickfunct()">
+													Advanced
+													Search</a>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /header-text -->
+		</div>
+
+		<div class="filterheader mt-0 mb-4">
+			<div class="pendwork" (click)="openModel(templatea)"></div>
+			<div class="container-fluid">
+				<div class="search-background bg-transparent">
+					<!-- <div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
+							<form [formGroup]="formFilter">
+								<div class="row">
+
+									<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+
+									
+										<select class="form-control" formControlName="availability"  data-trigger name="choices-single-default" id="availability" (change)="availabilityfun($event.target.value)">
+										
+											<option *ngFor="let item of availabilities" [value]="item?.id"
+											data-icon="fa fa-circle"> {{item.name}}</option>
+											</select>
+											
+			
+									
+									</div>
+									<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+										<div class="selectrange">
+											<div class="addicon">
+												<input class="form-control input-lg br-md-0" id="selectrng"
+													(change)="doChange($event)" placeholder="Fee Range"
+													formControlName="fees_range" type="text">
+											</div>
+											<div class="selectslid">
+												
+												<span class="example-val" id="lower-value"></span>
+												<span class="example-val" id="upper-value"></span>
+												<div id="nonlinear" class="noUi-target noUi-ltr noUi-horizontal"></div>
+
+												<a href="javascript:void(0)"
+													class="pricerngbtn" (click)="filtapply()"><strong>Apply</strong></a>
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+										<select id="gender"
+											class="form-control w-100 select-lg" 
+											formControlName="gender" (change)="changegender($event.target.value)">
+
+											
+											<option data-icon="fa fa-circle">All vendors</option>
+											<option value="1" data-icon="fa fa-circle-thin">Male</option>
+											<option value="2" data-icon="fa fa-circle-thin">Female</option>
+
+										</select>
+
+									
+									</div>
+									<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+										<div class="checkwhite">
+											<label class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input" name="checkbox7"
+													formControlName="show_nearest" value="option3">
+												<span class="custom-control-label">
+													<span class="text-dark"> Show Nearest</span>
+												</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+										<select id="radius"
+											class="form-control select-lg"
+											formControlName="radius" data-placeholder="Select" (change)="radiuschange($event.target.value)">
+
+											
+											<option value="5" data-icon="fa fa-circle-thin">5 km</option>
+											<option value="10" data-icon="fa fa-circle-thin">10 km</option>
+											<option value="20" data-icon="fa fa-circle-thin">20 km</option>
+											<option value="25" data-icon="fa fa-circle-thin">25 km</option>
+											<option value="30" data-icon="fa fa-circle-thin">30 km</option>
+
+
+										</select>
+									</div>
+
+									<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+										<div class="custcheck availcheckc">
+											<div class="custom-control custom-switch">
+												<input type="checkbox" class="custom-control-input" id="switch1"
+													formControlName="online_consultation">
+												<label class="custom-control-label" for="switch1"><strong>Available Online</strong></label>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</form>
+						</div>
+					</div> -->
+				
+					<div class="container-fluid">
+						<div class="search-background bg-transparent">
+							<div class="row">
+								<div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
+									<form [formGroup]="formFilter">
+										<div class="row">
+			
+											<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+			
+											
+												<!-- <select class="form-control" formControlName="availability"  data-trigger name="choices-single-default" id="availability" (change)="availabilityfun($event.target.value)">
+												
+													<option *ngFor="let item of availabilities" [value]="item?.id"
+													data-icon="fa fa-circle"> {{item.name}}</option>
+													</select> -->
+			
+													 <select class="form-control input-lg"  data-trigger name="choices-single-default" id="availability" >
+												
+													<option 
+													> Daily</option>
+													</select>
+			
+													 
+													
+					
+											
+											</div>
+											<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+												<div class="selectrange">
+													<div class="addicon">
+														<!-- <input class="form-control input-lg br-md-0" id="selectrng"
+															(change)="doChange($event)" placeholder="Fee Range"
+															formControlName="fees_range" type="text">  -->
+															
+															<input class="form-control input-lg br-md-0" id="selectrng"
+															 placeholder="Fee Range"
+															 type="text">
+													</div>
+													<!-- <div class="selectslid">
+														
+														<span class="example-val" id="lower-value"></span>
+														<span class="example-val" id="upper-value"></span>
+														<div id="nonlinear" class="noUi-target noUi-ltr noUi-horizontal"></div>
+			
+														<a href="javascript:void(0)"
+															class="pricerngbtn" (click)="filtapply()"><strong>Apply</strong></a>
+													</div> -->
+												</div>
+											</div>
+											<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+												<!-- <select id="gender"
+													class="form-control w-100 select-lg" 
+													formControlName="gender" (change)="changegender($event.target.value)">
+			
+													
+													<option data-icon="fa fa-circle">All vendors</option>
+													<option value="1" data-icon="fa fa-circle-thin">Male</option>
+													<option value="2" data-icon="fa fa-circle-thin">Female</option>
+			
+												</select> -->
+			
+														 <select id="gender"
+													class="form-control w-100 select-lg input-lg" 
+													>
+			
+													
+													<option data-icon="fa fa-circle">All vendors</option>
+												  
+			
+												</select>
+			
+											
+											</div>
+											<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+												<div class="checkwhite">
+													<label class="custom-control custom-checkbox">
+														<input type="checkbox" class="custom-control-input" name="checkbox7"
+															formControlName="show_nearest" value="option3">
+														<span class="custom-control-label">
+															<span class="text-dark"> Show Nearest</span>
+														</span>
+													</label>
+												</div>
+											</div>
+											<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+												<!-- <select id="radius"
+													class="form-control select-lg"
+													formControlName="radius" data-placeholder="Select" (change)="radiuschange($event.target.value)">
+			
+													
+													<option value="5" data-icon="fa fa-circle-thin">5 km</option>
+													<option value="10" data-icon="fa fa-circle-thin">10 km</option>
+													<option value="20" data-icon="fa fa-circle-thin">20 km</option>
+													<option value="25" data-icon="fa fa-circle-thin">25 km</option>
+													<option value="30" data-icon="fa fa-circle-thin">30 km</option>
+			
+			
+												</select>                  -->
+												
+												<select id="radius"
+													class="form-control select-lg input-lg"
+													 data-placeholder="Select" >
+			
+													
+													<option value="5" data-icon="fa fa-circle-thin">5 km</option>
+												   
+			
+			
+												</select>
+											</div>
+			
+											<div class="form-group col-xl-2 col-lg-2 col-md-12 select2-lg mb-4">
+												<div class="custcheck availcheckc">
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input" id="switch1"
+															formControlName="online_consultation" disabled>
+														<label class="custom-control-label" for="switch1"><strong>Available Online</strong></label>
+													</div>
+												</div>
+											</div>
+			
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Section-->
+	<section class="sptb mapserv pt-0">
+		<div class="container-fluid px-0">
+			<div class="row">
+				<!--Add lists-->
+				<div class="col-xl-6 col-lg-6 col-md-12 cardsect px-0" [ngClass]="mapcls ? 'hideb' : ''" [ngClass]="mapclse ? 'disb' : ''">
+					<div class=" mb-lg-0">
+						<div class="">
+							<div class="item2-gl ">
+								<div class=" mb-0 dropfilter">
+									<div class="">
+										<div class="p-5 bg-white item2-gl-nav d-flex">
+											<h6 class="mb-0 mt-2 mr-auto pull-left pl-3">{{total}} Services Available
+											</h6>
+
+											<div class="sortfilt d-flex">
+
+												<label class="mr-2 mt-1 mb-sm-1">Sort By:</label>
+												<select name="item" (change)="doSort()" [(ngModel)]="sortType"
+												class="form-control">
+											   
+												<option value="2">Latest</option>
+												<option value="1">Oldest</option>
+											   
+											</select>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="h1bx">
+									<div class="tab-content">
+
+
+										<div class="tab-pane active" id="tab-12">
+											<div class="row">
+												<ng-container *ngFor="let doc of doctorList">
+													<div class="col-lg-6 col-md-3 col-sm-6 col-12 col-xl-6">
+
+														<div class="card overflow-hidden">
+
+															<div class="item-card9-img">
+																<div class="item-card9-imgs">
+																	<a href="javascript:void(0)" (click)="viewProfile(doc)"></a>
+																	<img alt="img" class="cover-image d-image"
+																		[src]="doc.profile_media ? doc.profile_media.base_path+'/'+doc.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'">
+																</div>
+
+
+															</div>
+															<div class="card-body">
+																<div class="item-card9">
+																	<a class="text-dark mt-2"
+																	href="javascript:void(0)" (click)="viewProfile(doc)">
+																		<h4 class="font-weight-bold mb-1">
+																			{{doc?.first_name}}
+																			{{doc?.last_name}}<i
+																				class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+																		</h4>
+																	</a>
+																	<a href="javascript:void(0);"
+																		class="view-map float-right v-map"
+																		(click)="onViewMap(doc)">view on
+																		Map</a>
+																	<span class="text-muted fs-13 mt-2" *ngIf="doc.address"><i
+																			class="fa fa-location-arrow text-muted mr-2"></i>
+																		{{doc?.address}}</span>
+																		<span class="text-muted fs-13 mt-2" *ngIf="!doc.address"><i
+																			class="fa fa-location-arrow text-muted mr-2"></i>
+																		My address</span>
+																	<div class="mt-2 mb-0">
+																		<ul class="item-card-features mb-0">
+																			<li><span *ngIf="doc.city">{{doc?.city}}</span><span *ngIf="!doc.city">City name</span></li>
+																			<li><span>20 Specialities</span></li>
+																			<li><span> 30 Vendors</span></li>
+																			<li><span class="">8 am - 9 am</span></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="card-footer p-0 btn-appointment">
+																<div class="btn-group w-100">
+																	<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+																		(click)="viewProfile(doc)"
+																		href="javascript:void(0)"><i
+																			class="fe fe-user mr-1"></i>
+																		Profile</a>
+																	<a href="javascript:void(0)"  routerLink="/pages/vendor-register" 
+																		class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+																		<div class="call-btn-1">
+																			<i class="fe fe-mail mr-1"></i> Contact
+																		</div>
+																		<div class="call-number">
+																			<!-- {{doc?.phone_no | phone}} -->
+																		</div>
+																	</a>
+																</div>
+															</div>
+
+
+
+														</div>
+
+													</div>
+												</ng-container>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-12 mapsect px-0" [ngClass]="mapcls ? 'fullb' : ''" [ngClass]="mapclse ? 'hideb' : ''">
+					<div class="center-block text-center docspaginate">
+
+						<!-- <pagination [boundaryLinks]="true" (pageChanged)="pageChanged($event)"
+							[totalItems]="total" class="my-pagination" [itemsPerPage]="limit"
+							[ngModelOptions]="{standalone: true}" [(ngModel)]="page">
+						</pagination> -->
+					</div>
+					<div class="map1 mapview">
+						<a href="javascript:void(0)" class="expandbtn" (click)="mapexpand()" [ngClass]="mapcls ? 'act' : ''"><i class="fa fa-angle-left"
+								aria-hidden="true"></i></a>
+						<!-- <div class="map-header-layer" id="map2"></div> -->
+						<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" style="height: 100%;"
+							(boundsChange)="handleCenterChange($event)" (mapReady)="mapReady($event)"
+							[disableDefaultUI]="false">
+							<agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+								
+								<agm-marker *ngFor="let m of doctorList; let i = index"
+									(markerClick)="clickedMarker(m, i,infoWindow)" [latitude]="m.lat"
+									[longitude]="m.lng" [markerDraggable]="false" [iconUrl]="icon"
+									(dragEnd)="markerDragEnd(m, $event)">
+
+									<agm-info-window #infoWindow>
+										<div class="card">
+											<img [src]="m.profile_media ? m.profile_media.base_path+'/'+m.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'"
+												alt="Avatar" class="avatar">
+											<!-- <img [src]="m.profile_media ? m.profile_media.base_path+'/'+m.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'"
+                            alt="John" style="width:100%;height: 150px;"> -->
+											<a (click)="viewProfile(m)"
+												class="text-success d_name cursor-pointer">{{m.first_name}}
+												{{m?.last_name}}</a>
+											<p class="title">{{m?.address}} {{m?.city}} {{m?.country}}</p>
+											<p>{{ m?.phone_no | slice:0:3 }} - {{ m?.phone_no | slice:3:7 }} -
+												{{ m?.phone_no | slice:8:10 }}</p>
+										</div>
+									</agm-info-window>
+
+								</agm-marker>
+							</agm-marker-cluster>
+							<!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radius" [fillColor]="'red'"
+								[circleDraggable]="false" [editable]="false">
+							</agm-circle> -->
+						</agm-map>
+					
+					</div>
+					
+				</div>
+				<!--/Add lists-->
+			</div>
+		</div>
+	</section>
+	<!--/Section-->
+</div>
+
+<div class="welcomepop">
+	<!-- The Modal -->
+
+	<ng-template #templatea id="welcomepopup">
+		<div class="welcomepop">
+			<div class="modal-body">
+				<div class="welcomebox">
+					<span class="close" data-dismiss="modal" (click)="modalRef.hide()">&times;</span>
+
+					<div class="welin">
+						<span>Buckle up for</span>
+						<h2>Soft Launch of Version 1.03</h2>
+						<p>Be the first to become part of this revolutionary media portal and bring the world to your
+							doorstep.</p>
+
+
+						<button class="btn btn-danger" (click)="modalRef.hide()">I UNDERSTAND...</button>
+						<span>**Full features will become available very soon</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-template>
+
+</div>

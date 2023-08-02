@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row" style="margin-top: 5%;">
+      <div class="text-center col-md-12">
+          <input type="file" (change)="fileChangeEvent($event)" />
+      </div>
+  </div>
+  <div class="row" style="margin-top: 5%;">
+      <div class="text-center col-md-8">
+          <h5>Crop Image</h5>
+          <image-cropper 
+          [imageChangedEvent]="imageChangedEvent" 
+          [maintainAspectRatio]="true" 
+          [hideResizeSquares]="false"
+          [aspectRatio]="4 / 4"
+          [resizeToWidth]="0" 
+          [resizeToHeight]="0" 
+          [cropperStaticWidth]="140"
+          [cropperStaticHeight]="140"
+          [roundCropper]="true"
+          format="png" 
+          (imageCropped)="imageCropped($event)" 
+          (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady()" 
+          (loadImageFailed)="loadImageFailed()">
+        </image-cropper>
+      </div>
+      <div class="text-center col-md-4">
+          <h5>Preview</h5>
+          <img style="height: 140px; width: 140px;border-radius: 50%;" 
+        [src]="croppedImage" />
+        <button type="button" class="btn btn-sm btn-primary"
+        (click)="crop()">Crop</button>
+           
+      </div>
+  </div>
+</div>

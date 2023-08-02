@@ -1,0 +1,121 @@
+::ng-deep .tab-container .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+::ng-deep .tab-container .nav-tabs .nav-item{
+    margin-bottom: -4px;
+}
+
+::ng-deep .tab-container .nav-tabs .nav-item.active > a{
+   border-bottom: 0!important;
+    padding: 10px 20px 12px;
+    border-radius: 2px 2px 0 0;
+    margin-bottom: -2px;
+    background: #fff;
+    border: 1px solid#e4e6f1;
+    color: black;
+}
+
+
+::ng-deep .tab-container .nav-tabs .nav-item > a{
+  padding: 10px 20px 12px;
+    display: block;
+    margin: 4px 4px 0;
+    border: 1px solid #e4e6f1;
+    background: #dee0ec;
+    border-radius: 2px 2px 0 0;
+    font-size: 16px;
+    border-bottom: 0!important;
+}
+
+::ng-deep .tab-container .nav-tabs .nav-item > a {
+    padding: 10px 20px 12px;
+    display: block;
+    margin: 4px 4px 0;
+    border: 1px solid #e4e6f1;
+    background: #dee0ec;
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 4px;
+    font-size: 16px;
+    border-bottom: 0 !important;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+::ng-deep .tab-container .nav-tabs .nav-item.active > a {
+    margin-bottom: 3px;
+}
+::ng-deep .tab-container  .tab-content {
+    margin-top: 4px;
+}
+
+::ng-deep .tab-container .tab-content {
+    margin-top: 0px;
+    margin-left: -5px;
+    margin-right: -5px;
+    /* border: 2px solid black; */
+    border: 1px solid #e4e6f1;
+    border-top: 0;
+    padding: 5px;
+}
+
+
+
+///////////////////////////////////////////////////////////////@extend
+.actions_btn{
+    top: 40%;
+}
+/* Large rounded green border */
+hr.new5 {
+      padding: 0;
+    border: 2px solid #e4e6f1;
+    border-radius: 2px;
+    width: 96%;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.upldbox .p-2.border.mb-4 .upload-images {
+    width: 120px;
+    float: left;
+    position: relative;
+    height: 50px;
+    box-shadow: 0px 0px 7px -2px #333;
+    margin-right: 10px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.upldbox .p-2.border.mb-4 .upload-images h6 {
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+    margin: 0px !important;
+}
+.upldbox .p-2.border.mb-4 .upload-images .float-right .btn-icon {
+    margin-top: 0 !important;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.upldbox .p-2.border.mb-4 .upload-images .ml-3.mt-2 {
+    margin: 0 !important;
+}
+
+.upldbox .p-2.border.mb-4{
+    display: inline-block;
+    width: 100%;
+}
+
+.image_upload{
+    width: 97%;
+    margin-left: 12px;
+}
+
+.inbox_msg {
+     border: 0px solid #c4c4c4;
+    clear: both;
+    overflow: hidden;
+}

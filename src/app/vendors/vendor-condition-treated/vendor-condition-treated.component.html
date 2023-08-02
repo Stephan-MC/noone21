@@ -1,0 +1,65 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 skilsect">
+            <label class="form-label skiltop">Skills</label>
+            <mat-chip-list #matChipConditionTreated>
+
+                <mat-chip *ngFor="let s of conditionTreated" (removed)="removeConditionTreated(conditionTreated,s)">
+                    {{s?.name}}
+                    <span matChipRemove style="font-size:16px;color:grey;padding-left: 5px; cursor: pointer;"
+                        class="material-icons">
+                        cancel
+                    </span>
+                </mat-chip>
+
+                <input placeholder="Enter skills here" class="form-control " [matAutocomplete]="auto"
+                    #trigger="matAutocompleteTrigger" (keyup)="changedConditionTreated(form,$event.target.value)"
+                    [matChipInputFor]="matChipConditionTreated" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    formControlName="condition_treated_id">
+            </mat-chip-list>
+
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let val of conditionTreatedDropdown ;let i=index" [value]="val"
+                    (click)="selectionMadeConditionTreated($event, trigger,val,form,i)">
+                    {{ val?.name }}
+                </mat-option>
+            </mat-autocomplete>
+
+        </div>
+        <div class="form-group text-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-0">
+            <a [class.custom_disabled]="disableButton" href="javascript:void(0);" (click)="onSubmit()"
+                class="btn btn-danger frmbtn flr btz gradient"><span>SAVE
+                CHANGES</span></a>
+        </div>
+    </div>
+</form>
+
+<!-- <div class="doctable table-responsive">
+    <table class="table mb-0 text-nowrap">
+        <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of rows;let i=index">
+                <tr>
+
+
+                    <td class="text-muted">{{item?.name}}</td>
+                    <td class="text-muted">{{item?.description}}</td>
+
+                    <td>
+
+
+                    </td>
+                </tr>
+            </ng-container>
+
+
+        </tbody>
+    </table>
+</div> -->

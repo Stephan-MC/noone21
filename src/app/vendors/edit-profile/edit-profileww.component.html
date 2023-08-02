@@ -1,0 +1,816 @@
+<div class="card mb-0">
+    <div class="card-header">
+        <h3 class="card-title">Edit Profile</h3>
+    </div>
+    <div class="card-body">
+        <form class="form" [formGroup]="form" novalidate>
+            <div class="row">
+
+                <div class="col-md-12 mt-1">
+                    <tabset>
+                        <tab heading="Profile" id="tab1">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">First Name <sup>*</sup></label>
+                                        <input type="text" class="form-control" placeholder="First Name"
+                                            formControlName="first_name">
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('first_name').valid && (form.get('first_name').dirty || form.get('first_name').touched)">Please
+                                            enter first name!</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name<sup>*</sup></label>
+                                        <input type="text" class="form-control" placeholder="Last Name"
+                                            formControlName="last_name">
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('last_name').valid && (form.get('last_name').dirty || form.get('last_name').touched)">Please
+                                            enter last name!</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Email address <sup>*</sup></label>
+                                        <input type="email" class="form-control" placeholder="Email"
+                                            formControlName="email">
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('email').valid && (form.get('email').dirty || form.get('email').touched)">Please
+                                            enter email!</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number <sup>*</sup></label>
+                                        <input type="tel" mask='000-000-0000' class="form-control" placeholder="Number"
+                                            formControlName="phone_no">
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('phone_no').valid && (form.get('phone_no').dirty || form.get('phone_no').touched)">Please
+                                            enter phone no.!</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Address<sup>*</sup><a class="map_icon_rk_a"
+                                                (click)="setLocationOnMap()">Find My
+                                                Location<i class="fa fa-map-marker map_icon_rk_i "
+                                                    aria-hidden="true"></i></a></label>
+                                        <input type="text" class="form-control" placeholder="Address"
+                                            formControlName="address" #search>
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('address').valid && (form.get('address').dirty || form.get('address').touched)">Please
+                                            enter address!</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label">City<sup>*</sup></label>
+                                        <input type="text" class="form-control" placeholder="City"
+                                            formControlName="city">
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('city').valid && (form.get('city').dirty || form.get('city').touched)">Please
+                                            enter name!</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Postal Code<sup>*</sup></label>
+                                        <input type="text" class="form-control" placeholder="ZIP Code"
+                                            formControlName="zip">
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('zip').valid && (form.get('zip').dirty || form.get('zip').touched)">Please
+                                            enter zip!</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label">Country<sup>*</sup></label>
+                                        <ng-select [items]="countries" bindLabel="country" bindValue="country"
+                                            [multiple]="false" placeholder="--Select--" formControlName="country">
+                                        </ng-select>
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('country').valid && (form.get('country').dirty || form.get('country').touched)">Please
+                                            enter country!</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Latitude <sup>*</sup></label>
+                                        <input type="number" class="form-control" placeholder="Latitude"
+                                            formControlName="lat" disabled>
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('lat').valid && (form.get('lat').dirty || form.get('lat').touched)">Please
+                                            enter lat!</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Longitude<sup>*</sup></label>
+                                        <input type="number" class="form-control" placeholder="Longitude"
+                                            formControlName="lng" disabled>
+                                        <small class="form-text text-danger"
+                                            *ngIf="!form.get('lng').valid && (form.get('lng').dirty || form.get('lng').touched)">Please
+                                            enter lng!</small>
+                                    </div>
+                                </div>
+                                <!-- {{form.value |json}} -->
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Facebook</label>
+                                        <input type="text" class="form-control" placeholder="https://www.facebook.com/"
+                                            formControlName="facebook_link">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Google</label>
+                                        <input type="text" class="form-control" placeholder="https://www.google.com/"
+                                            formControlName="google_link">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Twitter</label>
+                                        <input type="text" class="form-control" placeholder="https://twitter.com/"
+                                            formControlName="twitter_link">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Pinterest</label>
+                                        <input type="text" class="form-control" placeholder="https://in.pinterest.com/"
+                                            formControlName="pinterest_link">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Price</label>
+                                        <input type="text" mask="separator.2" thousandSeparator=","
+                                            class="form-control currency" placeholder="Price" formControlName="price">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Average Consultation Time</label>
+                                        <input type="number" class="form-control" placeholder="Consultation Time"
+                                            formControlName="avg_wait_time">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Average Consultation Time</label>
+                                        <input type="number" class="form-control currency"
+                                            placeholder="Consultation Time" formControlName="avg_consultation_time">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Price</label>
+                                        <input type="text" mask="separator.2" thousandSeparator=","
+                                            class="form-control currency" placeholder="Price" formControlName="price">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Availability</label>
+                                        <ng-select [items]="availabilities" bindLabel="name" bindValue="id"
+                                            [multiple]="false" placeholder="--Select--" formControlName="availability">
+                                        </ng-select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label">About Me</label>
+                                        <textarea rows="5" class="form-control"
+                                            placeholder="Share a brief professional summary "
+                                            formControlName="about_me"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label">Upload Image</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input"
+                                                name="example-file-input-custom"
+                                                (change)="fileChangeEventProfile($event)">
+                                            <label class="custom-file-label">Choose file</label>
+                                        </div>
+                                    </div>
+                               
+                                <div class="image_upload form-group border">
+                                    <div *ngIf="singleUserObject && singleUserObject.profile_media && singleUserObject.profile_media.base_path"
+                                        class="upload-images d-flex">
+                                        <div>
+                                            <img src="{{singleUserObject.profile_media.base_path+'/'+ singleUserObject.profile_media.system_name}}"
+                                                alt="img" class="w73 h73 border p-0">
+                                        </div>
+                                        <div class="ml-3 mt-2">
+                                            <h6 class="mb-0 mt-3 font-weight-bold">
+                                                {{singleUserObject.profile_media.real_name}}</h6>
+                                            <!-- <small>4.5kb</small> -->
+                                        </div>
+                                        <div class="float-right ml-auto">
+                                            <!-- <a href="#" class="float-right btn btn-icon btn-danger btn-sm mt-5"><i
+                                                    class="fa fa-trash-o"></i></a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-12 text-center mt-3">
+                                <button type="button" [disabled]="disableButton" (click)="onSubmit()"
+                                    class="btn btn-secondary">Updated
+                                    Profile</button>
+                            </div>
+                        </tab>
+                        <tab heading="Consultations" id="tab1">
+
+                            <div class="row">
+
+                                <div class="col-md-12 text-right mt-2 mb-2"><a
+                                        (click)="addFee();moveto(consultationFeeArray,'fee');"
+                                        href="javascript:void(0);" class="btn  btn-primary ">Add Consultation</a>
+                                </div>
+                                <hr class="new5">
+                                <ng-container *ngIf="consultationFeeArray?.controls?.length > 0">
+
+                                    <ng-container formArrayName="consultation"
+                                        *ngFor="let item of consultationFeeArray?.controls; let i = index"
+                                        [formGroup]="consultationFeeArray?.controls[i]">
+                                        <ng-container>
+                                            <div id="{{'fee'+i}}" class="col-md-6">
+                                                <!-- <div class="form-group">
+                                                    <label class="form-label">Consultation Title</label>
+                                                    <ng-select [items]="consultations" bindLabel="name" bindValue="id"
+                                                        [multiple]="false" placeholder="--Select--"
+                                                        [formControl]="item.controls.consultation_id">
+                                                    </ng-select>
+                                                </div> -->
+                                                <div class="form-group  autocomplete-dropdown">
+                                                    <label class="form-label">Service Title
+                                                        <sup>*</sup></label>
+                                                    <ng-template #cT let-r="result" let-t="term">
+                                                        <small class="nameFilter">{{ r.name }}</small>
+                                                    </ng-template>
+                                                    <input type="text" class="form-control" placeholder="Title"
+                                                        [formControl]="item.controls.consultation_id"
+                                                        [ngbTypeahead]="searchConsultation" [resultTemplate]="cT"
+                                                        [inputFormatter]="consultationFormatter">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Fee</label>
+                                                    <input type="text" mask="separator.2" thousandSeparator=","
+                                                        class="form-control currency" placeholder="Fee"
+                                                        [formControl]="item.controls.charges">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-center mb-5">
+                                                <a *ngIf="item.controls.id.value"
+                                                    class="btn btn-success btn-sm text-white actions_btn mr-3"
+                                                    (click)="editConsultation(i)" data-toggle="tooltip"
+                                                    [class.custom_disabled]="disableButton"
+                                                    data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                <a *ngIf="!item.controls.id.value" href="javascript:void(0);"
+                                                    (click)="saveConsultations(i)"
+                                                    [class.custom_disabled]="disableButton"
+                                                    class="btn btn-success btn-sm actions_btn mr-3"><i
+                                                        class="icon icon-plus text-white"></i></a>
+                                                <a (click)="item.controls.id.value ? deleteConsultations(i) : removeConsultationFee(i)"
+                                                    class="btn btn-danger btn-sm text-white actions_btn"
+                                                    [class.custom_disabled]="disableButton && item.controls.id.value"
+                                                    data-toggle="tooltip" data-original-title="Delete"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                            </div>
+
+                                            <hr class="new5">
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                                <!-- <div class="col-md-12 text-center mt-2 mb-2"><button type="button"
+                                        [disabled]="disableButton" (click)="saveConsultations()"
+                                        class="btn btn-secondary">Save
+                                        Consultations</button>
+                                </div> -->
+                            </div>
+                        </tab>
+                        <tab heading="Educations">
+                            <div class="row">
+
+                                <div class="col-md-12 text-right mt-2 mb-2"><a
+                                        (click)="addEducation();moveto(educationArray,'education');"
+                                        href="javascript:void(0);" class="btn  btn-primary ">Add
+                                        Education</a>
+                                </div>
+                                <hr class="new5">
+                                <ng-container *ngIf="educationArray?.controls?.length > 0">
+                                    <ng-container formArrayName="education"
+                                        *ngFor="let item2 of educationArray?.controls; let y = index"
+                                        [formGroup]="educationArray?.controls[y]">
+                                        <ng-container>
+                                            <div id="{{'education'+y}}" *ngIf="item2.controls.education_type_id"
+                                                class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="form-label">Education Type </label>
+                                                    <ng-select [items]="educationTypes" bindLabel="name" bindValue="id"
+                                                        [multiple]="false" placeholder="--Select--"
+                                                        [formControl]="item2.controls.education_type_id">
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class=" col-md-3" *ngIf="item2.controls.title">
+                                                <div class="form-group">
+                                                    <label class="form-label">Title</label>
+                                                    <input type="text" class="form-control" placeholder="Title"
+                                                        [formControl]="item2.controls.title">
+                                                </div>
+                                            </div>
+                                            <div class=" col-md-3">
+                                                <div class="form-group">
+                                                    <label [for]="ii">Start Date</label>
+                                                    <div class="mat-date-picker-custom">
+                                                        <input [id]="ii" [matDatepicker]="ii" max="2099-01-01"
+                                                            [formControl]="item2.controls.start_date"
+                                                            [appMaskDate]="ii">
+                                                        <mat-datepicker-toggle [for]="ii">
+                                                        </mat-datepicker-toggle>
+                                                        <mat-datepicker #ii></mat-datepicker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" col-md-3">
+                                                <div class="form-group">
+                                                    <label [for]="iii">End Date</label>
+                                                    <div class="mat-date-picker-custom">
+                                                        <input [id]="iii" [matDatepicker]="iii" max="2099-01-01"
+                                                            [formControl]="item2.controls.end_date" [appMaskDate]="iii">
+                                                        <mat-datepicker-toggle [for]="iii">
+                                                        </mat-datepicker-toggle>
+                                                        <mat-datepicker #iii></mat-datepicker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label text-dark">Details</label>
+                                                    <textarea class="form-control  required"
+                                                        name="example-textarea-input"
+                                                        [formControl]="item2.controls.details" rows="1"
+                                                        placeholder="text here.."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class=" col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label">Institute</label>
+                                                    <input type="text" class="form-control" placeholder="Institute"
+                                                        [formControl]="item2.controls.institute">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-4 upldbox">
+                                                <div class="form-group mb-0">
+                                                    <label class="form-label">Upload Image</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input"
+                                                            (change)="fileChangeEvent($event,y)"
+                                                            name="example-file-input-custom">
+                                                        <label class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="image_upload border-left border-top border-bottom border-right col-md-12">
+                                                <div *ngIf="item2.value && item2.value.media && item2.value.media.base_path"
+                                                    class="upload-images d-flex">
+                                                    <div>
+                                                        <img src="{{item2.value.media.base_path+'/'+ item2.value.media.system_name}}"
+                                                            alt="img" class="w73 h73 border p-0" id="education_image">
+                                                    </div>
+                                                    <div class="ml-3 mt-2">
+                                                        <h6 class="mb-0 mt-3 font-weight-bold">
+                                                            {{item2.value.media.real_name}}</h6>
+                                                        <!-- <small>4.5kb</small> -->
+                                                    </div>
+                                                    <div class="float-right ml-auto">
+                                                        <!-- <a href="#" class="float-right btn btn-icon btn-danger btn-sm mt-5"><i
+                                                                                                                                class="fa fa-trash-o"></i></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-center mb-5">
+                                                <a *ngIf="item2.controls.id.value"
+                                                    [class.custom_disabled]="item2.controls.disabled.value"
+                                                    class="btn btn-success btn-sm text-white actions_btn mr-3"
+                                                    (click)="editEducations(y)" data-toggle="tooltip"
+                                                    data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                <a *ngIf="!item2.controls.id.value" href="javascript:void(0);"
+                                                    [class.custom_disabled]="item2.controls.disabled.value"
+                                                    (click)="saveEducations(y)"
+                                                    class="btn btn-success btn-sm actions_btn mr-3"><i
+                                                        class="icon icon-plus text-white"></i></a>
+                                                <a (click)="item2.controls.id.value ? deleteEducations(y) : removeEducation(y)"
+                                                    [class.custom_disabled]="item2.controls.disabled.value"
+                                                    class="btn btn-danger btn-sm text-white actions_btn"
+                                                    data-toggle="tooltip" data-original-title="Delete"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                            </div>
+                                            <hr class="new5">
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+
+                            </div>
+                        </tab>
+                        <tab heading="Specialities">
+
+                            <div class="row">
+
+                                <div class="col-md-12 text-right mt-2 mb-2"><a
+                                        (click)="addCategory();moveto(categoryArray,'category');"
+                                        href="javascript:void(0);" class="btn  btn-primary ">Add Speciality</a>
+                                </div>
+                                <hr class="new5">
+                                <ng-container *ngIf="categoryArray?.controls?.length > 0">
+
+                                    <ng-container formArrayName="user_categories"
+                                        *ngFor="let item3 of categoryArray?.controls; let i = index"
+                                        [formGroup]="categoryArray?.controls[i]">
+                                        <ng-container>
+
+                                            <div id="{{'category'+i}}" class="col-md-5">
+                                                <div class="form-group  autocomplete-dropdown">
+                                                    <label class="form-label">Speciality <sup>*</sup></label>
+                                                    <ng-template #categoryT let-r="result" let-t="term">
+                                                        <small class="nameFilter">{{ r.name }}</small>
+                                                    </ng-template>
+                                                    <input type="text" class="form-control" placeholder="Category Name"
+                                                        [class.custom_disabled]="item3.controls.id.value"
+                                                        [formControl]="item3.controls.category"
+                                                        [ngbTypeahead]="searchCategory" [resultTemplate]="categoryT"
+                                                        [inputFormatter]="categoryFormatter">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <label class="form-label">Subcategory</label>
+                                                    <mat-chip-list #matChup>
+
+                                                        <mat-chip *ngFor="let s of item3.value?.sub_categories"
+                                                            (removed)="removeSUB(item3.value?.sub_categories,s)">
+                                                            {{s?.name}}
+                                                            <span matChipRemove
+                                                                style="font-size:16px;color:grey;padding-left: 5px; cursor: pointer;"
+                                                                class="material-icons">
+                                                                cancel
+                                                            </span>
+                                                        </mat-chip>
+
+                                                        <input placeholder="Search Sub Category"
+                                                            class="form-control border-right-0 border-left-0 border-top-0"
+                                                            [matAutocomplete]="auto" #trigger="matAutocompleteTrigger"
+                                                            (keyup)="changed(item3,$event.target.value)"
+                                                            [matChipInputFor]="matChup"
+                                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                            [formControl]="item3.controls.sub_category">
+                                                    </mat-chip-list>
+
+                                                    <mat-autocomplete #auto="matAutocomplete">
+                                                        <mat-option
+                                                            *ngFor="let sub of categorySkillObj?.subCategoriesArray "
+                                                            [value]="sub"
+                                                            (click)="selectionMade($event, trigger,sub,item3,i)">
+                                                            {{ sub?.name }}
+                                                        </mat-option>
+                                                    </mat-autocomplete>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 upldbox">
+                                                <div class="form-group mb-0">
+                                                    <label class="form-label">Upload Image</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input"
+                                                            (change)="fileChangeEventCat($event,i)"
+                                                            name="example-file-input-custom">
+                                                        <label class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12 text-center mb-5">
+
+                                                <a *ngIf="item3.controls.id.value"
+                                                    [class.custom_disabled]="item3.controls.disabled.value"
+                                                    class="btn btn-success btn-sm text-white actions_btn mr-3"
+                                                    (click)="editCatSub(item3,i)" data-toggle="tooltip"
+                                                    data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+
+                                                <a *ngIf="!item3.controls.id.value" href="javascript:void(0);"
+                                                    [class.custom_disabled]="item3.controls.disabled.value"
+                                                    (click)="addCatSub(item3,i)"
+                                                    class="btn btn-success btn-sm actions_btn mr-3"><i
+                                                        class="icon icon-plus text-white"></i></a>
+
+                                                <a (click)="item3.controls.id.value ? deleteCatSub(item3,i) : removeCategory(i)"
+                                                    class="btn btn-danger btn-sm text-white actions_btn"
+                                                    [class.custom_disabled]="item3.controls.disabled.value"
+                                                    data-toggle="tooltip" data-original-title="Delete"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                            </div>
+                                            <hr class="new5">
+                                        </ng-container>
+                                    </ng-container>
+
+                                </ng-container>
+
+                            </div>
+                        </tab>
+                        <tab heading="Reviews" (selectTab)="getReviewsData()">
+                            <div>
+                                <!-- <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="timer"
+                                        [fullScreen]="true">
+                                        <p style="font-size: 20px; color: white">Loading...</p>
+                                    </ngx-spinner> -->
+                                <h5 class="text-center mt-4 p-4" *ngIf="reviews && reviews.length == 0">No Reviews
+                                    exist !
+                                </h5>
+                                <ng-container *ngFor="let item of reviews">
+
+                                    <div class="media mt-0 p-5">
+                                        <div class="d-flex mr-3">
+                                            <a href="javascript:void(0);"><img class="media-object brround" alt="64x64"
+                                                    [src]="item?.review_by.profile_media ? item?.review_by.profile_media.base_path+'/'+item?.review_by.profile_media.system_name : '../assets/images/media/doctors/defaultd.png'">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="mt-0 mb-1 font-weight-semibold">
+                                                {{item?.review_by?.first_name}}
+                                                {{item?.review_by?.last_name}}
+                                                <span class="fs-14 ml-0" data-toggle="tooltip" data-placement="top"
+                                                    title="verified"><i
+                                                        class="fa fa-check-circle-o text-success"></i></span>
+                                                <span class="fs-14 ml-2"> {{item?.review}}
+
+
+                                                    <ngb-rating [rate]="item?.review" [max]="5">
+                                                        <ng-template let-fill="fill">
+                                                            <span class="star" [class.full]="fill === 100">
+                                                                <span class="half"
+                                                                    [style.width.%]="fill">&#9733;</span>&#9733;
+                                                            </span>
+                                                        </ng-template>
+                                                    </ngb-rating>
+                                                </span>
+                                            </h5>
+                                            <small class="text-muted"><i class="fa fa-calendar"></i>
+                                                {{item?.created_at | utcTime | date:'MMMM d'}} <i
+                                                    class=" ml-3 fa fa-clock-o"></i>
+                                                {{item?.created_at | utcTime | date:'h:mm a'}} <i
+                                                    class=" ml-3 fa fa-map-marker"></i>
+                                                {{item?.review_by?.country}}</small>
+                                            <p class="font-13  mb-2 mt-2">
+                                                {{item?.comments}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </tab>
+                        <tab heading="Verifications" (selectTab)="getApprovals()">
+                            <div class="messaging">
+
+                                <div class="inbox_msg">
+                                    <div class="mesgs">
+                                        <div class="msg_history">
+                                            <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="small" color="#fff"
+                                                type="timer" [fullScreen]="false">
+                                                <p style="font-size: 20px; color: white" class="mt-5 ml-2">Loading...
+                                                </p>
+                                            </ngx-spinner>
+                                            <ng-container *ngFor="let item of approvals">
+                                                <div *ngIf="item.created_by?.id  != userId" class="incoming_msg">
+                                                    <div class="incoming_msg_img"> <img
+                                                            src="https://ptetutorials.com/images/user-profile.png"
+                                                            alt="sunil"> </div>
+                                                    <div class="received_msg">
+                                                        <div class="received_withd_msg">
+                                                            <p>{{item?.rejection_reasons?.name}}</p>
+                                                            <p>{{item?.comments}}</p>
+                                                            <span class="time_date">
+                                                                {{item.created_at | utcTime | date:'h:mm a'}} |
+                                                                {{item.created_at | utcTime | date:'MMMM d, y'}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="item.created_by?.id == userId" class="outgoing_msg">
+                                                    <div class="sent_msg">
+                                                        <p>{{item?.comments}}</p>
+                                                        <span class="time_date">
+                                                            {{item.created_at | utcTime | date:'h:mm a'}} |
+                                                            {{item.created_at | utcTime | date:'MMMM d, y'}}</span>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+
+
+                                        </div>
+                                        <div class="type_msg"
+                                            *ngIf="singleUserObject && singleUserObject.status_id !=4">
+                                            <div class="input_msg_write">
+                                                <input type="text" (keydown)="onEnter($event)" class="write_msg"
+                                                    [(ngModel)]="comments" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="Type a message" />
+                                                <button class="msg_send_btn" type="button"
+                                                    (click)="addVerification()"><i class="fa fa-paper-plane-o"
+                                                        aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </tab>
+                        <tab heading="Services">
+                            <form [formGroup]="form">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Service {{services?.length}}</label>
+                                            <mat-chip-list #matChipService>
+
+                                                <mat-chip *ngFor="let s of services"
+                                                    (removed)="removeService(services,s)">
+                                                    {{s?.name}}
+                                                    <span matChipRemove
+                                                        style="font-size:16px;color:grey;padding-left: 5px; cursor: pointer;"
+                                                        class="material-icons">
+                                                        cancel
+                                                    </span>
+                                                </mat-chip>
+
+                                                <input placeholder="Search Service"
+                                                    class="form-control border-right-0 border-left-0 border-top-0"
+                                                    [matAutocomplete]="autoCondition" #trigger="matAutocompleteTrigger"
+                                                    (keyup)="changedService(form,$event.target.value)"
+                                                    [matChipInputFor]="matChipService"
+                                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                    formControlName="service_id">
+                                            </mat-chip-list>
+
+                                            <mat-autocomplete #autoCondition="matAutocomplete">
+                                                <mat-option *ngFor="let val of serviceDropdown ;let i=index"
+                                                    [value]="val"
+                                                    (click)="selectionMadeService($event, trigger,val,form,i)">
+                                                    {{ val?.name }}
+                                                </mat-option>
+                                            </mat-autocomplete>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center mt-3">
+                                        <button type="button" [disabled]="!form.valid || disableButton"
+                                            (click)="onSubmit()" class="btn btn-secondary">Updated
+                                            Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </tab>
+                        <tab heading="Condition Treated">
+                            <form [formGroup]="form">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Condition Treated
+                                                {{conditionTreatedDropdown?.length}}</label>
+                                            <mat-chip-list #matChipConditionTreated>
+
+                                                <mat-chip *ngFor="let s of conditionTreated"
+                                                    (removed)="removeConditionTreated(services,s)">
+                                                    {{s?.name}}
+                                                    <span matChipRemove
+                                                        style="font-size:16px;color:grey;padding-left: 5px; cursor: pointer;"
+                                                        class="material-icons">
+                                                        cancel
+                                                    </span>
+                                                </mat-chip>
+
+                                                <input placeholder="Search Condition Treated"
+                                                    class="form-control border-right-0 border-left-0 border-top-0"
+                                                    [matAutocomplete]="auto" #trigger="matAutocompleteTrigger"
+                                                    (keyup)="changedConditionTreated(form,$event.target.value)"
+                                                    [matChipInputFor]="matChipConditionTreated"
+                                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                    formControlName="condition_treated_id">
+                                            </mat-chip-list>
+
+                                            <mat-autocomplete #auto="matAutocomplete">
+                                                <mat-option *ngFor="let val of conditionTreatedDropdown ;let i=index"
+                                                    [value]="val"
+                                                    (click)="selectionMadeConditionTreated($event, trigger,val,form,i)">
+                                                    {{ val?.name }}
+                                                </mat-option>
+                                            </mat-autocomplete>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center mt-3">
+                                        <button type="button" [disabled]="!form.valid || disableButton"
+                                            (click)="onSubmit()" class="btn btn-secondary">Updated
+                                            Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </tab>
+                        <tab heading="FAQ's">
+                            <div class="row">
+
+                                <div class="col-md-12 text-right mt-2 mb-2"><a
+                                        (click)="addFAQ();moveto(faqArray,'faq');" href="javascript:void(0);"
+                                        class="btn  btn-primary ">Add FAQ</a>
+                                </div>
+                                <hr class="new5">
+                                <ng-container *ngIf="faqArray?.controls?.length > 0">
+
+                                    <ng-container formArrayName="user_faq"
+                                        *ngFor="let itemFAQ of faqArray?.controls; let i = index"
+                                        [formGroup]="faqArray?.controls[i]">
+                                        <ng-container>
+                                            <div id="{{'faq'+i}}" class="col-md-12">
+                                                <!-- <div class="form-group">
+                                                                                <label class="form-label">Consultation Title</label>
+                                                                                <ng-select [items]="consultations" bindLabel="name" bindValue="id"
+                                                                                    [multiple]="false" placeholder="--Select--"
+                                                                                    [formControl]="item.controls.consultation_id">
+                                                                                </ng-select>
+                                                                            </div> -->
+                                                <div class="form-group  autocomplete-dropdown">
+                                                    <label class="form-label">FAQ
+                                                        <sup>*</sup></label>
+                                                    <ng-template #faqT let-r="result" let-t="term">
+                                                        <small class="nameFilter">{{ r.question }}</small>
+                                                    </ng-template>
+                                                    <input type="text" class="form-control" placeholder="Search FAQ"
+                                                        [formControl]="itemFAQ.controls.question"
+                                                        [ngbTypeahead]="searchFAQ" [resultTemplate]="faqT"
+                                                        (selectItem)="selectedItemFAQ($event,faqArray?.controls[i])"
+                                                        [inputFormatter]="faqFormatter">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Answer</label>
+                                                    <textarea class="form-control" rows="2"
+                                                        [formControl]="itemFAQ.controls.answer"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-center mb-5">
+                                                <a *ngIf="itemFAQ.controls.id.value"
+                                                    class="btn btn-success btn-sm text-white actions_btn mr-3"
+                                                    title="Edit" (click)="editFAQ(i)" data-toggle="tooltip"
+                                                    [class.custom_disabled]="disableButton"
+                                                    data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                <a *ngIf="!itemFAQ.controls.id.value" href="javascript:void(0);"
+                                                    title="Add" (click)="saveFAQ(i)"
+                                                    [class.custom_disabled]="disableButton"
+                                                    class="btn btn-success btn-sm actions_btn mr-3"><i
+                                                        class="icon icon-plus text-white"></i></a>
+                                                <a (click)="itemFAQ.controls.id.value ? deleteFAQ(i) : removeFAQ(i)"
+                                                    title="Delete"
+                                                    class="btn btn-danger btn-sm text-white actions_btn mr-3"
+                                                    [class.custom_disabled]="disableButton && itemFAQ.controls.id.value"
+                                                    data-toggle="tooltip" data-original-title="Delete"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                                <a (click)="resetFAQ(itemFAQ)"
+                                                    class="btn btn-danger btn-sm text-white actions_btn"
+                                                    [class.custom_disabled]="disableButton" data-toggle="tooltip"
+                                                    title="Reset" data-original-title="Reset"><i
+                                                        class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                            </div>
+
+                                            <hr class="new5">
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                                <!-- <div class="col-md-12 text-center mt-2 mb-2"><button type="button"
+                                                                    [disabled]="disableButton" (click)="saveConsultations()"
+                                                                    class="btn btn-secondary">Save
+                                                                    Consultations</button>
+                                                            </div> -->
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="card-footer">
+        
+    </div> -->
+</div>
+<app-map-modal #mapModal (onDoneEvent)="onDoneEvent($event)"></app-map-modal>

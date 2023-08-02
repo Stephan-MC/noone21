@@ -1,0 +1,29 @@
+<div class="modal fade map_modal" bsModal #mapModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1"
+  role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog modal-lg map-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-static-name" class="modal-title pull-left">Map</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeMap()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <section id="fullscreenMap" class="mb-3" style="height: 500px !important">
+          <agm-map [zoom]="zoom" [fullscreenControl]="true" [fitBounds]="true" [latitude]="latitude"
+            [longitude]="longitude" [usePanning]="true" style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;
+                        background-color: rgb(229, 227, 223);">
+            <agm-marker [markerDraggable]="true" (dragEnd)="OnDrag($event)" [latitude]="latitude"
+              [longitude]="longitude"></agm-marker>
+          </agm-map>
+
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary gradient" (click)="onDone()">
+          <span>Done</span> </button>
+      </div>
+
+    </div>
+  </div>
+</div>
