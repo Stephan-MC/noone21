@@ -12,9 +12,9 @@ import { UserUrls } from 'src/app/users/user-urls.enum';
 import { Address } from 'src/app/shared/shares-model/Address.model';
 import { ActivatedRoute } from '@angular/router';
 import { slice, split } from 'lodash';
-import { MatInputModule } from '@angular/material/input';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyChipInputEvent as MatChipInputEvent } from '@angular/material/legacy-chips';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { mapping } from '../../vendor-util';
 export interface Fruit {

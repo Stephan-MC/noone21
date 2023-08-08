@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { isEmptyObject, findFromArrayOFObjects, markFormGroupTouched, deepCopy, getIdsFromArray, makeDeepCopyArray } from 'src/app/shared/utils/common-functions';
 import { ConditionTreatedUrls } from 'src/app/masters/conditions-treated/condition-treated-urls.enum';
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatLegacyAutocompleteTrigger as MatAutocompleteTrigger } from '@angular/material/legacy-autocomplete';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 import { emailRegEx } from 'src/app/shared/utils/email-validation_pattern.config';
 import { isObject } from 'lodash';

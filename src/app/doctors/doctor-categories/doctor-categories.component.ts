@@ -10,7 +10,7 @@ import { Observable, ObservableInput, of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap, switchMap, map, catchError } from 'rxjs/operators';
 import { isObject } from 'lodash';
 import { CategoryUrl } from 'src/app/masters/category/category-url.enum';
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatLegacyAutocompleteTrigger as MatAutocompleteTrigger } from '@angular/material/legacy-autocomplete';
 import { isEmptyObject, LooseObject, getIdsFromArray, markFormGroupTouched, removeEmptyKeysFromObject } from 'src/app/shared/utils/common-functions';
 import { SkillUrls } from 'src/app/masters/skills/skill-urls.enum';
 import { UserUrls } from 'src/app/users/user-urls.enum';

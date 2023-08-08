@@ -16,7 +16,7 @@ import { DisableAutofillDirective } from './directives/disable-autofill.directiv
 import { PhonePipe } from './pipes/phone.pipe';
 import { RequestLeadComponent } from './components/request-lead/request-lead.component';
 import { MessageComponent } from './components/message/message.component';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 
 // import { NgxCaptchaModule } from 'ngx-captcha';
 

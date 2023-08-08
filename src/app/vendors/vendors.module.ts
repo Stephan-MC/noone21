@@ -10,8 +10,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgbTypeaheadModule, NgbRatingModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatLegacyAutocompleteModule as MatAutocompleteModule } from '@angular/material/legacy-autocomplete';
+import { MatLegacyChipsModule as MatChipsModule } from '@angular/material/legacy-chips';
 import { MessagesComponent } from '../vendors/messages/messages.component';
 import { AppointmentsComponent } from '../vendors/appointments/appointments.component';
 import { VendorFavoritesComponent } from '../vendors/vendor-favorites/vendor-favorites.component';
@@ -39,12 +39,12 @@ import { ClassifiedAddComponent } from './classified/classified-add/classified-a
 import { ClassifiedEditComponent } from './classified/classified-edit/classified-edit.component';
 import { ClassifiedListviewComponent } from './classified/classified-listview/classified-listview.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { VendorAdvSettingComponent } from './vendor-adv-setting/vendor-adv-setting.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
 import { ProfileReviewApprovalComponent } from './profile-review-approval/profile-review-approval.component';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { BasicsProfileReviewComponent } from './basics-profile-review/basics-profile-review.component';
 // import { RecaptchaModule } from "ng-recaptcha";
 

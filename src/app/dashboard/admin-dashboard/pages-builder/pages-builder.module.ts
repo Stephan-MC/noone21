@@ -8,7 +8,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { EditContentComponent } from './edit-content/edit-content.component';
 import { PagesBuilderRoutingModule } from './pages-builder-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { ListPagesComponent } from './list-pages/list-pages.component';
 import { SlugifyPipe } from 'src/app/shared/pipes/slugify.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';

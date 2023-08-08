@@ -12,7 +12,7 @@ import { GlobalService } from 'src/app/shared/services/global.service';
 import { tap, catchError, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, of, ObservableInput, Subject, Subscription } from 'rxjs';
 import { CategoryUrl } from 'src/app/masters/category/category-url.enum';
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatLegacyAutocompleteTrigger as MatAutocompleteTrigger } from '@angular/material/legacy-autocomplete';
 import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 import { MapsAPILoader } from '@agm/core';
 import { Address } from 'src/app/shared/shares-model/Address.model';

@@ -10,9 +10,9 @@ import { emailRegEx } from 'src/app/shared/utils/email-validation_pattern.config
 import { LooseObject, isEmptyObjectKeys, mergeRecursive, removeEmptyKeysFromObject, markFormGroupTouched, deepCopy, removeObjectProperties, getIdsFromArray } from 'src/app/shared/utils/common-functions';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 import { Address } from 'src/app/shared/shares-model/Address.model';
-import { MatInputModule } from '@angular/material/input';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyChipInputEvent as MatChipInputEvent } from '@angular/material/legacy-chips';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 export interface Fruit {
   name: string;
