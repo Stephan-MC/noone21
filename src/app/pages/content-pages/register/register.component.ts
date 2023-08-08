@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginType } from 'src/app/shared/Enums/Login-type.enum';
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { emailRegEx } from 'src/app/shared/utils/email-validation_pattern.config';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { Subscription } from 'rxjs';
 import { AuthenticationUrls } from '../authentication-urls.enum';
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   LoginType = LoginType;
   returnUrl:string;
   disableButton: boolean = false;
-  form: FormGroup;
+  form: UntypedFormGroup;
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     public router: Router,
     private route: ActivatedRoute,
     private globalService: GlobalService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toasterService: ToastrService,

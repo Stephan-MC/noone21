@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, NgZone, SimpleChanges } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormControl } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -24,7 +24,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class DoctorCategoriesComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() userId = null;
   @Input() singleUserObject = null;
   disableButton: boolean = false;
@@ -53,7 +53,7 @@ export class DoctorCategoriesComponent implements OnInit {
 
   categories = [];
   subcategories = [];
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

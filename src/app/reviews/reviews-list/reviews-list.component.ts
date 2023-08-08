@@ -6,7 +6,7 @@ import { NgPopupsService } from 'ng-popups';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { makeUnselectAllRows, getIdsFromArray, mergeRecursive, isEmptyObjectKeys, arrayContainsArray, SelectUnCheckItemsOnly, unCheckCurrentPageItems, removeCurrentPageSelectionFromSelected, ifNotCheckedAlreadyAndSelect, getFilterDataFromIds, UnCheckAllCheckBoxAndRemoveCurrentUnselect, removeEmptyKeysFromObject } from 'src/app/shared/utils/common-functions';
 import { ReviewUrls } from '../review-urls.enum';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-reviews-list',
   templateUrl: './reviews-list.component.html',
@@ -28,7 +28,7 @@ export class ReviewsListComponent implements OnInit {
   checkBoxProp = 'checkBoxChecked';
   uniqueProp = 'id';
   checkBoxChecked: boolean = false;
-  form: FormGroup;
+  form: UntypedFormGroup;
   approvesList = [{ value: 0, 'text': 'Not Approved' }, { value: 1, 'text': 'Approved' }];
   isEmptyObjectKeys = isEmptyObjectKeys;
 
@@ -39,7 +39,7 @@ export class ReviewsListComponent implements OnInit {
     // private _alert: AlertsService,
     private ngPopups: NgPopupsService,
     private requestService: RequestService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     this.form = this.formBuilder.group({
       'search': [''],

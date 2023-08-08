@@ -6,7 +6,7 @@ import { LooseObject, isEmptyObjectKeys, mergeRecursive, removeEmptyKeysFromObje
 import { UserUrls } from '../user-urls.enum';
 import { id } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap/modal/public_api';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { SharedUrls } from 'src/app/shared/utils/shared-urls.enum';
 import { isObject } from 'util';
 import { Observable, ObservableInput, of } from 'rxjs';
@@ -38,9 +38,9 @@ export class UserListComponent implements OnInit {
   sortType = 1;
 
 
-  form: FormGroup;
-  fg: FormGroup;
-  filterForm: FormGroup;
+  form: UntypedFormGroup;
+  fg: UntypedFormGroup;
+  filterForm: UntypedFormGroup;
   selectedUser: any;
   isEmptyObjectKeys = isEmptyObjectKeys;
 
@@ -54,7 +54,7 @@ export class UserListComponent implements OnInit {
     private requestService: RequestService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private loaderService: LoaderService
   ) {
 
@@ -76,7 +76,7 @@ export class UserListComponent implements OnInit {
     })
   }
   private checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
-    return (group: FormGroup) => {
+    return (group: UntypedFormGroup) => {
       const passwordInput = group.controls[passwordKey],
         passwordConfirmationInput = group.controls[passwordConfirmationKey];
       if (passwordInput.value !== passwordConfirmationInput.value) {

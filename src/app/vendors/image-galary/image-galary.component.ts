@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, NgZone, SimpleChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,7 @@ import { Lightbox } from 'ngx-lightbox';
   styleUrls: ['./image-galary.component.scss']
 })
 export class ImageGalaryComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   _albums = [];
   _albums_approval = [];
   @Input() userId = null;
@@ -35,7 +35,7 @@ export class ImageGalaryComponent implements OnInit {
   Images=[];
   ImagesApproval=[];
   imageSrc=null;
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

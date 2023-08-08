@@ -7,7 +7,7 @@ import { UserUrls } from 'src/app/users/user-urls.enum';
 import { MapModalComponent } from 'src/app/shared/components/modals/map-modal/map-modal.component';
 import { Address } from 'src/app/shared/shares-model/Address.model';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { CategoryUrl } from 'src/app/masters/category/category-url.enum';
@@ -50,7 +50,7 @@ export class LandingPageComponent implements OnInit {
     sublocality_level_2: 'long_name',
     sublocality_level_1: 'long_name',
   };
-  formFilter: FormGroup;
+  formFilter: UntypedFormGroup;
   byDefaultCategory = [{ id: '', name: "All Categories", slug: '', shouldNotDisplay: true }];
 
   selectedCategory = null;
@@ -96,7 +96,7 @@ export class LandingPageComponent implements OnInit {
     private requestService: RequestService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
    private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private GlobalService: GlobalService,

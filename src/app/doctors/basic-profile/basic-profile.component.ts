@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, NgZone, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormControl } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -19,7 +19,7 @@ import { CommonUrls } from 'src/app/shared/Enums/common-urls.enum';
   styleUrls: ['./basic-profile.component.scss']
 })
 export class BasicProfileComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() userId = null;
   @Input() singleUserObject = null;
   disableButton: boolean = false;
@@ -53,7 +53,7 @@ export class BasicProfileComponent implements OnInit {
   };
 
   countries = [];
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

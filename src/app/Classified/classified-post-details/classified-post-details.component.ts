@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup,FormsModule,FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormGroup,FormsModule,UntypedFormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { emailRegEx } from 'src/app/shared/utils/email-validation_pattern.config';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
@@ -30,7 +30,7 @@ export class ClassifiedPostDetailsComponent implements OnInit {
   id='';
   constructor(
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private localStorage: LocalStorage,
     private requestService: RequestService,

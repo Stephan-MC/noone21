@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, NgZone, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormControl } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
   styleUrls: ['./other-setting.component.scss']
 })
 export class OtherSettingComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   userEmail='';
   userToken='';
   userId='';
@@ -58,7 +58,7 @@ export class OtherSettingComponent implements OnInit {
   };
 
   countries = [];
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

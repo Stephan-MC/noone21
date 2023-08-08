@@ -1,6 +1,6 @@
 import { MapsAPILoader } from '@agm/core';
 import { Component, Input, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { interval } from 'rxjs';
@@ -21,14 +21,14 @@ export class UserMessagesComponent implements OnInit {
   userId='';
   msgClientId='';
   @Input()userName: string; 
-  form: FormGroup;
+  form: UntypedFormGroup;
   constructor(
     private requestService: RequestService,
     private toastrService: ToastrService,
     private router: Router,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private GlobalService: GlobalService,

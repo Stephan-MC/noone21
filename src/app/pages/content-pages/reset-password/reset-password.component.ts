@@ -1,6 +1,6 @@
 
 import {Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective,FormGroup, FormBuilder, NgForm, Validators} from   '@angular/forms';
+import {FormControl, FormGroupDirective,UntypedFormGroup, UntypedFormBuilder, NgForm, Validators} from   '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { UserUrls } from 'src/app/users/user-urls.enum';
@@ -16,14 +16,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ResetPasswordComponent implements OnInit {
   disableButton: boolean = false;
-  form: FormGroup;
+  form: UntypedFormGroup;
   type: number = 1;
   token:string;
   constructor( 
               public route: ActivatedRoute,
               public router: Router,
               private requestService: RequestService,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private toastr: ToastrService
           ) { 
     this.form = this.fb.group(this.formElements());

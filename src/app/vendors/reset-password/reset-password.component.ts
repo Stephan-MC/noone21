@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 import { mapping } from '../vendor-util';
 import { markFormGroupTouched, deepCopy, removeObjectProperties, getIdsFromArray } from 'src/app/shared/utils/common-functions';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { AuthenticationUrls } from 'src/app/pages/content-pages/authentication-urls.enum';
 import { Router } from '@angular/router';
 @Component({
@@ -17,9 +17,9 @@ export class ResetPasswordComponent implements OnInit {
 
   userId = null;
   singleUserObject = null;
-  fgroup: FormGroup;
+  fgroup: UntypedFormGroup;
   constructor(private localStorage: LocalStorage,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private toastrService: ToastrService,
     private router: Router,
     private requestService: RequestService,) {
@@ -35,7 +35,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   private checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
-    return (group: FormGroup) => {
+    return (group: UntypedFormGroup) => {
       const passwordInput = group.controls[passwordKey],
         passwordConfirmationInput = group.controls[passwordConfirmationKey];
       if (passwordInput.value !== passwordConfirmationInput.value) {

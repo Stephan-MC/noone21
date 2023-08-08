@@ -1,4 +1,4 @@
-import { FormControl, ControlContainer, ValidatorFn, AbstractControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, ControlContainer, ValidatorFn, AbstractControl, UntypedFormGroup } from '@angular/forms';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { BehaviorSubject, interval, timer, of, Observable } from 'rxjs';
@@ -213,7 +213,7 @@ export function minValidation(minValue): ValidatorFn {
     };
 }
 /**================= manimum value for control ===========  */
-export function min(control: FormControl) {
+export function min(control: UntypedFormControl) {
     return parseFloat(control.value) > 0 && parseFloat(control.value) <= 999999.99 ? null : {
         min: true
     }
@@ -726,7 +726,7 @@ export let availabilities = [{ id: 1, name: 'Daily' }, { id: 2, name: 'Morning' 
   * Marks all controls in a form group as touched
   * @param formGroup - The form group to touch
   */
-export function markFormGroupTouched(formGroup: FormGroup) {
+export function markFormGroupTouched(formGroup: UntypedFormGroup) {
     (<any>Object).values(formGroup.controls).forEach(control => {
         control.markAsTouched();
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStorage } from 'src/app/libs/localstorage';
@@ -11,8 +11,8 @@ import { RequestService } from '../../services/request.service';
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent implements OnInit {
-  requestForm: FormGroup;
-  requestFormPop: FormGroup;
+  requestForm: UntypedFormGroup;
+  requestFormPop: UntypedFormGroup;
   @Input() reciver_id:'';
   userId='';
     // siteKey = "6Lcl9uQZAAAAAEM1-mcJK-O8THedz6Zvxn0Ysv0k";
@@ -26,9 +26,9 @@ export class MessageComponent implements OnInit {
     private requestService: RequestService,
     private toastrService: ToastrService,
     private toastr: ToastrService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private localStorage: LocalStorage,
   ) { this.requestForm = this.formBuilder.group({
     message: ['', Validators.required],
@@ -51,7 +51,7 @@ export class MessageComponent implements OnInit {
     console.log("PropertyDetailComponent -> handleSuccessPopup -> event", event)
     this.handleSuccessOuter = true;
   }
-  private markFormGroupTouched(formGroup: FormGroup) {
+  private markFormGroupTouched(formGroup: UntypedFormGroup) {
     (<any>Object).values(formGroup.controls).forEach(control => {
       control.markAsTouched();
 

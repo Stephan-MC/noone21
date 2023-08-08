@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from 'src/app/shared/services/request.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { LoginType } from 'src/app/shared/Enums/Login-type.enum';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -16,8 +16,8 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
 })
 export class RequestLeadComponent implements OnInit {
   pagelink= null;
-  requestForm: FormGroup;
-  requestFormPop: FormGroup;
+  requestForm: UntypedFormGroup;
+  requestFormPop: UntypedFormGroup;
     // siteKey = "6Lcl9uQZAAAAAEM1-mcJK-O8THedz6Zvxn0Ysv0k";
     siteKey = "6Ldi0usZAAAAAIIYTSs6zmnwjuwNGcZQuUhY0xGL";
     // secretkey = "6Lcl9uQZAAAAAH5_tjxGucIBwj8N-eIL8T9psH-i";
@@ -28,10 +28,10 @@ export class RequestLeadComponent implements OnInit {
   constructor( private requestService: RequestService,
     private toastrService: ToastrService,
     private toastr: ToastrService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private location:Location,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private platformLocation: PlatformLocation,
     private _sanitizer: DomSanitizer,
     private locationStrategy: LocationStrategy,
@@ -75,7 +75,7 @@ export class RequestLeadComponent implements OnInit {
   }
 
 
-    private markFormGroupTouched(formGroup: FormGroup) {
+    private markFormGroupTouched(formGroup: UntypedFormGroup) {
       (<any>Object).values(formGroup.controls).forEach(control => {
         control.markAsTouched();
   

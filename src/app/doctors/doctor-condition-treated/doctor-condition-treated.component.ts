@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, NgZone, SimpleChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,7 @@ import * as _ from 'lodash';
 })
 export class DoctorConditionTreatedComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() userId = null;
   @Input() singleUserObject = null;
   disableButton: boolean = false;
@@ -36,7 +36,7 @@ export class DoctorConditionTreatedComponent implements OnInit {
   conditionTreatedDropdown = [];
   conditionTreated = [];
   readonly separatorKeysCodes: number[] = [];
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

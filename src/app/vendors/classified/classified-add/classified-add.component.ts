@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, NgZone, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormsModule ,ReactiveFormsModule,FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule ,ReactiveFormsModule,FormControl } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -30,7 +30,7 @@ export class ClassifiedAddComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
  
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() userId = null;
   tags: Fruit[] = [];
                    
@@ -61,7 +61,7 @@ export class ClassifiedAddComponent implements OnInit {
    public  formD = new FormData();
   address: Address = new Address();
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

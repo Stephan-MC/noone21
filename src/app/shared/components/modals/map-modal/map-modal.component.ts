@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MapUrls } from './map-urls.enum';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { AgmMap } from '@agm/core';
 import { Address } from 'src/app/shared/shares-model/Address.model';
 import { RequestService } from 'src/app/shared/services/request.service';
@@ -40,7 +40,7 @@ export class MapModalComponent implements OnInit {
   @ViewChild('mapModal', { static: false }) mapModal: ModalDirective;
   @ViewChild('tableBody', { static: false }) tableBody;
   @ViewChild(AgmMap, { static: false }) public agmMap: AgmMap;
-  form: FormGroup;
+  form: UntypedFormGroup;
   constructor(
     private requestService: RequestService, private config: Config,
   ) {

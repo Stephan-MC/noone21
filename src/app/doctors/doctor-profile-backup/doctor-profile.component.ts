@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 import * as moment from 'moment';
 import { LooseObject, isEmptyObject, makeSingleNameFormFIrstMiddleAndLastNames, parseFloatC } from 'src/app/shared/utils/common-functions';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ReviewUrls } from 'src/app/reviews/review-urls.enum';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -22,7 +22,7 @@ export class DoctorProfileComponent implements OnInit {
   currentRate = 0;
   loggedInUser: LooseObject = {};
   isEmptyObject = isEmptyObject;
-  form: FormGroup;
+  form: UntypedFormGroup;
   parseFloatC = parseFloatC;
   disableButton: boolean = false;
 
@@ -33,7 +33,7 @@ export class DoctorProfileComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private spinner: NgxSpinnerService
   ) {
     this.id = this.route.snapshot.params['id'];

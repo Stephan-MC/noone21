@@ -1,5 +1,5 @@
 import { Component,OnInit, Input, NgZone, SimpleChanges, AfterViewInit } from '@angular/core';
-import { FormGroup, FormBuilder,FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder,FormControl, Validators } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -31,7 +31,7 @@ export class VideoGalaryComponent implements OnInit{
   _iframe_html=[];
   _iframe_html_approval=[];
   html_video: any;
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() userId = null;
   @Input() VidUserObject = null;
   disableButton: boolean = false;
@@ -42,7 +42,7 @@ export class VideoGalaryComponent implements OnInit{
   videos=[];
   videosApproval=[];
   selectedFiles: FileList;
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

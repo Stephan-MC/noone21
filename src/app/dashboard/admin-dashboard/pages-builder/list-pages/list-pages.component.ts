@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from 'src/app/shared/services/loader.service';
@@ -22,16 +22,16 @@ export class ListPagesComponent implements OnInit {
   limit = 20;
   smallNumPages = 0;
   sortType = 1;
-  form: FormGroup;
-  fg: FormGroup;
-  filterForm: FormGroup;
+  form: UntypedFormGroup;
+  fg: UntypedFormGroup;
+  filterForm: UntypedFormGroup;
   selectedUser: any;
   pagetypes:any;
   isEmptyObjectKeys = isEmptyObjectKeys;
   constructor(   private requestService: RequestService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private loaderService: LoaderService) {
       this.filterForm = this.formBuilder.group({
         'page_type': [null],

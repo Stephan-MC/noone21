@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginType } from 'src/app/shared/Enums/Login-type.enum';
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { emailRegEx } from 'src/app/shared/utils/email-validation_pattern.config';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, UntypedFormBuilder } from '@angular/forms';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { Subscription } from 'rxjs';
 import { AuthenticationUrls } from '../authentication-urls.enum';
@@ -24,7 +24,7 @@ export class UserVerificationComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
     
 
   ) { this.token = this.route.snapshot.params['token'];

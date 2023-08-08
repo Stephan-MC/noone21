@@ -7,7 +7,7 @@ import { Route } from '@angular/compiler/src/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { CommonUrls } from 'src/app/shared/Enums/common-urls.enum';
 import { CategoryUrl } from 'src/app/masters/category/category-url.enum';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 declare var $: any;
 import { removeObjectProperties, deepCopy } from 'src/app/shared/utils/common-functions';
 import { Subscription, ObservableInput, of, Observable } from 'rxjs';
@@ -39,7 +39,7 @@ export class DoctorListComponent implements OnInit {
 
   sortType = 1;
   parseFloatC = parseFloatC;
-  formFilter: FormGroup;
+  formFilter: UntypedFormGroup;
 
   searching = false;
   searchFailed = false;
@@ -76,7 +76,7 @@ export class DoctorListComponent implements OnInit {
     private requestService: RequestService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private GlobalService: GlobalService,

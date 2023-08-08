@@ -1,6 +1,6 @@
 import { Location, PlatformLocation } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -19,8 +19,8 @@ export class ContactUsComponent implements OnInit {
   @ViewChild('reqmodalclose') reqmodalclose;
   @ViewChild('reqmodalopen') reqmodalopen;
   @ViewChild('reqmodalmain') reqmodalmain;
-  requestForm: FormGroup;
-  requestFormPop: FormGroup;
+  requestForm: UntypedFormGroup;
+  requestFormPop: UntypedFormGroup;
   public useGlobalDomain: boolean = false;
      siteKey = "6Le9qoQaAAAAAJgYsyyrkB7pZjsRQEwyNqoYL6PG";
      secretkey = "6Le9qoQaAAAAALJ_6YZOsT2gUghcZYzvrdatvo0K";
@@ -37,10 +37,10 @@ export class ContactUsComponent implements OnInit {
   constructor( private requestService: RequestService,
     private toastrService: ToastrService,
     private toastr: ToastrService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private location:Location,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private platformLocation: PlatformLocation,
     private _sanitizer: DomSanitizer,
     private route: ActivatedRoute)
@@ -65,7 +65,7 @@ export class ContactUsComponent implements OnInit {
   ngOnInit(): void {
     this.initMap();
   }
-  private markFormGroupTouched(formGroup: FormGroup) {
+  private markFormGroupTouched(formGroup: UntypedFormGroup) {
     (<any>Object).values(formGroup.controls).forEach(control => {
       control.markAsTouched();
 

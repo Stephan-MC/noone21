@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LooseObject } from 'src/app/shared/utils/common-functions';
@@ -12,7 +12,7 @@ export class FaqMasterFormComponent implements OnInit {
 
 
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() title: string = '';
   @Input() id;
   @Output() formSubmitted = new EventEmitter();
@@ -24,7 +24,7 @@ export class FaqMasterFormComponent implements OnInit {
   constructor(
     public router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private toastrService: ToastrService) {
     // Validators.pattern("^ @]*@[^ @]*")
     this.form = this.fb.group({

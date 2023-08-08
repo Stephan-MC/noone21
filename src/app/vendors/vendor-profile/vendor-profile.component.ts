@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 import * as moment from 'moment';
 import { LooseObject, isEmptyObject, makeSingleNameFormFIrstMiddleAndLastNames, parseFloatC } from 'src/app/shared/utils/common-functions';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ReviewUrls } from 'src/app/reviews/review-urls.enum';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -35,7 +35,7 @@ export class VendorProfileComponent implements OnInit, AfterViewInit {
   html_video: any;
   loggedInUser: LooseObject = {};
   isEmptyObject = isEmptyObject;
-  form: FormGroup;
+  form: UntypedFormGroup;
   parseFloatC = parseFloatC;
   disableButton: boolean = false;
   reviews = [];
@@ -50,7 +50,7 @@ export class VendorProfileComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private _lightbox: Lightbox,
     private embedService: EmbedVideoService,

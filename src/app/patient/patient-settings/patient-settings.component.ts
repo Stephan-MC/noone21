@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -15,7 +15,7 @@ import { isEmptyObjectKeys } from 'src/app/shared/utils/common-functions';
   styleUrls: ['./patient-settings.component.scss']
 })
 export class PatientSettingsComponent implements OnInit {
-  fg: FormGroup;
+  fg: UntypedFormGroup;
   userId = null;
   isEmptyObjectKeys = isEmptyObjectKeys;
   constructor(
@@ -23,7 +23,7 @@ export class PatientSettingsComponent implements OnInit {
     private localStorage: LocalStorage,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private loaderService: LoaderService
   ) {
     this.fg = this.formBuilder.group({
@@ -37,7 +37,7 @@ export class PatientSettingsComponent implements OnInit {
   }
 
   private checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
-    return (group: FormGroup) => {
+    return (group: UntypedFormGroup) => {
       const passwordInput = group.controls[passwordKey],
         passwordConfirmationInput = group.controls[passwordConfirmationKey];
       if (passwordInput.value !== passwordConfirmationInput.value) {

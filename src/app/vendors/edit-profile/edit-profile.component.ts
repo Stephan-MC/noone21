@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone,Input,ViewChild, ElementRef } from '@angular/core';
-import { FormGroup,FormsModule,FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { UntypedFormGroup,FormsModule,UntypedFormBuilder, Validators, UntypedFormArray, UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { emailRegEx } from 'src/app/shared/utils/email-validation_pattern.config';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
@@ -36,8 +36,8 @@ declare var google;
 })
 export class EditProfileComponent implements OnInit {
   
-  form: FormGroup;
-  myForm: FormGroup;
+  form: UntypedFormGroup;
+  myForm: UntypedFormGroup;
   htmlContent: any;
   userId: number = 0;;
   disabled = false;
@@ -105,7 +105,7 @@ export class EditProfileComponent implements OnInit {
   availabilities = availabilities;
   constructor(
     private route: ActivatedRoute,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private localStorage: LocalStorage,
     private requestService: RequestService,
@@ -278,11 +278,11 @@ export class EditProfileComponent implements OnInit {
 
 
   get consultationFeeArray() {
-    return this.form.get('consultation') as FormArray;
+    return this.form.get('consultation') as UntypedFormArray;
   }
 
   removeConsultationFee(i) {
-    (this.consultationFeeArray as FormArray).removeAt(i);
+    (this.consultationFeeArray as UntypedFormArray).removeAt(i);
   }
 
   createEducation() {
@@ -323,7 +323,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   get categoryArray() {
-    return this.form.get('user_categories') as FormArray;
+    return this.form.get('user_categories') as UntypedFormArray;
   }
 
   addFAQ() {
@@ -331,15 +331,15 @@ export class EditProfileComponent implements OnInit {
   }
 
   get faqArray() {
-    return this.form.get('user_faq') as FormArray;
+    return this.form.get('user_faq') as UntypedFormArray;
   }
 
   removeFAQ(i) {
-    (this.faqArray as FormArray).removeAt(i);
+    (this.faqArray as UntypedFormArray).removeAt(i);
   }
 
   removeCategory(i) {
-    (this.categoryArray as FormArray).removeAt(i);
+    (this.categoryArray as UntypedFormArray).removeAt(i);
   }
 
 
@@ -349,15 +349,15 @@ export class EditProfileComponent implements OnInit {
 
 
   get educationArray() {
-    return this.form.get('education') as FormArray;
+    return this.form.get('education') as UntypedFormArray;
   }
 
   removeEducation(i) {
-    (this.educationArray as FormArray).removeAt(i);
+    (this.educationArray as UntypedFormArray).removeAt(i);
   }
 
   public fileChangeEvent(fileInput: any, index) {
-    const control = this.form.get(['education', index, 'disabled']) as FormControl;
+    const control = this.form.get(['education', index, 'disabled']) as UntypedFormControl;
     control.patchValue(true);
     let formData = new FormData();
     formData.append('media', fileInput.target.files[0]);
@@ -366,7 +366,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   public fileChangeEventCat(fileInput: any, index) {
-    const control = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+    const control = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
     control.patchValue(true);
     let formData = new FormData();
     formData.append('media', fileInput.target.files[0]);
@@ -535,18 +535,18 @@ export class EditProfileComponent implements OnInit {
           this.singleUserObject['profile_media'] = res.result.data;
         }
         if (type == 'education') {
-          const controlDisabled = this.form.get(['education', index, 'disabled']) as FormControl;
+          const controlDisabled = this.form.get(['education', index, 'disabled']) as UntypedFormControl;
           controlDisabled.patchValue(false);
-          const control = this.form.get(['education', index, 'media_id']) as FormControl;
+          const control = this.form.get(['education', index, 'media_id']) as UntypedFormControl;
           control.patchValue(res.result.data.id);
           console.log('test');
-          const controlMedia = this.form.get(['education', index, 'media']) as FormControl;
+          const controlMedia = this.form.get(['education', index, 'media']) as UntypedFormControl;
           controlMedia.patchValue(res.result.data);
         }
         if (type == 'category') {
-          const controlDisabled = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+          const controlDisabled = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
           controlDisabled.patchValue(false);
-          const control = this.form.get(['user_categories', index, 'media_id']) as FormControl;
+          const control = this.form.get(['user_categories', index, 'media_id']) as UntypedFormControl;
           control.patchValue(res.result.data.id);
         }
       } else {
@@ -586,7 +586,7 @@ export class EditProfileComponent implements OnInit {
       this.disableButton = false;
       if (res && res.status) {
         this.toastr.success(res.message, 'Success');
-        const control = this.form.get(['consultation', index, 'id']) as FormControl;
+        const control = this.form.get(['consultation', index, 'id']) as UntypedFormControl;
         control.patchValue(res.result.data.id);
       } else {
 
@@ -632,7 +632,7 @@ export class EditProfileComponent implements OnInit {
       this.disableButton = false;
       if (res && res.status) {
         this.toastr.success(res.message, 'Success');
-        const control = this.form.get(['user_faq', index, 'id']) as FormControl;
+        const control = this.form.get(['user_faq', index, 'id']) as UntypedFormControl;
         control.patchValue(res.result.data.id);
       } else {
 
@@ -665,7 +665,7 @@ export class EditProfileComponent implements OnInit {
       console.log("saveConsultations -> res", res);
       this.disableButton = false;
       if (res && res.status) {
-        const control = this.form.get(['consultation', index, 'id']) as FormControl;
+        const control = this.form.get(['consultation', index, 'id']) as UntypedFormControl;
         control.patchValue(res.result.data.id);
         this.toastr.success(res.message, 'Success');
       } else {
@@ -704,7 +704,7 @@ export class EditProfileComponent implements OnInit {
       console.log("saveConsultations -> res", res);
       this.disableButton = false;
       if (res && res.status) {
-        const control = this.form.get(['consultation', index, 'id']) as FormControl;
+        const control = this.form.get(['consultation', index, 'id']) as UntypedFormControl;
         control.patchValue(res.result.data.id);
         this.toastr.success(res.message, 'Success');
       } else {
@@ -773,14 +773,14 @@ export class EditProfileComponent implements OnInit {
     eObj.end_date = changeDateFormat(eObj.end_date);
     eObj['user_id'] = this.userId;
     // return;
-    const controlDisabled = this.form.get(['education', index, 'disabled']) as FormControl;
+    const controlDisabled = this.form.get(['education', index, 'disabled']) as UntypedFormControl;
     controlDisabled.patchValue(true);
     this.requestService.sendRequest(UserUrls.EDUCATION_POST, 'post', removeEmptyKeysFromObject(eObj)).subscribe(res => {
       console.log("saveConsultations -> res", res);
-      const controlDisabled = this.form.get(['education', index, 'disabled']) as FormControl;
+      const controlDisabled = this.form.get(['education', index, 'disabled']) as UntypedFormControl;
       controlDisabled.patchValue(false);
       if (res && res.status) {
-        const control = this.form.get(['education', index, 'id']) as FormControl;
+        const control = this.form.get(['education', index, 'id']) as UntypedFormControl;
         control.patchValue(res.result.data.id);
         this.toastr.success(res.message, 'Success');
       } else {
@@ -789,7 +789,7 @@ export class EditProfileComponent implements OnInit {
 
       }
     }, error => {
-      const controlDisabled = this.form.get(['education', index, 'disabled']) as FormControl;
+      const controlDisabled = this.form.get(['education', index, 'disabled']) as UntypedFormControl;
       controlDisabled.patchValue(false);
       console.log("LoginComponent -> submit -> error", error);
       this.toastr.error(error.error ? error.error.message : error.message, 'success');
@@ -805,12 +805,12 @@ export class EditProfileComponent implements OnInit {
     eObj.end_date = changeDateFormat(eObj.end_date);
     eObj['user_id'] = this.userId;
     // return;
-    const controlDisabled = this.form.get(['education', index, 'disabled']) as FormControl;
+    const controlDisabled = this.form.get(['education', index, 'disabled']) as UntypedFormControl;
     controlDisabled.patchValue(true);
     this.requestService.sendRequest(UserUrls.EDUCATION_PUT, 'put', removeEmptyKeysFromObject(eObj)).subscribe(res => {
       console.log("saveConsultations -> res", res);
       if (res && res.status) {
-        const control = this.form.get(['education', index, 'id']) as FormControl;
+        const control = this.form.get(['education', index, 'id']) as UntypedFormControl;
         control.patchValue(res.result.data.id);
         this.toastr.success(res.message, 'Success');
       } else {
@@ -819,7 +819,7 @@ export class EditProfileComponent implements OnInit {
 
       }
     }, error => {
-      const controlDisabled = this.form.get(['education', index, 'disabled']) as FormControl;
+      const controlDisabled = this.form.get(['education', index, 'disabled']) as UntypedFormControl;
       controlDisabled.patchValue(false);
       console.log("LoginComponent -> submit -> error", error);
       this.toastr.error(error.error ? error.error.message : error.message, 'success');
@@ -1197,7 +1197,7 @@ export class EditProfileComponent implements OnInit {
       return false;
     }
 
-    const control = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+    const control = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
     control.patchValue(true);
 
     formData['sub_category_ids'] = getIdsFromArray(currentItem.value.sub_categories, 'id');
@@ -1205,12 +1205,12 @@ export class EditProfileComponent implements OnInit {
 
     this.requestService.sendRequest(UserUrls.CATEGORIES_ADD, 'POST', formData).subscribe(res => {
 
-      const control = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+      const control = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
       control.patchValue(false);
 
       if (res.status) {
         this.toastr.success(res.message, 'Success');
-        const control = this.form.get(['user_categories', index, 'id']) as FormControl;
+        const control = this.form.get(['user_categories', index, 'id']) as UntypedFormControl;
         control.patchValue(this.create_UUID());
 
       } else {
@@ -1218,7 +1218,7 @@ export class EditProfileComponent implements OnInit {
 
       }
     }, error => {
-      const control = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+      const control = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
       control.patchValue(false);
       this.toastr.error(error.error ? error.error.message : error.message, 'Error');
     });
@@ -1274,7 +1274,7 @@ export class EditProfileComponent implements OnInit {
       return false;
     }
 
-    const control = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+    const control = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
     control.patchValue(true);
 
     formData['sub_category_ids'] = getIdsFromArray(currentItem.value.sub_categories, 'id');
@@ -1284,19 +1284,19 @@ export class EditProfileComponent implements OnInit {
 
     this.requestService.sendRequest(UserUrls.CATEGORIES_EDIT, 'PUT', formData).subscribe(res => {
 
-      const control = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+      const control = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
       control.patchValue(false);
 
       if (res.status) {
         this.toastr.success(res.message, 'Success');
-        const control = this.form.get(['user_categories', index, 'id']) as FormControl;
+        const control = this.form.get(['user_categories', index, 'id']) as UntypedFormControl;
         control.patchValue(this.create_UUID());
 
       } else {
         this.toastr.error(res.message, 'Error');
       }
     }, error => {
-      const control = this.form.get(['user_categories', index, 'disabled']) as FormControl;
+      const control = this.form.get(['user_categories', index, 'disabled']) as UntypedFormControl;
       control.patchValue(false);
       this.toastr.error(error.error ? error.error.message : error.message, 'Error');
     });

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from 'src/app/shared/services/request.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { AuthenticationUrls } from '../authentication-urls.enum';
 import { LoginType } from 'src/app/shared/Enums/Login-type.enum';
@@ -15,13 +15,13 @@ import { LoginType } from 'src/app/shared/Enums/Login-type.enum';
 export class ForgotPasswordComponent implements OnInit {
   disableButton: boolean = false;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   type: number = 1;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
     private requestService: RequestService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private toastr: ToastrService
   ) {

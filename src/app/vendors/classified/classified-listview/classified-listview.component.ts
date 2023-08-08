@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { LooseObject, isEmptyObjectKeys, mergeRecursive, removeEmptyKeysFromObject } from 'src/app/shared/utils/common-functions';
 import { id } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap/modal/public_api';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { SharedUrls } from 'src/app/shared/utils/shared-urls.enum';
 import { isObject } from 'util';
 import { Observable, ObservableInput, of } from 'rxjs';
@@ -36,9 +36,9 @@ export class ClassifiedListviewComponent implements OnInit {
   catgories='';
   smallNumPages = 0;
   sortType = 1;
-  form: FormGroup;
-  fg: FormGroup;
-  filterForm: FormGroup;
+  form: UntypedFormGroup;
+  fg: UntypedFormGroup;
+  filterForm: UntypedFormGroup;
   selectedUser: any;
   isEmptyObjectKeys = isEmptyObjectKeys;
   searching = false;
@@ -51,7 +51,7 @@ export class ClassifiedListviewComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private localStorage: LocalStorage,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private loaderService: LoaderService
   ) {
     this.userId = this.localStorage.getObject('user_details').token;

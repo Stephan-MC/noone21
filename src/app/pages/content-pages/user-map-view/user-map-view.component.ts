@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router, NavigationEnd } from '@angular/router';
 import { CategoryUrl } from 'src/app/masters/category/category-url.enum';
 import { UserUrls } from 'src/app/users/user-urls.enum';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 // declare var $: any;
 import { removeObjectProperties, deepCopy } from 'src/app/shared/utils/common-functions';
@@ -46,7 +46,7 @@ export class UserMapViewComponent implements OnInit {
   // address = '';
 
   sortType = 1;
-  formFilter: FormGroup;
+  formFilter: UntypedFormGroup;
   parseFloatC = parseFloatC;
 
   searching = false;
@@ -88,7 +88,7 @@ textArea = '';
     private requestService: RequestService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,

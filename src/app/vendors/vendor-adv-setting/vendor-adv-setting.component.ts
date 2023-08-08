@@ -4,7 +4,7 @@ import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 import { mapping } from '../vendor-util';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { isEmptyObjectKeys } from 'src/app/shared/utils/common-functions';
 import { AuthenticationUrls } from 'src/app/pages/content-pages/authentication-urls.enum';
 import { Router } from '@angular/router';
@@ -18,10 +18,10 @@ export class VendorAdvSettingComponent implements OnInit {
 
   userId = null;
   singleUserObject = null;
-  fg: FormGroup;
+  fg: UntypedFormGroup;
   isEmptyObjectKeys = isEmptyObjectKeys;
   constructor(private localStorage: LocalStorage,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private toastrService: ToastrService,
     private router: Router,
     private requestService: RequestService,) {
@@ -37,7 +37,7 @@ export class VendorAdvSettingComponent implements OnInit {
   }
 
   private checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
-    return (group: FormGroup) => {
+    return (group: UntypedFormGroup) => {
       const passwordInput = group.controls[passwordKey],
         passwordConfirmationInput = group.controls[passwordConfirmationKey];
       if (passwordInput.value !== passwordConfirmationInput.value) {

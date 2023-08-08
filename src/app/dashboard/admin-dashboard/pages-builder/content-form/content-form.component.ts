@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray, UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LooseObject, removeObjectProperties, deepCopy } from 'src/app/shared/utils/common-functions';
@@ -15,8 +15,8 @@ import { SlugifyPipe } from 'src/app/shared/pipes/slugify.pipe';
 })
 export class ContentFormComponent implements OnInit {
 
-  skillsForm: FormGroup;
-  form: FormGroup;
+  skillsForm: UntypedFormGroup;
+  form: UntypedFormGroup;
   @Input() title: string = '';
   @Input() id:null;
   @Input() Pageaction;
@@ -26,14 +26,14 @@ export class ContentFormComponent implements OnInit {
   @Input() pageContent;
   
   pages:any;
-  contents = new FormArray([]);
-  display_name=new FormArray([]);
-  page_ids=new FormArray([]);
+  contents = new UntypedFormArray([]);
+  display_name=new UntypedFormArray([]);
+  page_ids=new UntypedFormArray([]);
  pageId=0;
   constructor(
     public router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private requestService: RequestService,
     private toastrService: ToastrService,
     private slugifyPipe: SlugifyPipe
@@ -57,14 +57,14 @@ export class ContentFormComponent implements OnInit {
       this.getSingleContent(this.id);
     }
   }
-  newSkill(): FormGroup {
+  newSkill(): UntypedFormGroup {
     return this.fb.group({
       skill: '',
       exp: '',
     })
  }
- get skills() : FormArray {
-  return this.skillsForm.get("skills") as FormArray
+ get skills() : UntypedFormArray {
+  return this.skillsForm.get("skills") as UntypedFormArray
 }
  addSkills() {
   this.skills.push(this.newSkill());
@@ -126,8 +126,8 @@ removeSkill(i:number) {
       if (res && res.status) {
         this.pages = res.result.data;
         res.result.data.forEach( (cu, index) => {
-          this.display_name.push(new FormControl(cu.display_name));
-          this.contents.push(new FormControl(cu.content));
+          this.display_name.push(new UntypedFormControl(cu.display_name));
+          this.contents.push(new UntypedFormControl(cu.content));
           this.pageId=cu.page_id;
          console.log(cu.display_name);
         });
@@ -184,9 +184,9 @@ removeSkill(i:number) {
      console.log(this.pageId);
   }
   addContent() {
-    this.display_name.push(new FormControl(''));
-    this.contents.push(new FormControl(''));
-    this.page_ids.push(new FormControl(''));
+    this.display_name.push(new UntypedFormControl(''));
+    this.contents.push(new UntypedFormControl(''));
+    this.page_ids.push(new UntypedFormControl(''));
   }
   removeContent(index: number) {
     this.contents.removeAt(index);

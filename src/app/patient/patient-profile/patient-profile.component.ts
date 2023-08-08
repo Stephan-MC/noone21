@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { emailRegEx } from 'src/app/shared/utils/email-validation_pattern.config';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
@@ -23,8 +23,8 @@ import {google} from 'google-maps';
 export class PatientProfileComponent implements OnInit {
 
 
-  form: FormGroup;
-  myForm: FormGroup;
+  form: UntypedFormGroup;
+  myForm: UntypedFormGroup;
 
   userId: number = 0;;
 
@@ -58,7 +58,7 @@ export class PatientProfileComponent implements OnInit {
   singleUserObject: any = null;
   constructor(
     private route: ActivatedRoute,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,

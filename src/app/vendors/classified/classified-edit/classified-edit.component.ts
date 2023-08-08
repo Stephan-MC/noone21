@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, NgZone, ElementRef, ViewChild } from '@angular/core';
 
-import { FormControl,  AbstractControl,FormGroup, FormBuilder, Validators,FormsModule ,ReactiveFormsModule } from '@angular/forms';
+import { FormControl,  AbstractControl,UntypedFormGroup, UntypedFormBuilder, Validators,FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -35,7 +35,7 @@ export class ClassifiedEditComponent implements OnInit {
   dbperId='';
   media=[];
   dbTypeId='';
-  form: FormGroup;
+  form: UntypedFormGroup;
   tags: Fruit[] = [];
   description="pakd iskakkdij adf";
   singleUserObject = null;
@@ -64,7 +64,7 @@ export class ClassifiedEditComponent implements OnInit {
    public  formD = new FormData();
   address: Address = new Address();
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private route:ActivatedRoute,
     private requestService: RequestService,

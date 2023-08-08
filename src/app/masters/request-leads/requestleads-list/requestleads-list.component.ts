@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild, } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { RequestService } from 'src/app/shared/services/request.service';
@@ -34,7 +34,7 @@ export class RequestleadsListComponent implements OnInit {
   activePage: number = 1;
   total: number = 0;
   offset: number = 0;
-  fg: FormGroup;
+  fg: UntypedFormGroup;
   selectedUser: any;
   isEmptyObjectKeys = isEmptyObjectKeys;
   modelRef = null;

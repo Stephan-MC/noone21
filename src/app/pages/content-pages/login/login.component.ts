@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginType } from 'src/app/shared/Enums/Login-type.enum';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { AuthenticationUrls } from '../authentication-urls.enum';
 import { LocalStorage } from 'src/app/libs/localstorage';
@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
 
   disableButton: boolean = false;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
 
   constructor(public router: Router,
     public route: ActivatedRoute,
     private requestService: RequestService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private toastr: ToastrService,
     private authService: SocialAuthService

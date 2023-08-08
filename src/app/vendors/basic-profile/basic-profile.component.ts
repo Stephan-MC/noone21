@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, NgZone, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormControl } from '@angular/forms';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
@@ -47,7 +47,7 @@ const STYLES = (theme: ThemeVariables) => ({
 export class BasicProfileComponent implements OnInit {
   readonly classes = this.sRenderer.renderSheet(STYLES, true);
   cropped?: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() userId = null;
   mediaId=null;
   @Input() singleUserObject = null;
@@ -82,7 +82,7 @@ export class BasicProfileComponent implements OnInit {
   };
 
   countries = [];
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private localStorage: LocalStorage,
     private requestService: RequestService,
     private toastr: ToastrService,
