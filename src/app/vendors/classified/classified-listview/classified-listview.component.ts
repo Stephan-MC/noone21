@@ -7,7 +7,7 @@ import { id } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap/modal/public_api';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { SharedUrls } from 'src/app/shared/utils/shared-urls.enum';
-import { isObject } from 'util';
+import { isObject } from 'lodash';
 import { Observable, ObservableInput, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap, switchMap, map, catchError } from 'rxjs/operators';
 import { RejectionReasonUrls } from 'src/app/masters/rejection-reason/rejection-reason-urls.enum';

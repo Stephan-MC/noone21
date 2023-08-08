@@ -12,7 +12,7 @@ import { removeObjectProperties, deepCopy } from 'src/app/shared/utils/common-fu
 import { Subscription, ObservableInput, of, Observable } from 'rxjs';
 
 import { tap, catchError, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { isObject } from 'util';
+import { isObject } from 'lodash';
 import { Marker, MapsAPILoader } from '@agm/core';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { MapModalComponent } from 'src/app/shared/components/modals/map-modal/map-modal.component';

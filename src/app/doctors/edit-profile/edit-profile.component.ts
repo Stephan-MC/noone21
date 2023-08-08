@@ -14,7 +14,7 @@ declare var $: any;
 import { tap, catchError, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, of, ObservableInput, Subject, Subscription } from 'rxjs';
 import { CategoryUrl } from 'src/app/masters/category/category-url.enum';
-import { isObject } from 'util';
+import { isObject } from 'lodash';
 import { MatLegacyAutocompleteTrigger as MatAutocompleteTrigger } from '@angular/material/legacy-autocomplete';
 import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 import { ConsultationUrls } from 'src/app/masters/consultation/consultation-urls.enum';

@@ -9,7 +9,7 @@ import { CategoryUrl } from '../../category/category-url.enum';
 import { tap, catchError, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { RequestService } from 'src/app/shared/services/request.service';
 
-import { isObject } from 'util';
+import { isObject } from 'lodash';
 @Component({
   selector: 'app-skill-form',
   templateUrl: './skill-form.component.html',
