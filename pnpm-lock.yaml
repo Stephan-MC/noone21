@@ -239,7 +239,7 @@ devDependencies:
     specifier: ^4.14.165
     version: 4.14.196
   '@types/node':
-    specifier: ^12.20.5
+    specifier: ^12.20.55
     version: 12.20.55
   codelyzer:
     specifier: ^6.0.0
