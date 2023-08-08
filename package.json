@@ -42,7 +42,7 @@
     "@ngx-loading-bar/core": "^5.0.2",
     "@ngx-loading-bar/http-client": "^5.0.2",
     "@ngx-loading-bar/router": "^5.0.2",
-    "@swimlane/ngx-datatable": "^17.0.0",
+    "@swimlane/ngx-datatable": "^20.1.0",
     "@types/google-maps": "^3.2.2",
     "angularx-social-login": "^3.4.1",
     "bootstrap": "^4.5.3",
