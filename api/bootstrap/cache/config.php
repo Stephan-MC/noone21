@@ -192,7 +192,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\laragon1\\www\\noone21\\backend\\storage\\framework/cache/data',
+        'path' => 'D:\\laragon1\\www\\noone21\\api\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -331,12 +331,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laragon1\\www\\noone21\\backend\\storage\\app/public',
+        'root' => 'D:\\laragon1\\www\\noone21\\api\\storage\\app/public',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laragon1\\www\\noone21\\backend\\storage\\app/public',
+        'root' => 'D:\\laragon1\\www\\noone21\\api\\storage\\app/public',
         'url' => 'http://noone21.com/api_data/storage',
         'visibility' => 'public',
       ),
@@ -463,13 +463,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\laragon1\\www\\noone21\\backend\\storage\\logs/laravel.log',
+        'path' => 'D:\\laragon1\\www\\noone21\\api\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\laragon1\\www\\noone21\\backend\\storage\\logs/laravel.log',
+        'path' => 'D:\\laragon1\\www\\noone21\\api\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -533,7 +533,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\laragon1\\www\\noone21\\backend\\resources\\views/vendor/mail',
+        0 => 'D:\\laragon1\\www\\noone21\\api\\resources\\views/vendor/mail',
       ),
     ),
     'stream' => 
@@ -619,7 +619,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\laragon1\\www\\noone21\\backend\\storage\\framework/sessions',
+    'files' => 'D:\\laragon1\\www\\noone21\\api\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -654,8 +654,8 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\laragon1\\www\\noone21\\backend\\resources\\views',
+      0 => 'D:\\laragon1\\www\\noone21\\api\\resources\\views',
     ),
-    'compiled' => 'D:\\laragon1\\www\\noone21\\backend\\storage\\framework\\views',
+    'compiled' => 'D:\\laragon1\\www\\noone21\\api\\storage\\framework\\views',
   ),
 );

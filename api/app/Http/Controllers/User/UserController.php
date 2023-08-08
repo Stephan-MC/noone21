@@ -45,6 +45,7 @@ use Illuminate\Contracts\Auth\PasswordBroker;
 class UserController extends Controller{
     protected $userObject = null;
     public function __construct(User $userObject){
+        
         $this->userObject = $userObject;
     }
 
@@ -240,7 +241,7 @@ class UserController extends Controller{
 
     // get all users
     public function index(Request $request){
- 
+
         try {
             $users = User::search($request);
             
