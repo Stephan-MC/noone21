@@ -201,7 +201,7 @@ dependencies:
     specifier: ^2.0.0
     version: 2.0.1
   zone.js:
-    specifier: ^0.11.8
+    specifier: ~0.11.4
     version: 0.11.8
 
 devDependencies:
