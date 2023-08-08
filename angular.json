@@ -234,7 +234,6 @@
       }
     }
   },
-  "defaultProject": "medical-app",
   "cli": {
     "analytics": false
   }
