@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ClassifiedListviewComponent } from './classified-listview.component';
 
@@ -6,7 +6,7 @@ describe('ClassifiedListviewComponent', () => {
   let component: ClassifiedListviewComponent;
   let fixture: ComponentFixture<ClassifiedListviewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ClassifiedListviewComponent ]
     })
