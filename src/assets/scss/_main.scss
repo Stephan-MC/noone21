@@ -1,138 +1,173 @@
-@import '~@swimlane/ngx-datatable/index.css';
-@import '~@swimlane/ngx-datatable/themes/material.scss';
-@import '~@swimlane/ngx-datatable/assets/icons.css';
-@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "../../../node_modules/@swimlane/ngx-datatable/index.css";
+@import "../../../node_modules/@swimlane/ngx-datatable/themes/material.scss";
+@import "../../../node_modules/@swimlane/ngx-datatable/assets/icons.css";
+@import "../../../node_modules/@ng-select/ng-select/themes/default.theme.css";
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "../../../node_modules/bootstrap/scss/bootstrap";
 
-
-.ngx-datatable .datatable-header .datatable-header-cell.sortable .datatable-header-cell-wrapper {
-      font-weight: 500;
-    -webkit-transition: all .3s ease;
-    font-size: .875rem;
-    color: #29334c;
+.ngx-datatable
+  .datatable-header
+  .datatable-header-cell.sortable
+  .datatable-header-cell-wrapper {
+  font-weight: 500;
+  -webkit-transition: all 0.3s ease;
+  font-size: 0.875rem;
+  color: #29334c;
 }
-ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {  
-    border-right: 1px solid #e4e6f1;
-    border-bottom: 1px solid #e4e6f1;
-    border-right: 1px solid #e4e6f1;
-    border-left: 1px solid #e4e6f1;
-     text-align: center;
-}
-
-ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {  
-    border-right: 1px solid #e4e6f1;
-    border-bottom: 1px solid #e4e6f1;
-    border-right: 1px solid #e4e6f1;
-    border-left: 1px solid #e4e6f1;
-    text-align: center;
+ngx-datatable.material
+  .datatable-body
+  .datatable-body-row
+  .datatable-body-cell {
+  border-right: 1px solid #e4e6f1;
+  border-bottom: 1px solid #e4e6f1;
+  border-right: 1px solid #e4e6f1;
+  border-left: 1px solid #e4e6f1;
+  text-align: center;
 }
 
-
-.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
-    //   border-right: 1px solid #e4e6f1;
-    border-left: 1.5px solid #e4e6f1;
-    text-align: center;
-}
-.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell, .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-group-cell {
-//   border-right: 1px solid #e4e6f1;
-//     border-left: 1px solid #e4e6f1;
-    border-bottom: 1px solid #e4e6f1;
-}
-
-.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell, .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-group-cell {
-    
-    padding: .75rem;
-    vertical-align: middle;
+ngx-datatable.material
+  .datatable-body
+  .datatable-body-row
+  .datatable-body-cell {
+  border-right: 1px solid #e4e6f1;
+  border-bottom: 1px solid #e4e6f1;
+  border-right: 1px solid #e4e6f1;
+  border-left: 1px solid #e4e6f1;
+  text-align: center;
 }
 
-.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell, .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-group-cell {
-padding-top: 20px;
+.ngx-datatable.fixed-header
+  .datatable-header
+  .datatable-header-inner
+  .datatable-header-cell {
+  //   border-right: 1px solid #e4e6f1;
+  border-left: 1.5px solid #e4e6f1;
+  text-align: center;
+}
+.ngx-datatable.fixed-row
+  .datatable-scroll
+  .datatable-body-row
+  .datatable-body-cell,
+.ngx-datatable.fixed-row
+  .datatable-scroll
+  .datatable-body-row
+  .datatable-body-group-cell {
+  //   border-right: 1px solid #e4e6f1;
+  //     border-left: 1px solid #e4e6f1;
+  border-bottom: 1px solid #e4e6f1;
+}
+
+.ngx-datatable.fixed-row
+  .datatable-scroll
+  .datatable-body-row
+  .datatable-body-cell,
+.ngx-datatable.fixed-row
+  .datatable-scroll
+  .datatable-body-row
+  .datatable-body-group-cell {
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+
+.ngx-datatable.fixed-row
+  .datatable-scroll
+  .datatable-body-row
+  .datatable-body-cell,
+.ngx-datatable.fixed-row
+  .datatable-scroll
+  .datatable-body-row
+  .datatable-body-group-cell {
+  padding-top: 20px;
 }
 
 .custom_disabled {
-  opacity: .4;
+  opacity: 0.4;
   cursor: default !important;
   pointer-events: none;
   background-color: #c0c0c0 !important;
-   border-color: #c0c0c0 !important;
+  border-color: #c0c0c0 !important;
 }
 
 .ng-select.ng-select-single .ng-select-container {
-    height: 32px;
-    border: 1px solid #e4e6f1;
-    border-radius: 2px;
-    border-radius: 1;
+  height: 32px;
+  border: 1px solid #e4e6f1;
+  border-radius: 2px;
+  border-radius: 1;
 }
 
 .multiselect-dropdown .dropdown-btn {
-    height: 38px;
-    border: 1px solid #e4e6f1 !important;
-    border-radius: 2px !important;
-    padding: 9px 12px !important;
+  height: 38px;
+  border: 1px solid #e4e6f1 !important;
+  border-radius: 2px !important;
+  padding: 9px 12px !important;
 }
 
-	label {
+label {
+  sup {
+    color: red;
+    line-height: normal;
+    font-size: 15px;
+    top: 0;
+  }
+}
 
-		sup {
-			color: red;
-			line-height: normal;
-			font-size: 15px;
-			top: 0;
-		}
-	}
-  
-  .ngx-datatable .datatable-footer .datatable-pager .pager li a {
-	vertical-align: middle;
+.ngx-datatable .datatable-footer .datatable-pager .pager li a {
+  vertical-align: middle;
 }
 
 .ngx-datatable.material {
-	font-size: 12px;
-	line-height: 14px;
-	margin: 0 0 15px;
-	width: auto !important;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0 0 15px;
+  width: auto !important;
 }
 
 .ngx-datatable .datatable-body .datatable-scroll {
-	display: block !important;
-	border-style: solid;
-	border-width: 0 1px 1px;
-	border-color: #c0c0c0;
+  display: block !important;
+  border-style: solid;
+  border-width: 0 1px 1px;
+  border-color: #c0c0c0;
 }
 
 .ngx-datatable.scroll-vertical .datatable-body {
-	min-height: 35px;
-	border-left: 1px solid #c0c0c0;
+  min-height: 35px;
+  border-left: 1px solid #c0c0c0;
 }
 
 .ngx-datatable .datatable-header-cell,
 .ngx-datatable.material .datatable-header {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .ngx-datatable.material .datatable-body .datatable-body-row {
-	padding: 0;
-	border-top: 1px solid #c0c0c0;
+  padding: 0;
+  border-top: 1px solid #c0c0c0;
 }
 
-.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell,
-.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
-	padding: 0 5px !important;
-	height: auto !important;
-	vertical-align: middle !important;
-	overflow: visible !important;
-	white-space: normal !important;
-	text-overflow: inherit !important;
-	text-align: center;
+.ngx-datatable.fixed-row
+  .datatable-scroll
+  .datatable-body-row
+  .datatable-body-cell,
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row
+  .datatable-body-cell {
+  padding: 0 5px !important;
+  height: auto !important;
+  vertical-align: middle !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-overflow: inherit !important;
+  text-align: center;
 }
 
 .ngx-datatable.dark .datatable-body .datatable-body-row .datatable-body-cell,
 ng-reflect-row-height {
-	height: auto !important;
+  height: auto !important;
 }
 
 .ngx-datatable .empty-row {
-	padding: 15px;
+  padding: 15px;
 }
 
 // .ngx-datatable.material.docs-card .datatable-body .datatable-body-row .datatable-body-cell,
@@ -140,49 +175,59 @@ ng-reflect-row-height {
 // 	text-align: center;
 // }
 
-
 /*.ngx-datatable.material.docs-card .datatable-body .datatable-body-row .datatable-body-cell:first-child,
 .ngx-datatable.material.docs-card.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell:first-child {
 	text-align: left;
 }*/
 
-.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
-	// border-right: 1px solid #c0c0c0;
-	// padding: 4px 5px 2px !important;
-	padding: 4px 5px 4px !important;
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row
+  .datatable-body-cell {
+  // border-right: 1px solid #c0c0c0;
+  // padding: 4px 5px 2px !important;
+  padding: 4px 5px 4px !important;
 }
 
-
-  .ngx-datatable .datatable-body-row {
-    display: -webkit-box !important;
-  }
-
+.ngx-datatable .datatable-body-row {
+  display: -webkit-box !important;
+}
 
 .ngx-datatable.material .datatable-body .datatable-body-row.datatable-row-even {
-	background: unset !important;
-	// width: 100%!important;
+  background: unset !important;
+  // width: 100%!important;
 }
 
-.ngx-datatable.material .datatable-body .datatable-body-row.datatable-row-even:hover,
-.ngx-datatable.material .datatable-body .datatable-body-row.datatable-row-odd:hover {
-	background:#f3f0f0 !important;
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row.datatable-row-even:hover,
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row.datatable-row-odd:hover {
+  background: #f3f0f0 !important;
 }
 
-
-
-.ngx-datatable.material .datatable-body .datatable-body-row.active.datatable-row-even {
-	// background: $white;
-	/*width: 100%!important;*/
-	color: inherit;
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row.active.datatable-row-even {
+  // background: $white;
+  /*width: 100%!important;*/
+  color: inherit;
 }
 
-.ngx-datatable.material .datatable-body .datatable-body-row.active.datatable-row-odd {
-	color: inherit;
-	background: inherit;
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row.active.datatable-row-odd {
+  color: inherit;
+  background: inherit;
 }
 
-.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell .custom-radio.add-class {
-	margin: 0 auto;
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row
+  .datatable-body-cell
+  .custom-radio.add-class {
+  margin: 0 auto;
 }
 
 // .ngx-datatable.material .datatable-header .datatable-header-cell {
@@ -222,126 +267,138 @@ ng-reflect-row-height {
 // }
 
 .datatable-body-cell-label {
-	z-index: 9999!important;
-	display: block !important;
-	height: auto !important;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
-	word-break: break-word;
+  z-index: 9999 !important;
+  display: block !important;
+  height: auto !important;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  word-break: break-word;
 }
 
 .datatable-body-cell-label {
-
-	.fa.fa-check-circle-o,
-	.fa.fa-circle-o {
-		font-size: 18px;
-		// color: green-haze;
-	}
+  .fa.fa-check-circle-o,
+  .fa.fa-circle-o {
+    font-size: 18px;
+    // color: green-haze;
+  }
 }
 
 .datatable-body-cell-label a,
 .datatable-body-cell-label .label {
-	display: inline-block!important;
-	vertical-align: middle;
-	white-space: normal;
-	line-height: 20px;
+  display: inline-block !important;
+  vertical-align: middle;
+  white-space: normal;
+  line-height: 20px;
 }
 
 .custom-control-label::after {
-    left: 0;
+  left: 0;
 }
 .custom-control-label::before {
-    left: 0;
+  left: 0;
 }
 .autocomplete-dropdown {
-	.dropdown-menu {
-		margin: 0;
-		overflow-y: auto;
-		overflow-x: hidden;
-		max-height: 200px;
-		width: calc(100% - 20px);
-	}
+  .dropdown-menu {
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 200px;
+    width: calc(100% - 20px);
+  }
 
-	.dropdown-item.active {
-		background: none;
-	}
+  .dropdown-item.active {
+    background: none;
+  }
 
-	&.billing-drop {
-		.dropdown-menu {
-			width: auto;
-			right: 10px;
-		}
-	}
+  &.billing-drop {
+    .dropdown-menu {
+      width: auto;
+      right: 10px;
+    }
+  }
 }
 
 .map_icon_rk_a {
   color: #00b5e9 !important;
-    /* margin: 0px 0px 0px 6px; */
-    /* vertical-align: sub; */
-	cursor: pointer;
-    padding: -4px !important;
-    padding: 0;
-    float: right;
-    position: absolute;
-    right: 10px;
+  /* margin: 0px 0px 0px 6px; */
+  /* vertical-align: sub; */
+  cursor: pointer;
+  padding: -4px !important;
+  padding: 0;
+  float: right;
+  position: absolute;
+  right: 10px;
 }
 
-    .star {
-      position: relative;
-      display: inline-block;
-      font-size: 14px;
-      color: #d3d3d3;
-    }
-      .main-rating .star {
-      position: relative;
-      display: inline-block;
-      font-size: 3rem;
-      color: #d3d3d3;
-    }
-    .full {
-    //   color: red;
-    color: #ffa22b!important;
-    }
-    .half {
-      position: absolute;
-      display: inline-block;
-      overflow: hidden;
-    //   color: red;
-    color: #ffa22b!important;
-    }
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  color: #d3d3d3;
+}
+.main-rating .star {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  color: #d3d3d3;
+}
+.full {
+  //   color: red;
+  color: #ffa22b !important;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  //   color: red;
+  color: #ffa22b !important;
+}
 
-	.inbox_people {
+.inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
   float: left;
   overflow: hidden;
-  width: 40%; border-right:1px solid #c4c4c4;
+  width: 40%;
+  border-right: 1px solid #c4c4c4;
 }
 .inbox_msg {
   border: 1px solid #c4c4c4;
   clear: both;
   overflow: hidden;
 }
-.top_spac
-{ margin: 20px 0 0;}
+.top_spac {
+  margin: 20px 0 0;
+}
 
-
-.recent_heading 
-{float: left; width:40%;}
+.recent_heading {
+  float: left;
+  width: 40%;
+}
 // .srch_bar {
 //   display: inline-block;
 //   text-align: right;
 //   width: 60%; padding:
 // }
-.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
+.headind_srch {
+  padding: 10px 29px 10px 20px;
+  overflow: hidden;
+  border-bottom: 1px solid #c4c4c4;
+}
 
 .recent_heading h4 {
   color: #05728f;
   font-size: 21px;
   margin: auto;
 }
-.srch_bar input{ border:1px solid #cdcdcd; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
+.srch_bar input {
+  border: 1px solid #cdcdcd;
+  border-width: 0 0 1px 0;
+  width: 80%;
+  padding: 2px 0 4px 6px;
+  background: none;
+}
 .srch_bar .input-group-addon button {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
@@ -349,11 +406,24 @@ ng-reflect-row-height {
   color: #707070;
   font-size: 18px;
 }
-.srch_bar .input-group-addon { margin: 0 0 0 -27px;}
+.srch_bar .input-group-addon {
+  margin: 0 0 0 -27px;
+}
 
-.chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
-.chat_ib h5 span{ font-size:13px; float:right;}
-.chat_ib p{ font-size:14px; color:#989898; margin:auto}
+.chat_ib h5 {
+  font-size: 15px;
+  color: #464646;
+  margin: 0 0 8px 0;
+}
+.chat_ib h5 span {
+  font-size: 13px;
+  float: right;
+}
+.chat_ib p {
+  font-size: 14px;
+  color: #989898;
+  margin: auto;
+}
 .chat_img {
   float: left;
   width: 11%;
@@ -364,15 +434,23 @@ ng-reflect-row-height {
   width: 88%;
 }
 
-.chat_people{ overflow:hidden; clear:both;}
+.chat_people {
+  overflow: hidden;
+  clear: both;
+}
 .chat_list {
   border-bottom: 1px solid #c4c4c4;
   margin: 0;
   padding: 18px 16px 10px;
 }
-.inbox_chat { height: 550px; overflow-y: scroll;}
+.inbox_chat {
+  height: 550px;
+  overflow-y: scroll;
+}
 
-.active_chat{ background:#ebebeb;}
+.active_chat {
+  background: #ebebeb;
+}
 
 .incoming_msg_img {
   display: inline-block;
@@ -383,8 +461,8 @@ ng-reflect-row-height {
   padding: 0 0 0 10px;
   vertical-align: top;
   width: 92%;
- }
- .received_withd_msg p {
+}
+.received_withd_msg p {
   background: #ebebeb none repeat scroll 0 0;
   border-radius: 3px;
   color: #646464;
@@ -399,22 +477,28 @@ ng-reflect-row-height {
   font-size: 12px;
   margin: 8px 0 0;
 }
-.received_withd_msg { width: 57%;}
+.received_withd_msg {
+  width: 57%;
+}
 .mesgs {
   float: left;
   padding: 30px 15px 0 25px;
   width: 100%;
 }
 
- .sent_msg p {
+.sent_msg p {
   background: #05728f none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
-  margin: 0; color:#fff;
+  margin: 0;
+  color: #fff;
   padding: 5px 10px 5px 12px;
-  width:100%;
+  width: 100%;
 }
-.outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+.outgoing_msg {
+  overflow: hidden;
+  margin: 26px 0 26px;
+}
 .sent_msg {
   float: right;
   width: 46%;
@@ -428,7 +512,10 @@ ng-reflect-row-height {
   width: 100%;
 }
 
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.type_msg {
+  border-top: 1px solid #c4c4c4;
+  position: relative;
+}
 .msg_send_btn {
   background: #05728f none repeat scroll 0 0;
   border: medium none;
@@ -442,28 +529,29 @@ ng-reflect-row-height {
   top: 11px;
   width: 33px;
 }
-.messaging { padding: 0 0 50px 0;}
+.messaging {
+  padding: 0 0 50px 0;
+}
 .msg_history {
   height: 516px;
   overflow-y: auto;
 }
 
 .datatable-header {
-    min-width: 100%;
+  min-width: 100%;
 }
 
 .datatable-body {
-    min-width: 100%;
+  min-width: 100%;
 }
 
 ngx-datatable .datatable-body .datatable-scroll {
-    max-width: 100% !important;
-    min-width: 100%  !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
 }
 .ngx-datatable .datatable-body .datatable-scroll {
-    border-right: 0;
+  border-right: 0;
 }
-
 
 .card-header h2 {
   margin-bottom: 0px;
@@ -475,14 +563,16 @@ ngx-datatable .datatable-body .datatable-scroll {
   padding: 0.6rem 1.2rem;
 }
 
-.ngx-datatable .datatable-header .datatable-header-cell.sortable .datatable-header-cell-wrapper {
+.ngx-datatable
+  .datatable-header
+  .datatable-header-cell.sortable
+  .datatable-header-cell-wrapper {
   color: #fff;
 }
 
 .datatable-footer-inner {
   overflow: hidden;
 }
-
 
 .ngx-datatable.material .datatable-footer .datatable-pager li.active a {
   background-color: #1c46c5;
