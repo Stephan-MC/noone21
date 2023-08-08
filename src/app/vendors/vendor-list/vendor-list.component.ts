@@ -40,7 +40,7 @@ import {
   distinctUntilChanged,
   switchMap,
 } from "rxjs/operators";
-import { isObject } from "util";
+import { isObject } from "lodash";
 import { MapModalComponent } from "src/app/shared/components/modals/map-modal/map-modal.component";
 import { Address } from "src/app/shared/shares-model/Address.model";
 import { MapsAPILoader } from "@agm/core";
