@@ -27,7 +27,6 @@
               "src/assets",
               "src/robots.txt",
               "src/sitemap.xml"
-              
             ],
             "styles": [
               "src/assets/scss/_main.scss",
@@ -52,10 +51,10 @@
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
               "src/assets/css/nouislider.min.css",
-              "node_modules/select2/dist/css/select2.min.css",                        
-              "src/assets/css/choices.min.css",     
-              "node_modules/summernote/dist/summernote-lite.min.css",         
-              "src/assets/css/style.css",   
+              "node_modules/select2/dist/css/select2.min.css",
+              "src/assets/css/choices.min.css",
+              "node_modules/summernote/dist/summernote-lite.min.css",
+              "src/assets/css/style.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -65,7 +64,7 @@
               "node_modules/summernote/dist/summernote-lite.min.js",
               "node_modules/slick-carousel/slick/slick.min.js",
               "src/assets/js/jquery.sparkline.min.js",
-              "src/assets/js/circle-progress.min.js",              
+              "src/assets/js/circle-progress.min.js",
               "src/assets/plugins/rating/jquery.rating-stars.js",
               "src/assets/plugins/horizontal/horizontal.js",
               "src/assets/plugins/select2/select2.full.min.js",
@@ -76,10 +75,9 @@
               "src/assets/plugins/date-picker/datepicker.js",
               "src/assets/plugins/jquery-uislider/jquery-ui.js",
               "node_modules/quill/dist/quill.min.js",
-              "src/assets/js/nouislider.min.js",                   
+              "src/assets/js/nouislider.min.js",
               "src/assets/js/choices.min.js",
               "src/assets/js/custom.js"
-              
             ],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -132,7 +130,7 @@
               ]
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "stage"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -158,10 +156,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
@@ -223,9 +218,7 @@
           "options": {
             "browserTarget": "medical-app:build:production",
             "serverTarget": "medical-app:server:production",
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {}
