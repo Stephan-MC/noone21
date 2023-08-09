@@ -2,8 +2,8 @@ export const environment = {
     production: true,
     localStoragePrefix: 'dPortal-front',
   
-    // apiUrl: "https://cors-anywhere.herokuapp.com/https://trhov.com/hosted_domains/dportal/back/api/",
-    whitelistedDomains: ['api.dportal.ahleaza.com', 'trhov.com', "cors-anywhere.herokuapp.com"],
+    apiUrl: 'https://staging.noone21.com/api/',
+    whitelistedDomains: ['api.dportal.ahleaza.com', 'trhov.com', "cors-anywhere.herokuapp.com", "https://staging.noone21.com"],
     debugging: true,
     CipherKey: 'dPortalCipher',
     mapKey: 'AIzaSyD-SCvy8i21UZOae0Hlf8UkbmjvqBx7i6k',
