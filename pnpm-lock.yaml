@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@abacritt/angularx-social-login':
+    specifier: '2.0'
+    version: 2.0.0(@angular/common@15.2.9)(@angular/core@15.2.9)
   '@agm/core':
     specifier: ^1.1.0
     version: 1.1.0(@angular/common@15.2.9)(@angular/core@15.2.9)
@@ -282,6 +285,17 @@ devDependencies:
     version: 4.9.5
 
 packages:
+
+  /@abacritt/angularx-social-login@2.0.0(@angular/common@15.2.9)(@angular/core@15.2.9):
+    resolution: {integrity: sha512-SgbkgOTlcbaOmGDL6eCMIXct4+nFpzWjYqUfN7gqyBdb7D/rlo0hDd0hntMqoK5Tc3AA1z2ZAg+fZlSaBuRvEg==}
+    peerDependencies:
+      '@angular/common': '>=15.0.0'
+      '@angular/core': '>=15.0.0'
+    dependencies:
+      '@angular/common': 15.2.9(@angular/core@15.2.9)(rxjs@7.8.1)
+      '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.11.4)
+      tslib: 2.6.1
+    dev: false
 
   /@agm/core@1.1.0(@angular/common@15.2.9)(@angular/core@15.2.9):
     resolution: {integrity: sha512-cMvmm3+3/uuVFurLv1FKhE0/6ssIlDvYBjQFCi8ELg7h0OY2MkIU1MXWr7z+f/xZ08E936I4eeddni6k4yUTIA==}
@@ -2343,7 +2357,7 @@ packages:
       '@firebase/installations': 0.4.21(@firebase/app-types@0.6.1)(@firebase/app@0.6.16)
       '@firebase/logger': 0.2.6
       '@firebase/util': 0.4.0
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/app-check-compat@0.3.7(@firebase/app-compat@0.2.13)(@firebase/app@0.9.13):
@@ -2408,7 +2422,7 @@ packages:
       '@firebase/logger': 0.2.6
       '@firebase/util': 0.4.0
       dom-storage: 2.1.0
-      tslib: 2.0.0
+      tslib: 2.6.1
       xmlhttprequest: 1.8.0
     dev: false
 
@@ -2505,7 +2519,7 @@ packages:
     resolution: {integrity: sha512-WfBFABfKYcRFjgMA7ydPLokSa+GkuZd+FD00KrZLAfslpHxs6cCFXdklvP8NEb1oDLqYakRXBqWdelH9/Whacg==}
     dependencies:
       '@firebase/util': 0.4.0
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/component@0.6.4:
@@ -2559,7 +2573,7 @@ packages:
       '@firebase/logger': 0.2.6
       '@firebase/util': 0.4.0
       faye-websocket: 0.11.3
-      tslib: 2.0.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app-types'
     dev: false
@@ -2616,7 +2630,7 @@ packages:
       '@grpc/grpc-js': 1.9.0
       '@grpc/proto-loader': 0.5.6
       node-fetch: 2.6.1
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/firestore@3.13.0(@firebase/app@0.9.13):
@@ -2691,7 +2705,7 @@ packages:
       '@firebase/functions-types': 0.4.0
       '@firebase/messaging-types': 0.5.0(@firebase/app-types@0.6.1)
       node-fetch: 2.6.1
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/installations-compat@0.2.4(@firebase/app-compat@0.2.13)(@firebase/app-types@0.9.0)(@firebase/app@0.9.13):
@@ -2738,7 +2752,7 @@ packages:
       '@firebase/installations-types': 0.3.4(@firebase/app-types@0.6.1)
       '@firebase/util': 0.4.0
       idb: 3.0.2
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/installations@0.6.4(@firebase/app@0.9.13):
@@ -2816,7 +2830,7 @@ packages:
       '@firebase/messaging-types': 0.5.0(@firebase/app-types@0.6.1)
       '@firebase/util': 0.4.0
       idb: 3.0.2
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/performance-compat@0.2.4(@firebase/app-compat@0.2.13)(@firebase/app@0.9.13):
@@ -2856,7 +2870,7 @@ packages:
       '@firebase/logger': 0.2.6
       '@firebase/performance-types': 0.0.13
       '@firebase/util': 0.4.0
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/performance@0.6.4(@firebase/app@0.9.13):
@@ -2917,7 +2931,7 @@ packages:
       '@firebase/logger': 0.2.6
       '@firebase/remote-config-types': 0.1.9
       '@firebase/util': 0.4.0
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/remote-config@0.4.4(@firebase/app@0.9.13):
@@ -2995,13 +3009,13 @@ packages:
       '@firebase/component': 0.2.1
       '@firebase/storage-types': 0.3.13(@firebase/app-types@0.6.1)(@firebase/util@0.4.0)
       '@firebase/util': 0.4.0
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/util@0.4.0:
     resolution: {integrity: sha512-z8A+9YGM61ZXQ2KBSVwxXaELOJjG+EQ374YolqNVMvWBJzTNGZGaVP81Ggl8XD10Xinyt1Dgdo86JDV0OAnvqA==}
     dependencies:
-      tslib: 2.0.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/util@1.9.3:
@@ -7817,7 +7831,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.5.0
+      tslib: 2.6.1
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11

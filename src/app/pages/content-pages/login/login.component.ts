@@ -6,7 +6,7 @@ import { RequestService } from 'src/app/shared/services/request.service';
 import { AuthenticationUrls } from '../authentication-urls.enum';
 import { LocalStorage } from 'src/app/libs/localstorage';
 import { ToastrService } from 'ngx-toastr';
-import { SocialAuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { SocialAuthService, GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 declare var OAuth: any;
 @Component({

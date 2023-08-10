@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { AuthenticationUrls } from '../authentication-urls.enum';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStorage } from 'src/app/libs/localstorage';
-import { SocialAuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { SocialAuthService, GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 import { UserUrls } from 'src/app/users/user-urls.enum';
 import { Location, LocationStrategy } from '@angular/common';
 import { DOCUMENT } from '@angular/common';

@@ -32,7 +32,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AdminHeaderComponent } from './shared/components/admin-header/admin-header.component';
 import { AdminNavbarComponent } from './shared/components/admin-navbar/admin-navbar.component';
 // import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { LightboxModule } from 'ngx-lightbox';
 import { EmbedVideo } from 'ngx-embed-video';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -41,7 +41,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
   AmazonLoginProvider,
-} from 'angularx-social-login';
+} from '@abacritt/angularx-social-login';
 import { LoaderService } from './shared/services/loader.service';
 import { DateAgoPipe } from './shared/pipes/date-ago-pipe';
 import { LandingPageComponent } from './pages/content-pages/landing-page/landing-page.component';

@@ -19,6 +19,7 @@
   },
   "private": true,
   "dependencies": {
+    "@abacritt/angularx-social-login": "2.0",
     "@agm/core": "^1.1.0",
     "@agm/js-marker-clusterer": "^1.1.0",
     "@alyle/ui": "^15.0.0",
