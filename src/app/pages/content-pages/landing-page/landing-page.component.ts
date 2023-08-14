@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone, TemplateRef   } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, NgZone, TemplateRef   } from '@angular/core';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { CategoryUrl } from 'src/app/masters/category/category-url.enum';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { template } from 'lodash';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -100,6 +101,7 @@ export class LandingPageComponent implements OnInit {
    private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private GlobalService: GlobalService,
+    @Inject(DOCUMENT) private document: Document,
     private modalService: BsModalService
     // private cookieService: CookieService,
   ) {
@@ -148,7 +150,7 @@ export class LandingPageComponent implements OnInit {
 
 
   ngOnDestroy(): void {
-     document.body.classList.remove("homeviewpg");
+     this.document.body.classList.remove("homeviewpg");
   }
   makeParams() {
     let param: LooseObject = {};
@@ -164,7 +166,6 @@ export class LandingPageComponent implements OnInit {
   selectItem(selectItem) {
     this.selectedCategory = selectItem;
     this.selectedValue = selectItem;
-    console.log("LandingPageComponent -> selectItem -> this.selectedValue", this.selectedValue)
     if (!selectItem.id) {
       this.selectedCategory = null;
       this.selectedSubCategory = null;
@@ -235,7 +236,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   // pageChanged(event) {
-  //   console.log("DoctorListComponent -> pageChanged -> event", event);
   //   this.page = event.page;
   //   this.getDoctors()
 
@@ -281,7 +281,6 @@ export class LandingPageComponent implements OnInit {
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          console.log(place);
           if (place.address_components) {
             for (var i = 0; i < place.address_components.length; i++) {
               var addressType = place.address_components[i].types[0];
@@ -303,7 +302,6 @@ export class LandingPageComponent implements OnInit {
             'location': place.formatted_address
           });
 
-          console.log("Address Model", this.address);
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
@@ -343,7 +341,6 @@ export class LandingPageComponent implements OnInit {
     }
     else if (addressType == "country") {
       this.address.country = val;
-      console.log("storeAddress -> val", val)
       this.formFilter.patchValue({
         'country': this.address.country,
       });
@@ -412,7 +409,6 @@ export class LandingPageComponent implements OnInit {
       'address': route
     });
 
-    console.log("Address Model", this.address);
     //verify result
     if (place.geometry === undefined || place.geometry === null) {
       return;
@@ -421,12 +417,9 @@ export class LandingPageComponent implements OnInit {
     this.longitude = place.geometry.location.lng;
     this.zoom = 12;
     if (place.geometry.location) {
-      console.log("Latitude", this.latitude);
       this.formFilter.controls['lat'].setValue(this.latitude);
       this.formFilter.controls['lng'].setValue(this.longitude);
-      console.log("longtitude", this.longitude);
     }
-    console.log("Address Model", this.address);
   }
 
   doSearch() {
