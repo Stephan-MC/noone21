@@ -37,7 +37,7 @@
     "@angular/router": "^15.2.9",
     "@auth0/angular-jwt": "^5.0.1",
     "@ismaestro/ngx-scroll-to-first-invalid": "^3.0.0",
-    "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^14.2.0",
     "@ng-select/ng-select": "^4.0.4",
     "@nguniversal/express-engine": "^15.2.1",
     "@ngx-loading-bar/core": "^5.0.2",
