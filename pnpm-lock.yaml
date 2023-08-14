@@ -138,8 +138,8 @@ dependencies:
     specifier: ^7.0.1
     version: 7.0.1(@angular/core@15.2.9)
   ngx-bootstrap:
-    specifier: ^5.6.1
-    version: 5.6.1(@angular/common@15.2.9)(@angular/core@15.2.9)
+    specifier: ^10.3.0
+    version: 10.3.0(@angular/animations@15.2.9)(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(rxjs@7.8.1)
   ngx-captcha:
     specifier: ^9.0.1
     version: 9.0.1(@angular/common@15.2.9)(@angular/core@15.2.9)
@@ -175,7 +175,7 @@ dependencies:
     version: 0.8.4(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(summernote@0.8.18)
   ngx-tags-input:
     specifier: ^2.0.1
-    version: 2.0.1(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(ngx-bootstrap@5.6.1)
+    version: 2.0.1(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(ngx-bootstrap@10.3.0)
   ngx-toastr:
     specifier: ^17.0.2
     version: 17.0.2(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/platform-browser@15.2.9)
@@ -8360,14 +8360,21 @@ packages:
       tslib: 2.0.0
     dev: false
 
-  /ngx-bootstrap@5.6.1(@angular/common@15.2.9)(@angular/core@15.2.9):
-    resolution: {integrity: sha512-8fDs3VaaWgKpupakPKS0QaUc+1E/JMBGJDxUUODjyIkLtFr1A8vH4cjXiV3AfrPvhK27GH0oyTPyKWKcCjEtVg==}
+  /ngx-bootstrap@10.3.0(@angular/animations@15.2.9)(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(rxjs@7.8.1):
+    resolution: {integrity: sha512-Ok9umbq4tqJSXMy/5/+2VZJHcwj7hD3a3x2KkF1A+f0e70BARY8rfr9QKjGgvywWNyZMf0Z5PvE1WEeEiMvCkA==}
     peerDependencies:
-      '@angular/common': '>=7.0.0'
-      '@angular/core': '>=7.0.0'
+      '@angular/animations': ^15.0.0
+      '@angular/common': ^15.0.0
+      '@angular/core': ^15.0.0
+      '@angular/forms': ^15.0.0
+      rxjs: ^6.5.3 || ^7.6.0
     dependencies:
+      '@angular/animations': 15.2.9(@angular/core@15.2.9)
       '@angular/common': 15.2.9(@angular/core@15.2.9)(rxjs@7.8.1)
       '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.11.4)
+      '@angular/forms': 15.2.9(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/platform-browser@15.2.9)(rxjs@7.8.1)
+      rxjs: 7.8.1
+      tslib: 2.6.1
     dev: false
 
   /ngx-captcha@9.0.1(@angular/common@15.2.9)(@angular/core@15.2.9):
@@ -8505,7 +8512,7 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /ngx-tags-input@2.0.1(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(ngx-bootstrap@5.6.1):
+  /ngx-tags-input@2.0.1(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(ngx-bootstrap@10.3.0):
     resolution: {integrity: sha512-anXNn894L6RbgYl0NzHt3dBOOKovY7A/kFkvWXYKkWuE9VSDMyHU4adhaMFX4IteeeRY8YyRIND5GPxWd3V0mQ==}
     peerDependencies:
       '@angular/common': ^7.2.0
@@ -8516,7 +8523,7 @@ packages:
       '@angular/common': 15.2.9(@angular/core@15.2.9)(rxjs@7.8.1)
       '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.11.4)
       '@angular/forms': 15.2.9(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/platform-browser@15.2.9)(rxjs@7.8.1)
-      ngx-bootstrap: 5.6.1(@angular/common@15.2.9)(@angular/core@15.2.9)
+      ngx-bootstrap: 10.3.0(@angular/animations@15.2.9)(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(rxjs@7.8.1)
       tslib: 1.14.1
     dev: false
 
