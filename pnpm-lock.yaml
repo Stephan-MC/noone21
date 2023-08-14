@@ -165,8 +165,8 @@ dependencies:
     specifier: ^21.0.0
     version: 21.0.0(@angular/core@15.2.9)(quill@1.3.7)(rxjs@7.8.1)
   ngx-slick-carousel:
-    specifier: ^0.5.1
-    version: 0.5.1(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(rxjs@7.8.1)(zone.js@0.11.4)
+    specifier: ^15.0.0
+    version: 15.0.0(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(rxjs@7.8.1)(zone.js@0.11.4)
   ngx-spinner:
     specifier: ^9.0.2
     version: 9.0.2(@angular/common@15.2.9)(@angular/core@15.2.9)(tslib@2.0.0)
@@ -8462,20 +8462,20 @@ packages:
       tslib: 2.6.1
     dev: false
 
-  /ngx-slick-carousel@0.5.1(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(rxjs@7.8.1)(zone.js@0.11.4):
-    resolution: {integrity: sha512-AQr0xhMkp7lobBidkNH2d0Jk5HT0txQVkRwrw0SmOvsQLdUkfo9t0/V7JFssh3yAkkL6YwWvKy7sofBZqHk0bw==}
+  /ngx-slick-carousel@15.0.0(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/forms@15.2.9)(rxjs@7.8.1)(zone.js@0.11.4):
+    resolution: {integrity: sha512-4di69uKcA+cDsb3w7411rmGH2cTaTCT98SFD1qqxDhIInNpV2qga7dkXLCdgxHMYraPg8JrnGZus7uHL0lj7lw==}
     peerDependencies:
-      '@angular/common': ^7.0.0 || ^8.0.0 || ^9.0.0
-      '@angular/core': ^7.0.0 || ^8.0.0 || ^9.0.0
-      '@angular/forms': ^7.0.0 || ^8.0.0 || ^9.0.0
-      rxjs: ^6.0.0
-      zone.js: ~0.10.2
+      '@angular/common': ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+      '@angular/core': ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+      '@angular/forms': ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+      rxjs: ^6.0.0 || ^7.0.0
+      zone.js: '>=0.10.2'
     dependencies:
       '@angular/common': 15.2.9(@angular/core@15.2.9)(rxjs@7.8.1)
       '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.11.4)
       '@angular/forms': 15.2.9(@angular/common@15.2.9)(@angular/core@15.2.9)(@angular/platform-browser@15.2.9)(rxjs@7.8.1)
       rxjs: 7.8.1
-      tslib: 1.14.1
+      tslib: 2.6.1
       zone.js: 0.11.4
     dev: false
 
